@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://my-youth.coding.me/my-youth/</id>
+    <id>https://my-youth.github.io</id>
     <title>木易Young&apos;s Blog</title>
-    <updated>2019-11-26T13:28:41.633Z</updated>
+    <updated>2019-11-26T14:06:40.330Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://my-youth.coding.me/my-youth/"/>
-    <link rel="self" href="https://my-youth.coding.me/my-youth//atom.xml"/>
+    <link rel="alternate" href="https://my-youth.github.io"/>
+    <link rel="self" href="https://my-youth.github.io/atom.xml"/>
     <subtitle>随笔，Excel，软件</subtitle>
-    <logo>https://my-youth.coding.me/my-youth//images/avatar.png</logo>
-    <icon>https://my-youth.coding.me/my-youth//favicon.ico</icon>
+    <logo>https://my-youth.github.io/images/avatar.png</logo>
+    <icon>https://my-youth.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, 木易Young&apos;s Blog</rights>
     <entry>
         <title type="html"><![CDATA[FISRT BLOOOOOOOG！]]></title>
-        <id>https://my-youth.coding.me/my-youth//post/fisrt-blooooooog</id>
-        <link href="https://my-youth.coding.me/my-youth//post/fisrt-blooooooog">
+        <id>https://my-youth.github.io/post/fisrt-blooooooog</id>
+        <link href="https://my-youth.github.io/post/fisrt-blooooooog">
         </link>
         <updated>2019-11-17T14:21:38.000Z</updated>
         <content type="html"><![CDATA[<p>这是我的第一篇博客文章，今后在这里慢慢维护吧！</p>
@@ -23,8 +23,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://my-youth.coding.me/my-youth//post/hello-gridea</id>
-        <link href="https://my-youth.coding.me/my-youth//post/hello-gridea">
+        <id>https://my-youth.github.io/post/hello-gridea</id>
+        <link href="https://my-youth.github.io/post/hello-gridea">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
