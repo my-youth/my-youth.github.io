@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://my-youth.github.io</id>
     <title>木易Young&apos;s Blog</title>
-    <updated>2019-12-21T07:10:28.604Z</updated>
+    <updated>2019-12-21T07:14:26.114Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://my-youth.github.io"/>
     <link rel="self" href="https://my-youth.github.io/atom.xml"/>
@@ -54,24 +54,24 @@ ruby rt {
 <div style="font-family:楷体"><p class="comment">&nbsp;&nbsp;&nbsp;&nbsp;千字文，由南北朝时期梁朝散骑侍郎、给事中周兴嗣编纂、一千个汉字组成的韵文（在隋唐之前，不押韵、不对仗的文字，被称为“笔”，而非“文”）。梁武帝（502—549年）命人从王羲之书法作品中选取1000个不重复汉字，命员外散骑侍郎周兴嗣编纂成文。全文为四字句，对仗工整，条理清晰，文采斐然。《千字文》语句平白如话，易诵易记，并译有英文版、法文版、拉丁文版、意大利文版，是中国影响很大的儿童启蒙读物。<br>
 &nbsp;&nbsp;&nbsp;&nbsp;文中1000字本来不得有所重复，但周兴嗣在编纂文章时，却重复了一个“洁”字（洁、絜为同义异体字）。因此，《千字文》实际只运用了999字。中国大陆实行简化字、归并异体字后，其简体中文版本剩下九百九十余个相异汉字。</p></div>
 <div style="text-align:right;font-family:楷体"><p>——《百度百科》</p></div>
-<table>
-<tr class="text"><td><ruby style="font-family:楷体;font-size:64px;text-align:center">天<rt style="font-size:24px">tiān</rt></ruby></td>
-<td><ruby style="font-family:楷体;font-size:64px;text-align:center">地<rt style="font-size:24px">dì</rt></ruby></td>
-<td><ruby style="font-family:楷体;font-size:64px;text-align:center">玄<rt style="font-size:24px">xuán</rt></ruby></td>
-<td><ruby style="font-family:楷体;font-size:64px;text-align:center">黄<rt style="font-size:24px">huáng</rt></ruby></td>
-<td><ruby style="font-family:楷体;font-size:64px;text-align:center">宇<rt style="font-size:24px">yǔ</rt></ruby></td>
-<td><ruby style="font-family:楷体;font-size:64px;text-align:center">宙<rt style="font-size:24px">zhòu</rt></ruby></td>
-<td><ruby style="font-family:楷体;font-size:64px;text-align:center">洪<rt style="font-size:24px">hóng</rt></ruby></td>
-<td><ruby style="font-family:楷体;font-size:64px;text-align:center">荒<rt style="font-size:24px">huāng</rt></ruby></td>
+<table frame=void>
+<tr class="text"><td><ruby style="font-family:楷体;font-size:48px;text-align:center">天<rt style="font-size:24px">tiān</rt></ruby></td>
+<td><ruby style="font-family:楷体;font-size:48px;text-align:center">地<rt style="font-size:24px">dì</rt></ruby></td>
+<td><ruby style="font-family:楷体;font-size:48px;text-align:center">玄<rt style="font-size:24px">xuán</rt></ruby></td>
+<td><ruby style="font-family:楷体;font-size:48px;text-align:center">黄<rt style="font-size:24px">huáng</rt></ruby></td>
+<td><ruby style="font-family:楷体;font-size:48px;text-align:center">宇<rt style="font-size:24px">yǔ</rt></ruby></td>
+<td><ruby style="font-family:楷体;font-size:48px;text-align:center">宙<rt style="font-size:24px">zhòu</rt></ruby></td>
+<td><ruby style="font-family:楷体;font-size:48px;text-align:center">洪<rt style="font-size:24px">hóng</rt></ruby></td>
+<td><ruby style="font-family:楷体;font-size:48px;text-align:center">荒<rt style="font-size:24px">huāng</rt></ruby></td>
 </tr>
-<tr class="text"><td><ruby>日<rt>rì</rt></ruby></td>
-<td><ruby>月<rt>yuè</rt></ruby></td>
-<td><ruby>盈<rt>yíng</rt></ruby></td>
-<td><ruby>昃<rt>zè</rt></ruby></td>
-<td><ruby>辰<rt>chén</rt></ruby></td>
-<td><ruby>宿<rt>xiù</rt></ruby></td>
-<td><ruby>列<rt>liè</rt></ruby></td>
-<td><ruby>张<rt>zhāng</rt></ruby></td>
+<tr class="text"><td><ruby style="font-family:楷体;font-size:48px;text-align:center">日<rt style="font-size:24px">rì</rt></ruby></td>
+<td><ruby style="font-family:楷体;font-size:48px;text-align:center">月<rt style="font-size:24px">yuè</rt></ruby></td>
+<td><ruby style="font-family:楷体;font-size:48px;text-align:center">盈<rt style="font-size:24px">yíng</rt></ruby></td>
+<td><ruby style="font-family:楷体;font-size:48px;text-align:center">昃<rt style="font-size:24px">zè</rt></ruby></td>
+<td><ruby style="font-family:楷体;font-size:48px;text-align:center">辰<rt style="font-size:24px">chén</rt></ruby></td>
+<td><ruby style="font-family:楷体;font-size:48px;text-align:center">宿<rt style="font-size:24px">xiù</rt></ruby></td>
+<td><ruby style="font-family:楷体;font-size:48px;text-align:center">列<rt style="font-size:24px">liè</rt></ruby></td>
+<td><ruby style="font-family:楷体;font-size:48px;text-align:center">张<rt style="font-size:24px">zhāng</rt></ruby></td>
 </tr>
 </tr>
 <tr class="comment">
