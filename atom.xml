@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://my-youth.github.io</id>
     <title>木易Young&apos;s Blog</title>
-    <updated>2019-12-21T08:58:30.099Z</updated>
+    <updated>2019-12-21T09:00:44.921Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://my-youth.github.io"/>
     <link rel="self" href="https://my-youth.github.io/atom.xml"/>
@@ -12,8 +12,8 @@
     <rights>All rights reserved 2019, 木易Young&apos;s Blog</rights>
     <entry>
         <title type="html"><![CDATA[Excel工具箱-ToolBox]]></title>
-        <id>https://my-youth.github.io/post/excel-gong-ju-xiang-toolbox</id>
-        <link href="https://my-youth.github.io/post/excel-gong-ju-xiang-toolbox">
+        <id>https://my-youth.github.io/post/toolbox</id>
+        <link href="https://my-youth.github.io/post/toolbox">
         </link>
         <updated>2019-12-21T08:27:12.000Z</updated>
         <summary type="html"><![CDATA[<p>ToolBox是业余学习VBA编写的Excel插件，整合了部分网友的代码，也新写了很多功能。</p>
