@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://my-youth.github.io</id>
     <title>木易Young&apos;s Blog</title>
-    <updated>2019-12-21T06:37:51.657Z</updated>
+    <updated>2019-12-21T06:46:26.614Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://my-youth.github.io"/>
     <link rel="self" href="https://my-youth.github.io/atom.xml"/>
@@ -20,7 +20,6 @@
 ]]></summary>
         <content type="html"><![CDATA[<p>千字文，由南北朝时期梁朝散骑侍郎、给事中周兴嗣编纂、一千个汉字组成的韵文（在隋唐之前，不押韵、不对仗的文字，被称为“笔”，而非“文”）。</p>
 <!-- more -->
-<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8" />
@@ -35,7 +34,7 @@ tr.text td:nth-of-type(4) {
 	padding-right: 32px;
 }
 tr.comment p {
-	width: 800px;
+	width: 100%;
 }
 ruby {
 	font-size: 64px;
@@ -46,7 +45,7 @@ p {
 	font-family: "楷体", sans-serif;
 }
 ruby rt {
-	font-family: sans-serif;
+	font-family: "楷体", sans-serif;
 	font-size: 24px;
 }
 </style>
