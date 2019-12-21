@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://my-youth.github.io</id>
     <title>木易Young&apos;s Blog</title>
-    <updated>2019-12-21T06:31:25.840Z</updated>
+    <updated>2019-12-21T06:36:06.607Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://my-youth.github.io"/>
     <link rel="self" href="https://my-youth.github.io/atom.xml"/>
@@ -12,15 +12,14 @@
     <rights>All rights reserved 2019, 木易Young&apos;s Blog</rights>
     <entry>
         <title type="html"><![CDATA[千字文-周兴嗣]]></title>
-        <id>https://my-youth.github.io/post/qian-zi-wen</id>
-        <link href="https://my-youth.github.io/post/qian-zi-wen">
+        <id>https://my-youth.github.io/post/qianziwen</id>
+        <link href="https://my-youth.github.io/post/qianziwen">
         </link>
         <updated>2019-12-21T06:16:10.000Z</updated>
         <content type="html"><![CDATA[<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8" />
-<title>千字文</title>
 <link rel="stylesheet" href="style.css" type="text/css" />
 <style>
 tr.text td {
@@ -33,11 +32,11 @@ tr.text td:nth-of-type(4) {
 	padding-right: 32px;
 }
 tr.comment p {
-	width: 620px;
+	width: 800px;
 }
 ruby {
 	font-size: 64px;
-	font-family: "方正魏碑_GBK", "楷体", sans-serif;
+	font-family: "楷体", sans-serif;
 }
 p {
 	font-size: 32px;
