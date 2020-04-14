@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://my-youth.github.io</id>
     <title>木易Young&apos;s Blog</title>
-    <updated>2020-04-12T05:57:40.080Z</updated>
+    <updated>2020-04-14T14:13:16.203Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://my-youth.github.io"/>
     <link rel="self" href="https://my-youth.github.io/atom.xml"/>
@@ -15,7 +15,7 @@
         <id>https://my-youth.github.io/post/toolbox/</id>
         <link href="https://my-youth.github.io/post/toolbox/">
         </link>
-        <updated>2019-12-21T08:27:12.000Z</updated>
+        <updated>2020-04-14T14:13:09.000Z</updated>
         <summary type="html"><![CDATA[<p>ToolBox是业余学习VBA编写的Excel插件，整合了部分网友的代码，也新写了很多功能。</p>
 ]]></summary>
         <content type="html"><![CDATA[<p>ToolBox是业余学习VBA编写的Excel插件，整合了部分网友的代码，也新写了很多功能。</p>
@@ -35,7 +35,8 @@
 </ol>
 <h2 id="更新日志">更新日志：</h2>
 <ol>
-<li>2020/2/2     更新并完善了显示设置，可以方便地批量设置显示外观等。</li>
+<li>2020/4/14     新增：增加了工作表和工作簿解密功能，工作簿解密功能会丢失VBA工程数据。</li>
+<li>2020/2/2       新增：更新并完善了显示设置，可以方便地批量设置显示外观等。</li>
 </ol>
 <h2 id="主要功能">主要功能</h2>
 <h3 id="1-选项卡功能">1. 选项卡功能</h3>
