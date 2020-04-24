@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://my-youth.github.io</id>
     <title>木易Young&apos;s Blog</title>
-    <updated>2020-04-24T14:46:36.809Z</updated>
+    <updated>2020-04-24T14:53:44.498Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://my-youth.github.io"/>
     <link rel="self" href="https://my-youth.github.io/atom.xml"/>
@@ -29,9 +29,9 @@
 <h2 id="安装方法">安装方法：</h2>
 <ol>
 <li>将ToolBox.xlam文件复制到Office加载项文件夹：%userprofile%\AppData\Roaming\Microsoft\AddIns；<br>
-<img src="https://my-youth.github.io/post-images/1576918597308.png" alt="" loading="lazy"></li>
+<img src="https://s1.ax1x.com/2020/04/24/Jr0MLQ.png" alt="" loading="lazy"></li>
 <li>回到Excel中，启用开发工具选项卡，在Excel加载项中勾选ToolBox即可使用。<br>
-<img src="https://my-youth.github.io/post-images/1576918658413.png" alt="" loading="lazy"></li>
+<img src="https://s1.ax1x.com/2020/04/24/Jr0Giq.png" alt="" loading="lazy"></li>
 </ol>
 <h2 id="更新日志">更新日志：</h2>
 <ol>
@@ -42,19 +42,19 @@
 <h3 id="1-选项卡功能">1. 选项卡功能</h3>
 <ol>
 <li>常用功能。整合Excel各个选项卡中常用的命令，如清除、冻结窗格、排序和筛选、数据透视向导等；<br>
-<img src="https://my-youth.github.io/post-images/1576917720096.png" alt="常用功能" loading="lazy"></li>
+<img src="https://s1.ax1x.com/2020/04/24/Jr0oFI.png" alt="常用功能" loading="lazy"></li>
 <li>BOE工具。是针对BOE开发的方便工作的工具。除了跳转命令外， 主要有加权Cycle Time的计算、字符合并的Plus版本和基板切割计算；<br>
-<img src="https://my-youth.github.io/post-images/1576917748563.png" alt="BOE工具" loading="lazy"></li>
+<img src="https://s1.ax1x.com/2020/04/24/Jr07fP.png" alt="BOE工具" loading="lazy"></li>
 <li>数据处理。主要有区域转图、字符的合并和提取、表单处理、单元格处理、VBA功能的加解密；<br>
-<img src="https://my-youth.github.io/post-images/1576917783476.png" alt="数据处理" loading="lazy"></li>
+<img src="https://s1.ax1x.com/2020/04/24/Jr0L6S.png" alt="数据处理" loading="lazy"></li>
 <li>其他小工具。有从图表标签转移过来的取色器、二维码功能、翻译插件、个人所得税计算、进制转换、词频分析、批量插入图片、文件树等。<br>
-<img src="https://my-youth.github.io/post-images/1576917899481.png" alt="工具集" loading="lazy"></li>
+<img src="https://s1.ax1x.com/2020/04/24/JrBSkn.png" alt="工具集" loading="lazy"></li>
 <li>万能输入表。整合了<a href="http://www.ladeng6666.com/blog/">拉小登</a>的万能输入表，可以将二维表快速转换为一维表。<br>
-<img src="https://my-youth.github.io/post-images/1576918123014.png" alt="万能输入表" loading="lazy"></li>
+<img src="https://s1.ax1x.com/2020/04/24/JrBF6U.png" alt="万能输入表" loading="lazy"></li>
 </ol>
 <h3 id="2-自定义函数">2. 自定义函数</h3>
 <p>根据需求，编写了很多Function，包含“Y_”开头的函数和“P_”开头的函数，其中“P_”来自<a href="http://www.ladeng6666.com/blog/">拉小登</a>。<br>
-<img src="https://my-youth.github.io/post-images/1576918279721.png" alt="Y_函数" loading="lazy"></p>
+<img src="https://s1.ax1x.com/2020/04/24/JrBufx.png" alt="Y_函数" loading="lazy"></p>
 ]]></content>
     </entry>
     <entry>
