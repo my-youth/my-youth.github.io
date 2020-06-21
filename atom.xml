@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://my-youth.github.io</id>
     <title>木易Young&apos;s Blog</title>
-    <updated>2020-06-07T08:51:13.726Z</updated>
+    <updated>2020-06-21T07:19:38.389Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://my-youth.github.io"/>
     <link rel="self" href="https://my-youth.github.io/atom.xml"/>
@@ -35,6 +35,7 @@
 </ol>
 <h2 id="更新日志">更新日志：</h2>
 <ol>
+<li>2020/6/21    新增：增加Y_SQL2ExcelDate函数，用于将数据库中类似于01.02.2020, 00:06:13.152的日期调整为Excel可识别的格式</li>
 <li>2020/4/14     新增：增加了工作表和工作簿解密功能，工作簿解密功能会丢失VBA工程数据。</li>
 <li>2020/2/2       新增：更新并完善了显示设置，可以方便地批量设置显示外观等。</li>
 </ol>
