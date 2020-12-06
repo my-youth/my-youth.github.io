@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://my-youth.github.io</id>
     <title>木易Young&apos;s Blog</title>
-    <updated>2020-08-30T13:54:39.783Z</updated>
+    <updated>2020-12-06T08:56:58.473Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://my-youth.github.io"/>
     <link rel="self" href="https://my-youth.github.io/atom.xml"/>
@@ -36,6 +36,7 @@
 </ol>
 <h2 id="更新日志">更新日志：</h2>
 <ol>
+<li>2020/12/6   新增：对选定或所有单元格的批注统一设置</li>
 <li>2020/8/30   新增：整合Ron de Bruin的表驱动生成QAT菜单工具</li>
 <li>2020/8/30   新增：QAT快速访问工具栏添加常用命令按钮</li>
 <li>2020/6/27   新增：整合<a href="https://weibo.com/2190827182/BAeh1xbd9">Excel大全_方骥</a>的汉字转拼音功能</li>
