@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://my-youth.github.io/</id>
     <title>木易Young&apos;s Blog</title>
-    <updated>2021-07-11T13:42:34.720Z</updated>
+    <updated>2021-07-11T14:18:44.388Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://my-youth.github.io/"/>
     <link rel="self" href="https://my-youth.github.io/atom.xml"/>
@@ -11,158 +11,191 @@
     <icon>https://my-youth.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 木易Young&apos;s Blog</rights>
     <entry>
+        <title type="html"><![CDATA[《九零后》​纪录片观后感]]></title>
+        <id>https://my-youth.github.io/post/jiulinghou/</id>
+        <link href="https://my-youth.github.io/post/jiulinghou/">
+        </link>
+        <updated>2021-07-11T13:51:18.000Z</updated>
+        <content type="html"><![CDATA[<p>《九零后》一片讲述的是一帮耄耋之年的西南联大校友，以访谈形式追忆过往，从联大成立，到学生和老师不远万里齐聚昆明，再到大家的艰苦求学历程，最后新中国成立后，曾经的校友突破重重困阻，回到祖国，建设新中国。</p>
+<p>从纪录片或者电影的角度，本片难堪佳作，上映20天，票房仅有660万，排片也甚少。但出人意料的是，豆瓣和猫眼评分、评论一片叫好，感动无数人，何以叫好不叫座？</p>
+<hr>
+<p>作为一部纪录片，私以为有几点诟病：</p>
+<ol>
+<li>人物太多，形象不饱满。本片访谈了十数名作家、翻译家、科学家，从他们的言谈中勾勒出一些简短故事。极少有深入刻画人物思想的故事，大都浅尝辄止，浮于表面。有燃点的细节描写不过穆旦雨林求生罢了。每个人有过何种煎熬都没有述说。</li>
+<li>故事流于表面。接上面所说，全片着重讲说联大成立时湘黔滇步行团的遭遇和大家在联大求学时的经历，但是这两个故事也没有刻画好。与其说湘黔滇步行团是在走一条前无古人后无来者的求学、迁徙之路，不如说是徒步旅行团，没有丝毫的紧张感。过了开始的前十天，大家就是载歌载舞，记录沿途风土人情和民谣，观察祖国山河。这期间除了偶遇“土匪”一事，就没有其他事情发生吗?联大求学期间，大家都在调侃以往国文教授如何，宿舍蚊虫肆虐，课后青春萌动的故事。目前的描写下，他们的“长征之路”也好，求学之道也好，似乎也并非艰难，或许是作者为了展现革命乐观主义精神？曾经的大佬们远离国土，赴他国求学，归国之路是如此艰辛，本片有呈现吗？没有。研制两弹一星仅仅只是比西方国家快五年吗？不是。这期间大量故事可说，它没有。</li>
+<li>旁白念诗文，大量原画容易导致出戏，辅以突如其来的轰炸声带来“震撼”？以往《建国大业》《建党大业》和《建军大业》也在讲故事，虽然由于人物过多，无法兼顾每个人物的个性，但是重在故事情节连贯性尚可，也有特别刻画的人物，有跌宕起伏的过程。反观本片没有，以旁白当事人的诗、回忆录的方式，乐观的把所有事情一笔带过。突如其来的轰炸声似乎要把故事引向高潮，要渲染一股恐怖、紧张气息，但实际感受是咋又轰炸了。<br>
+本片要以100分钟的时间浓缩如此多的人物、事件和长达几十年的时间跨度，不如用4~6集，每集60分钟来细说数个重点过程，树立鲜活形象。该片最终上院线，而且是在访谈两三年后建党百年献礼，难免有压货蹭热点之嫌。好的故事不需要过度宣传和挑时间上映，自媒体好评引流也不能带出好作品，《你好，李焕英》也可以依靠小人物鲜活的故事唤起大众的共鸣。缺乏有力度的、抨击人心的故事述说，实不能勾起观看的欲望，柴静《穹顶之下》也是纪录片，运用视像和数据，一样能直击心灵。<br>
+总结地说，这部纪录片如果不上院线，花更多时间铺陈，讲述重点故事，可以是一部口碑佳作。或许剧集《西南联大》有这样的精彩？</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Markdown简明教程]]></title>
         <id>https://my-youth.github.io/post/markdown-demo/</id>
         <link href="https://my-youth.github.io/post/markdown-demo/">
         </link>
         <updated>2021-07-11T13:34:02.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="一-标题">一、标题</h2>
-<h3 id="1-使用-表示标题其中-号必须在行首例如">1. 使用 <code>#</code> 表示标题，其中 <code>#</code> 号必须在行首，例如：</h3>
-<h1 id="一号标题">一号标题</h1>
-<h2 id="二号标题">二号标题</h2>
-<h3 id="三号标题">三号标题</h3>
-<h4 id="四号标题">四号标题</h4>
-<h5 id="五号标题">五号标题</h5>
-<h6 id="六号标题">六号标题</h6>
-<h3 id="2-使用-或者-表示例如">2. 使用 <code>===</code> 或者 <code>---</code> 表示，例如：</h3>
-<h1 id="一级标题">一级标题</h1>
+        <content type="html"><![CDATA[<h1 id="一级标题">一级标题</h1>
 <h2 id="二级标题">二级标题</h2>
-<h4 id="扩展如何换行"><strong>扩展：如何换行？</strong></h4>
-<p>一般使用 <strong>两个空格</strong> 加 <strong>回车</strong> 换行，不过一些 IDE 也可以直接使用回车换行。</p>
-<h2 id="二-分割线">二、分割线</h2>
-<p>使用三个或以上的 <code>-</code> 或者 <code>*</code>  表示，且这一行只有符号，<strong>注意不要被识别为二级标题即可</strong>，例如中间或者前面可以加空格</p>
-<hr>
-<hr>
-<h2 id="三-斜体和粗体">三、斜体和粗体</h2>
-<p>使用 <code>*</code> 和 <code>**</code> 分别表示斜体和粗体，例如</p>
-<p><em>斜体</em><br>
-<strong>粗体</strong><br>
-<em><strong>又斜又粗</strong></em></p>
-<h4 id="扩展删除线使用两个-~-表示例如">**扩展：**删除线使用两个 <code>~</code> 表示，例如</h4>
-<p><s>我是要删掉的文字</s></p>
-<hr>
-<h2 id="四-超链接和图片">四、超链接和图片</h2>
-<p>超链接和图片的写法类似，图片仅在超链接前多了一个 <code>!</code> ，一般是 [文字描述] (链接)<br>
-两种写法，分别是： <a href="https://www.baidu.com/">第一种写法</a> 和 <a href="https://www.baidu.com/">第二种写法</a><br>
-图片的话就比如这样： <img src="https://www.zybuluo.com/static/img/logo.png" alt="Image" loading="lazy"></p>
-<hr>
-<h2 id="五-无序列表">五、无序列表</h2>
-<p>使用 <code>-</code>、<code>+</code> 和 <code>*</code> 表示无序列表，前后留一行空白，可嵌套，例如</p>
+<h3 id="三级标题">三级标题</h3>
+<h4 id="四级标题">四级标题</h4>
+<h5 id="五级标题">五级标题</h5>
+<h6 id="六级标题">六级标题</h6>
+<blockquote>
+<p>一级引用</p>
+<blockquote>
+<p>二级引用</p>
+<blockquote>
+<p>三级引用</p>
+</blockquote>
+</blockquote>
+</blockquote>
 <ul>
-<li>一层
+<li>一级列表
 <ul>
-<li>二层</li>
-<li>二层
+<li>二级列表
 <ul>
-<li>三层
-<ul>
-<li>四层</li>
+<li>三级列表</li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-</li>
-<li>一层</li>
-</ul>
-<hr>
-<h2 id="六-有序列表">六、有序列表</h2>
-<p>使用 <code>1.</code> （点号后面有个空格）表示有序列表，可嵌套，例如</p>
 <ol>
-<li>一层
+<li>
+<p>有序列表</p>
 <ol>
-<li>二层</li>
-<li>二层</li>
+<li>有序子列表</li>
 </ol>
+<ul>
+<li>有序子列表</li>
+</ul>
 </li>
-<li>一层</li>
 </ol>
-<hr>
-<h2 id="七-文字引用">七、文字引用</h2>
-<p>使用 <code>&gt;</code> 表示，可以有多个 <code>&gt;</code>，表示层级更深，例如</p>
-<blockquote>
-<p>第一层</p>
-<blockquote>
-<p>第二层<br>
-这样是跳不出去的</p>
-<blockquote>
-<p>还可以更深</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<blockquote>
-<p>这样就跳出去了</p>
-</blockquote>
-<hr>
-<h2 id="八-行内代码块">八、行内代码块</h2>
-<p>其实上面已经用过很多次了，即使用 ` 表示，例如</p>
-<p><code>行内代码块</code></p>
-<h3 id="扩展很多字符是需要转义使用反斜杠-进行转义">扩展：很多字符是需要转义，使用反斜杠 <code>\</code> 进行转义</h3>
-<hr>
-<h2 id="九-代码块">九、代码块</h2>
-<p>使用四个空格缩进表示代码块，例如</p>
-<pre><code>public class HelloWorld
-{
-    public static void main(String[] args)
-    { 
-        System.out.println( &quot;Hello, World!&quot; );
-    }
-}
-</code></pre>
-<p>一些 IDE 支持行数提示和着色，一般使用三个 ` 表示，例如</p>
-<pre><code>public class HelloWorld
-{
-    public static void main(String[] args)
-    { 
-        System.out.println( &quot;Hello, World!&quot; );
-    }
+<ul>
+<li>有序列表
+<ul>
+<li>无序子列表</li>
+<li>无序子列表</li>
+</ul>
+</li>
+</ul>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-2846263"><label class="task-list-item-label" for="task-item-2846263"> 复选列表</label>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-7706709"><label class="task-list-item-label" for="task-item-7706709"> 已办事例</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7024823"><label class="task-list-item-label" for="task-item-7024823"> 待办事例</label></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-javascript">function toCelsius(fahrenheit) {
+    return (5 / 9) * (fahrenheit - 32);
 }
 </code></pre>
 <hr>
-<h2 id="十-表格">十、表格</h2>
-<p>直接看例子吧，第二行的 <code>---:</code> 表示了对齐方式，默认<strong>左对齐</strong>，还有<strong>右对齐</strong>和<strong>居中</strong></p>
+<p><code>重点文字</code></p>
+<p><s>删除线</s></p>
+<p><strong>下划线</strong></p>
+<p><em><strong>粗斜体</strong></em></p>
+<p><strong>粗体</strong></p>
+<p><em>斜体</em></p>
+<p><a href="https://www.baidu.com">百度一下</a></p>
+<figure data-type="image" tabindex="1"><img src="https://www.baidu.com/img/bd_logo.png" alt="百度Logo" loading="lazy"></figure>
+<p>这是个简单的表格</p>
 <table>
 <thead>
 <tr>
-<th>商品</th>
-<th style="text-align:right">数量</th>
-<th style="text-align:center">单价</th>
+<th>First Header</th>
+<th>Second Header</th>
+<th>Third Header</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>苹果苹果苹果</td>
-<td style="text-align:right">10</td>
-<td style="text-align:center">$1</td>
+<td>Content Cell</td>
+<td>Content Cell</td>
+<td>Content Cell</td>
 </tr>
 <tr>
-<td>电脑</td>
-<td style="text-align:right">1</td>
-<td style="text-align:center">$1999</td>
+<td>Content Cell</td>
+<td>Content Cell</td>
+<td>Content Cell</td>
 </tr>
 </tbody>
 </table>
-<hr>
-<h2 id="十一-数学公式">十一、数学公式</h2>
-<p>使用 <code>$</code> 表示，其中一个 $ 表示在行内，两个 $ 表示独占一行。<br>
-例如质量守恒公式： <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>=</mo><mi>m</mi><msup><mi>c</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">E=mc^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord mathdefault">m</span><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span><br>
-支持 <strong>LaTeX</strong> 编辑显示支持，例如：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><msub><mi>a</mi><mi>i</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\sum_{i=1}^n a_i=0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.104002em;vertical-align:-0.29971000000000003em;"></span><span class="mop"><span class="mop op-symbol small-op" style="position:relative;top:-0.0000050000000000050004em;">∑</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.804292em;"><span style="top:-2.40029em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.2029em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.29971000000000003em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>， 访问 <a href="https://www.zybuluo.com/static/img/logo.png">MathJax</a> 参考更多使用方法。</p>
-<p>推荐一个常用的数学公式在线编译网站： <a href="https://www.codecogs.com/latex/eqneditor.php">https://www.codecogs.com/latex/eqneditor.php</a></p>
-<hr>
-<h2 id="十二-支持html标签">十二、支持HTML标签</h2>
-<h3 id="1-例如想要段落的缩进可以如下">1. 例如想要段落的缩进，可以如下：</h3>
-<p>  不断行的空白格 或 <br>
-  半方大的空白 或 <br>
-  全方大的空白 或 </p>
-<hr>
-<h2 id="十三-其它">十三、其它</h2>
-<ol>
-<li>markdown 各个 IDE 的使用可能存在大同小异，一般可以参考各个 IDE 的介绍文档</li>
-<li>本文档介绍的内容基本适用于大部分的 IDE</li>
-<li>其它一些类似 <strong>流程图</strong> 之类的功能，需要看 IDE 是否支持。</li>
-</ol>
-<p>查看原始数据：<a href="https://gitee.com/afei_/MarkdownDemo/raw/master/README.md">https://gitee.com/afei_/MarkdownDemo/raw/master/README.md</a></p>
-<p>博客：<a href="https://blog.csdn.net/afei__/article/details/80717153">https://blog.csdn.net/afei__/article/details/80717153</a></p>
+<p>出于美观的考虑，可以把两端都包围起来</p>
+<table>
+<thead>
+<tr>
+<th>First Header</th>
+<th>Second Header</th>
+<th>Third Header</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Content Cell</td>
+<td>Content Cell</td>
+<td>Content Cell</td>
+</tr>
+<tr>
+<td>Content Cell</td>
+<td>Content Cell</td>
+<td>Content Cell</td>
+</tr>
+</tbody>
+</table>
+<p>通过在标题分割行添加冒号<code>:</code>，你可以定义表格单元的对其格式：向左靠齐，居中和向右靠齐</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">First Header</th>
+<th style="text-align:center">Second Header</th>
+<th style="text-align:right">Third Header</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Left</td>
+<td style="text-align:center">Center</td>
+<td style="text-align:right">Right</td>
+</tr>
+<tr>
+<td style="text-align:left">Left</td>
+<td style="text-align:center">Center</td>
+<td style="text-align:right">Right</td>
+</tr>
+</tbody>
+</table>
+<p>这是一个示例的表格使用案例</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">名字</th>
+<th style="text-align:center">年龄</th>
+<th style="text-align:right">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">张三</td>
+<td style="text-align:center">十岁</td>
+<td style="text-align:right"><strong>加粗的文字</strong></td>
+</tr>
+<tr>
+<td style="text-align:left">王老五</td>
+<td style="text-align:center">二十岁</td>
+<td style="text-align:right"><a href="https://github.com/getActivity/Markdown">支持添加链接</a></td>
+</tr>
+</tbody>
+</table>
+<p><a href="#%E4%B8%80%E7%BA%A7%E6%A0%87%E9%A2%98">点击这里回到一级标题</a></p>
+<p><font face="微软雅黑" color="red" size="2">自定义字体样式、颜色、大小</font></p>
+<p><font color="#0000ff">也可以单独指定字体颜色</font></p>
+<p align="left">居左文本</p>
+<p align="center">居中文本</p>
+<p align="right">居右文本</p>
+<p>使用html标签<br/>换行</p>
 ]]></content>
     </entry>
     <entry>
