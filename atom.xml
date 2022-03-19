@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://my-youth.github.io</id>
     <title>木易Young&apos;s Blog</title>
-    <updated>2022-03-19T08:39:59.081Z</updated>
+    <updated>2022-03-19T08:57:06.978Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://my-youth.github.io"/>
     <link rel="self" href="https://my-youth.github.io/atom.xml"/>
@@ -16,9 +16,12 @@
         <link href="https://my-youth.github.io/post/jiulinghou/">
         </link>
         <updated>2021-07-11T13:51:18.000Z</updated>
+        <summary type="html"><![CDATA[<p>《九零后》一片讲述的是一帮耄耋之年的西南联大校友，以访谈形式追忆过往，从联大成立，到学生和老师不远万里齐聚昆明，再到大家的艰苦求学历程，最后新中国成立后，曾经的校友突破重重困阻，回到祖国，建设新中国。</p>
+<p>从纪录片或者电影的角度，本片难堪佳作，上映20天，票房仅有660万，排片也甚少。但出人意料的是，豆瓣和猫眼评分、评论一片叫好，感动无数人，何以叫好不叫座？</p>
+]]></summary>
         <content type="html"><![CDATA[<p>《九零后》一片讲述的是一帮耄耋之年的西南联大校友，以访谈形式追忆过往，从联大成立，到学生和老师不远万里齐聚昆明，再到大家的艰苦求学历程，最后新中国成立后，曾经的校友突破重重困阻，回到祖国，建设新中国。</p>
 <p>从纪录片或者电影的角度，本片难堪佳作，上映20天，票房仅有660万，排片也甚少。但出人意料的是，豆瓣和猫眼评分、评论一片叫好，感动无数人，何以叫好不叫座？</p>
-<hr>
+<!-- more -->
 <p>作为一部纪录片，私以为有几点诟病：</p>
 <ol>
 <li>人物太多，形象不饱满。本片访谈了十数名作家、翻译家、科学家，从他们的言谈中勾勒出一些简短故事。极少有深入刻画人物思想的故事，大都浅尝辄止，浮于表面。有燃点的细节描写不过穆旦雨林求生罢了。每个人有过何种煎熬都没有述说。</li>
@@ -81,10 +84,10 @@
 </li>
 </ul>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-1943863"><label class="task-list-item-label" for="task-item-1943863"> 复选列表</label>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-7083510"><label class="task-list-item-label" for="task-item-7083510"> 复选列表</label>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-6152227"><label class="task-list-item-label" for="task-item-6152227"> 已办事例</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3430025"><label class="task-list-item-label" for="task-item-3430025"> 待办事例</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-1147532"><label class="task-list-item-label" for="task-item-1147532"> 已办事例</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-8536778"><label class="task-list-item-label" for="task-item-8536778"> 待办事例</label></li>
 </ul>
 </li>
 </ul>
