@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://my-youth.github.io</id>
     <title>木易Young&apos;s Blog</title>
-    <updated>2022-03-20T02:56:28.390Z</updated>
+    <updated>2022-03-24T13:22:24.670Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://my-youth.github.io"/>
     <link rel="self" href="https://my-youth.github.io/atom.xml"/>
@@ -10,6 +10,28 @@
     <logo>https://my-youth.github.io/images/avatar.png</logo>
     <icon>https://my-youth.github.io/favicon.ico</icon>
     <rights>All rights reserved 2022, 木易Young&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[神奇浏览器停运]]></title>
+        <id>https://my-youth.github.io/post/shen-qi-liu-lan-qi-ting-yun/</id>
+        <link href="https://my-youth.github.io/post/shen-qi-liu-lan-qi-ting-yun/">
+        </link>
+        <updated>2022-03-24T12:49:28.000Z</updated>
+        <summary type="html"><![CDATA[<p>神奇浏览器原本由武汉大学的个人开发者开发，具有体积小巧、功能齐全而强大的优点，奈何其内置的广告拦截功能过于强大，动了国内视频网站巨头的利益奶酪，被迫宣布破产停运，版本号停在了0.9.8.4。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>神奇浏览器原本由武汉大学的个人开发者开发，具有体积小巧、功能齐全而强大的优点，奈何其内置的广告拦截功能过于强大，动了国内视频网站巨头的利益奶酪，被迫宣布破产停运，版本号停在了0.9.8.4。</p>
+<!-- more -->
+<p>使用0.9.8.4版本的神奇浏览器，将收到如下一封停运公告，点击退出将退出浏览器，无法进行网页浏览；点击确定将自动下载0.9.8.5版本，该版本已经精简了所有广告拦截和资源嗅探等容易触动利益底线的功能，保留了基本的网页浏览、书签管理功能。<br>
+<img src="https://s1.ax1x.com/2022/03/24/qJyFzt.jpg" alt="停运公告" loading="lazy"></p>
+<p>神奇浏览器0.9.8.4版本发布于2020年3月，至今已经整整两年，虽然长期未更新，但是其功能仍走在浏览器前列，为人津津乐道。酷安网友在0.9.8.5版本发布后，针对如何继续使用最后一个全功能版本献计献策，相较之下，比较倾向于逆向安装包，简单修改部分代码的方案，共享如下：</p>
+<ol>
+<li>在使用mt管理器的dex编辑器修改dex文件；</li>
+<li>以整数方式搜索0x7f09001e；</li>
+<li>删除三个搜索结果的所在行代码；</li>
+<li>重新签名打包即可安装，安装前需要卸载原有版本，如果不想看到设置中的更新红点，可以手动修改版本号至0.9.8.5及以上。</li>
+</ol>
+<p>酷安评论中下载的部分安装包疑似夹带私货，固祭出个人修改的版本，<a href="https://github.com/my-youth/my-youth.github.io/releases/download/%E7%A5%9E%E5%A5%87%E6%B5%8F%E8%A7%88%E5%99%A8/_v0.9.8.4_mod.apk">下载地址</a></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[《九零后》​纪录片观后感]]></title>
         <id>https://my-youth.github.io/post/jiulinghou/</id>
@@ -87,10 +109,10 @@
 </li>
 </ul>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-1716162"><label class="task-list-item-label" for="task-item-1716162"> 复选列表</label>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-738113"><label class="task-list-item-label" for="task-item-738113"> 复选列表</label>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-6908581"><label class="task-list-item-label" for="task-item-6908581"> 已办事例</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7857904"><label class="task-list-item-label" for="task-item-7857904"> 待办事例</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-9457720"><label class="task-list-item-label" for="task-item-9457720"> 已办事例</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2636699"><label class="task-list-item-label" for="task-item-2636699"> 待办事例</label></li>
 </ul>
 </li>
 </ul>
