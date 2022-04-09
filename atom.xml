@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://my-youth.github.io</id>
     <title>木易Young&apos;s Blog</title>
-    <updated>2022-04-09T11:54:28.627Z</updated>
+    <updated>2022-04-09T12:19:52.412Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://my-youth.github.io"/>
     <link rel="self" href="https://my-youth.github.io/atom.xml"/>
@@ -18,18 +18,10 @@
         <updated>2022-04-09T10:48:27.000Z</updated>
         <content type="html"><![CDATA[<p>使用如下的div块加载播放iframe，其中src替换为B站视频地址，B站视频地址提取方法：</p>
 <ul>
-<li>
-<p>打开视频播放界面；</p>
-</li>
-<li>
-<p>鼠标移动到下方分享界面；</p>
-</li>
-<li>
-<figure data-type="image" tabindex="1"><img src="https://s1.ax1x.com/2022/04/09/LiDfPJ.png" alt="img" loading="lazy"></figure>
-</li>
-<li>
-<p>复制嵌入代码如下：</p>
-</li>
+<li>打开视频播放界面；</li>
+<li>鼠标移动到下方分享界面；</li>
+<li><img src="https://s1.ax1x.com/2022/04/09/LiDfPJ.png" alt="img" loading="lazy"></li>
+<li>复制嵌入代码如下：</li>
 </ul>
 <pre><code class="language-html">&lt;iframe 
     src=&quot;//player.bilibili.com/player.html?aid=635809095&amp;bvid=BV1Sb4y1J7zr&amp;cid=487854003&amp;page=1&quot; 
@@ -41,7 +33,7 @@
 &lt;/iframe&gt;
 </code></pre>
 <ul>
-<li>将其中src双引号中的内容复制后输入到下方div块中的sec处，注意不要替换“&amp;page=1&amp;high_quality=1”，该参数表示第一集、高质量播放。</li>
+<li>将其中src双引号中的内容复制后输入到下方div块中的src处，注意不要替换“&amp;page=1&amp;high_quality=1”，该参数表示第一集、高质量播放。</li>
 </ul>
 <pre><code class="language-html">&lt;div style=&quot;position: relative; padding: 30% 45%;&quot;&gt;
     &lt;iframe style=&quot;
@@ -60,6 +52,7 @@
 </code></pre>
 <p>此外由于B站视频在不登录情况下，不能以1080p及以上画质播放，可使用第三方解析播放地址，比如：<br>
 https://jx.parwix.com:4433/player/analysis.php?v=视频URL<br>
+https://jx.xmflv.com/?url=视频URL<br>
 其中视频URL为B站视频地址，将该新链接粘贴到src中，即可实现1080p及以上画质播放。</p>
 ]]></content>
     </entry>
@@ -264,10 +257,10 @@ https://jx.parwix.com:4433/player/analysis.php?v=视频URL<br>
 </li>
 </ul>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-5890580"><label class="task-list-item-label" for="task-item-5890580"> 复选列表</label>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-2494089"><label class="task-list-item-label" for="task-item-2494089"> 复选列表</label>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-363240"><label class="task-list-item-label" for="task-item-363240"> 已办事例</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6476708"><label class="task-list-item-label" for="task-item-6476708"> 待办事例</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-4603545"><label class="task-list-item-label" for="task-item-4603545"> 已办事例</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2754809"><label class="task-list-item-label" for="task-item-2754809"> 待办事例</label></li>
 </ul>
 </li>
 </ul>

@@ -12,21 +12,13 @@
 <link rel="alternate" type="application/rss+xml" title="木易Young&#39;s Blog » Feed" href="https://my-youth.github.io/atom.xml">
         <meta name="description" content="使用如下的div块加载播放iframe，其中src替换为B站视频地址，B站视频地址提取方法：
 
-
 打开视频播放界面；
-
-
 鼠标移动到下方分享界面；
-
-
-
-
 
 复制嵌入代码如下：
 
-
 &lt;iframe 
-    src=&quot;//p..." />
+    src=&quot;//player.bi..." />
         <meta name="keywords" content="html,bilibili" />
 </head>
 
@@ -98,7 +90,7 @@
                             <div class="post_title post_detail_title">
                                 <h2>html iframe播放B站视频</h2>
                                 <span class="article-info">
-                                    2022-04-09, 312 words, 2 min read
+                                    2022-04-09, 320 words, 2 min read
                                 </span>
                             </div>
                             <div class="post_content markdown">
@@ -106,18 +98,10 @@
                                     <span class="md_line md_line_start md_line_end">
                                         <p>使用如下的div块加载播放iframe，其中src替换为B站视频地址，B站视频地址提取方法：</p>
 <ul>
-<li>
-<p>打开视频播放界面；</p>
-</li>
-<li>
-<p>鼠标移动到下方分享界面；</p>
-</li>
-<li>
-<figure data-type="image" tabindex="1"><img src="https://s1.ax1x.com/2022/04/09/LiDfPJ.png" alt="img" loading="lazy"></figure>
-</li>
-<li>
-<p>复制嵌入代码如下：</p>
-</li>
+<li>打开视频播放界面；</li>
+<li>鼠标移动到下方分享界面；</li>
+<li><img src="https://s1.ax1x.com/2022/04/09/LiDfPJ.png" alt="img" loading="lazy"></li>
+<li>复制嵌入代码如下：</li>
 </ul>
 <pre><code class="language-html">&lt;iframe 
     src=&quot;//player.bilibili.com/player.html?aid=635809095&amp;bvid=BV1Sb4y1J7zr&amp;cid=487854003&amp;page=1&quot; 
@@ -129,7 +113,7 @@
 &lt;/iframe&gt;
 </code></pre>
 <ul>
-<li>将其中src双引号中的内容复制后输入到下方div块中的sec处，注意不要替换“&amp;page=1&amp;high_quality=1”，该参数表示第一集、高质量播放。</li>
+<li>将其中src双引号中的内容复制后输入到下方div块中的src处，注意不要替换“&amp;page=1&amp;high_quality=1”，该参数表示第一集、高质量播放。</li>
 </ul>
 <pre><code class="language-html">&lt;div style=&quot;position: relative; padding: 30% 45%;&quot;&gt;
     &lt;iframe style=&quot;
@@ -148,6 +132,7 @@
 </code></pre>
 <p>此外由于B站视频在不登录情况下，不能以1080p及以上画质播放，可使用第三方解析播放地址，比如：<br>
 https://jx.parwix.com:4433/player/analysis.php?v=视频URL<br>
+https://jx.xmflv.com/?url=视频URL<br>
 其中视频URL为B站视频地址，将该新链接粘贴到src中，即可实现1080p及以上画质播放。</p>
 <br />
                                             
