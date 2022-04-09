@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://my-youth.github.io</id>
     <title>木易Young&apos;s Blog</title>
-    <updated>2022-04-09T11:06:27.958Z</updated>
+    <updated>2022-04-09T11:11:25.279Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://my-youth.github.io"/>
     <link rel="self" href="https://my-youth.github.io/atom.xml"/>
@@ -49,7 +49,7 @@
         width: 100%; 
         height: 100%; 
         left: 0; top: 0;&quot; 
-        src=&quot;https://jx.parwix.com:4433/player/analysis.php?v=https://www.bilibili.com/video/BV1Sb4y1J7zr?spm_id_from=333.999.0.0&quot; 
+        src=&quot;//player.bilibili.com/player.html?aid=635809095&amp;bvid=BV1Sb4y1J7zr&amp;cid=487854003&amp;page=1&amp;high_quality=1&quot; 
         scrolling=&quot;no&quot; 
         border=&quot;0&quot; 
         frameborder=&quot;no&quot; 
@@ -266,10 +266,10 @@ https://jx.parwix.com:4433/player/analysis.php?v=视频URL<br>
 </li>
 </ul>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-6451616"><label class="task-list-item-label" for="task-item-6451616"> 复选列表</label>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-9237596"><label class="task-list-item-label" for="task-item-9237596"> 复选列表</label>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-749778"><label class="task-list-item-label" for="task-item-749778"> 已办事例</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-5443036"><label class="task-list-item-label" for="task-item-5443036"> 待办事例</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-1942504"><label class="task-list-item-label" for="task-item-1942504"> 已办事例</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-3993278"><label class="task-list-item-label" for="task-item-3993278"> 待办事例</label></li>
 </ul>
 </li>
 </ul>
@@ -1172,7 +1172,7 @@ https://jx.parwix.com:4433/player/analysis.php?v=视频URL<br>
         width: 100%; 
         height: 100%; 
         left: 0; top: 0;" 
-        src="https://jx.parwix.com:4433/player/analysis.php?v=https://www.bilibili.com/video/BV1CS4y1m7ax" 
+        src="//player.bilibili.com/player.html?aid=725300300&bvid=BV1CS4y1m7ax&cid=566831780&page=1&high_quality=1" 
         scrolling="no" 
         border="0" 
         frameborder="no" 
@@ -1187,7 +1187,7 @@ https://jx.parwix.com:4433/player/analysis.php?v=视频URL<br>
         width: 100%; 
         height: 100%; 
         left: 0; top: 0;" 
-        src="https://jx.parwix.com:4433/player/analysis.php?v=https://www.bilibili.com/video/BV1Eq4y1e7Ru?spm_id_from=333.999.0.0" 
+        src="//player.bilibili.com/player.html?aid=595279232&bvid=BV1Eq4y1e7Ru&cid=566834516&page=1&high_quality=1" 
         scrolling="no" 
         border="0" 
         frameborder="no" 
@@ -1202,7 +1202,7 @@ https://jx.parwix.com:4433/player/analysis.php?v=视频URL<br>
         width: 100%; 
         height: 100%; 
         left: 0; top: 0;" 
-        src="https://jx.parwix.com:4433/player/analysis.php?v=https://www.bilibili.com/video/BV1k34y1s7Rq?spm_id_from=333.999.0.0" 
+        src="//player.bilibili.com/player.html?aid=810328417&bvid=BV1k34y1s7Rq&cid=566837836&page=1&high_quality=1" 
         scrolling="no" 
         border="0" 
         frameborder="no" 
@@ -1217,7 +1217,7 @@ https://jx.parwix.com:4433/player/analysis.php?v=视频URL<br>
         width: 100%; 
         height: 100%; 
         left: 0; top: 0;" 
-        src="https://jx.parwix.com:4433/player/analysis.php?v=https://www.bilibili.com/video/BV1Sb4y1J7zr?spm_id_from=333.999.0.0" 
+        src="//player.bilibili.com/player.html?aid=635809095&bvid=BV1Sb4y1J7zr&cid=487854003&page=1&high_quality=1" 
         scrolling="no" 
         border="0" 
         frameborder="no" 
