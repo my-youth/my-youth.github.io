@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://my-youth.github.io</id>
     <title>木易Young&apos;s Blog</title>
-    <updated>2022-03-24T13:30:39.628Z</updated>
+    <updated>2022-04-09T09:23:28.085Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://my-youth.github.io"/>
     <link rel="self" href="https://my-youth.github.io/atom.xml"/>
@@ -109,10 +109,10 @@
 </li>
 </ul>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-9350642"><label class="task-list-item-label" for="task-item-9350642"> 复选列表</label>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-7827557"><label class="task-list-item-label" for="task-item-7827557"> 复选列表</label>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-3015102"><label class="task-list-item-label" for="task-item-3015102"> 已办事例</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-694640"><label class="task-list-item-label" for="task-item-694640"> 待办事例</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-1841215"><label class="task-list-item-label" for="task-item-1841215"> 已办事例</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2117964"><label class="task-list-item-label" for="task-item-2117964"> 待办事例</label></li>
 </ul>
 </li>
 </ul>
@@ -225,6 +225,801 @@
 <p align="right">居右文本</p>
 <p>使用html标签<br/>换行</p>
 ]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[C1驾照笔记]]></title>
+        <id>https://my-youth.github.io/post/C1-Driver&apos;s-license/</id>
+        <link href="https://my-youth.github.io/post/C1-Driver&apos;s-license/">
+        </link>
+        <updated>2021-07-11T12:33:45.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="科目一">科目一</h1>
+<h3 id="1-法律法规">1.  法律法规</h3>
+<ul>
+<li>假一吊二撤三醉五逃终生​</li>
+<li>右转让左转，转弯让直行</li>
+<li>酒驾醉驾标准</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">血液酒精浓度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">醉驾</td>
+<td style="text-align:center">≥80mg/100ml</td>
+</tr>
+<tr>
+<td style="text-align:center">酒驾</td>
+<td style="text-align:center">≥20mg/100ml</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>补核换居行登：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">证照类型</th>
+<th style="text-align:center">业务</th>
+<th style="text-align:center">归属地</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">驾驶证</td>
+<td style="text-align:center">补发</td>
+<td style="text-align:center">核发地</td>
+</tr>
+<tr>
+<td style="text-align:center">驾驶证</td>
+<td style="text-align:center">换证</td>
+<td style="text-align:center">居住地</td>
+</tr>
+<tr>
+<td style="text-align:center">行驶证</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">登记地</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>口五站三，不能停车：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">地点</th>
+<th style="text-align:center">距离</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">站三</td>
+<td style="text-align:center">加油站、消防站、公交站</td>
+<td style="text-align:center">30m内</td>
+</tr>
+<tr>
+<td style="text-align:center">口五</td>
+<td style="text-align:center">其他路口</td>
+<td style="text-align:center">50m内</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>答案中有“拘役”的一般均选它</li>
+<li>上道行驶，证照齐全，否则扣留。检保挂驾行：检验合格证，保险标志，挂车牌，驾驶证，行驶证</li>
+<li>交通肇事罪定罪情形：酒毒、明知、无证、逃逸、超载</li>
+<li>避让校车：校车停靠上下学生时，后方，左侧1条行车道停车让行</li>
+<li>营运车辆驾驶人每年培训不少于24学时；</li>
+<li>记分周期达12分，15天内到指定地点接受7天科一培训；达24分的，科一培训后10天内进行科三考试；</li>
+<li>城市道路核载0.6吨以下小型货车，随载作业人员不超1人，其他小型货车不超3人；</li>
+<li>转向灯提前30米开启；</li>
+<li>驾车4h，休息时间&gt;20分钟；</li>
+<li>一罚二吊三拘；</li>
+<li>上坡先行，已下至中途，下坡先行；</li>
+</ul>
+<h3 id="2-高速公路相关规定">2. 高速公路相关规定</h3>
+<ul>
+<li>安全车距</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">时速</th>
+<th style="text-align:center">安全车距</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">&gt;100km/h</td>
+<td style="text-align:center">&gt;100m</td>
+</tr>
+<tr>
+<td style="text-align:center">&gt; &lt;100km/h</td>
+<td style="text-align:center">&gt;50m</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>能见度、车速与车距</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">口诀</th>
+<th style="text-align:center">能见度</th>
+<th style="text-align:center">车速</th>
+<th style="text-align:center">车距</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">582</td>
+<td style="text-align:center">&lt;500m</td>
+<td style="text-align:center">80km/h</td>
+<td style="text-align:center">150m</td>
+</tr>
+<tr>
+<td style="text-align:center">261</td>
+<td style="text-align:center">&lt;200m</td>
+<td style="text-align:center">60km/h</td>
+<td style="text-align:center">100m</td>
+</tr>
+<tr>
+<td style="text-align:center">145</td>
+<td style="text-align:center">&lt;100m</td>
+<td style="text-align:center">40km/h</td>
+<td style="text-align:center">50m</td>
+</tr>
+<tr>
+<td style="text-align:center">520</td>
+<td style="text-align:center">&lt;50m</td>
+<td style="text-align:center">20km/h</td>
+<td style="text-align:center">离开高速</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-交通标志-标线">3. 交通标志、标线</h3>
+<ul>
+<li>行驶速度上限：不三不四，有五有七</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">中心线</th>
+<th style="text-align:center">同向车<br>道数量</th>
+<th style="text-align:center">类型</th>
+<th style="text-align:center">车速</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">无</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">城市道路</td>
+<td style="text-align:center">30km/h</td>
+</tr>
+<tr>
+<td style="text-align:center">无</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">公路</td>
+<td style="text-align:center">40km/h</td>
+</tr>
+<tr>
+<td style="text-align:center">有</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">城市道路</td>
+<td style="text-align:center">50km/h</td>
+</tr>
+<tr>
+<td style="text-align:center">有</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">公路</td>
+<td style="text-align:center">70km/h</td>
+</tr>
+<tr>
+<td style="text-align:center">有</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">城市道路</td>
+<td style="text-align:center">70km/h</td>
+</tr>
+<tr>
+<td style="text-align:center">有</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">公路</td>
+<td style="text-align:center">80km/h</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>划道车速上限：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">车道数</th>
+<th style="text-align:center">1st</th>
+<th style="text-align:center">2nd</th>
+<th style="text-align:center">3rd</th>
+<th style="text-align:center">4th</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">两车道</td>
+<td style="text-align:center">120-100</td>
+<td style="text-align:center">100-60</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">三车道</td>
+<td style="text-align:center">120-110</td>
+<td style="text-align:center">110-90</td>
+<td style="text-align:center">90-60</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">四车道</td>
+<td style="text-align:center">120-110</td>
+<td style="text-align:center">110-90</td>
+<td style="text-align:center">110-90</td>
+<td style="text-align:center">90-60</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>标志（线）颜色含义</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类别</th>
+<th style="text-align:center">黄色</th>
+<th style="text-align:center">绿色</th>
+<th style="text-align:center">黑色</th>
+<th style="text-align:center">蓝色</th>
+<th style="text-align:center">红色</th>
+<th style="text-align:center">白色</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">车速标志</td>
+<td style="text-align:center">最高(地标)</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">建议</td>
+<td style="text-align:center">最低</td>
+<td style="text-align:center">最高</td>
+<td style="text-align:center">最低(地标)</td>
+</tr>
+<tr>
+<td style="text-align:center">路牌标志</td>
+<td style="text-align:center">注意、警告</td>
+<td style="text-align:center">指路</td>
+<td style="text-align:center">解除</td>
+<td style="text-align:center">指示</td>
+<td style="text-align:center">禁止</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">停车位</td>
+<td style="text-align:center">专属</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">免费</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">收费</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>分离横，交叉竖：黄底黑色图案；</li>
+<li>菱形◇是人行横道提醒；</li>
+<li>路口白实线，有齿可变，无齿导向；</li>
+<li>白色“«”为前后车距确认线，白色半圆标记为左右车距确认线；</li>
+<li>没有划分非机动车道，人力车、三轮车距右侧2.5m，自行车距右侧2m，行人距右侧1.5m</li>
+</ul>
+<h3 id="4-扣分罚款相关">4. 扣分&amp;罚款相关</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">扣分数</th>
+<th style="text-align:center">项目</th>
+<th style="text-align:center">罚款</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:center">机动车号牌相关</td>
+<td style="text-align:center">200</td>
+</tr>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:center">伪造变更证照</td>
+<td style="text-align:center">2k～5k</td>
+</tr>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:center">超速50%以上</td>
+<td style="text-align:center">70%以内1k，70%以上2k，均吊销</td>
+</tr>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:center">肇事逃逸</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:center">酒驾</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:center">高速逆行、倒车、跨越中央隔离带</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">超速20%～50%</td>
+<td style="text-align:center">30%内50元，30%以上200元</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">占用应急车道</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">违反信号灯</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">不按规定避让校车</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">10%～20%</td>
+<td style="text-align:center">50元</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">普通道路逆行</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">违反禁令标志</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">高速行驶速度低于最低</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">驾驶时接打手机</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">高速/快速未系安全带</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">行经交叉路口不按规定行车或停车</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">不按规定会车、使用灯光</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">载货长宽高超限</td>
+<td style="text-align:center">-</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">证照不齐全</td>
+<td style="text-align:center">-</td>
+</tr>
+</tbody>
+</table>
+<h3 id="5-交警手势">5. 交警手势</h3>
+<ul>
+<li>口诀：</li>
+</ul>
+<blockquote>
+<p>对你你就停，<br><br>
+不对你就走，<br><br>
+左右摆变道，<br><br>
+上下摆减速；</p>
+</blockquote>
+<ul>
+<li>驾考交警手势顺口溜：</li>
+</ul>
+<blockquote>
+<p>左高右放要叫停（停止信号）<br><br>
+左右折叠是直行（直行信号）<br><br>
+左手在下左转弯（左转弯信号）<br><br>
+右手在下右转弯（右转弯信号）<br><br>
+左手下摆即待转（左转弯待转信号）<br><br>
+右手平摆要变道（变道信号）<br><br>
+左手下放要减速（减速慢行信号）<br><br>
+左手抬起靠边停（靠边停车信号）</p>
+</blockquote>
+<h3 id="6-驾驶技能">6. 驾驶技能</h3>
+<ul>
+<li>制动系统：</li>
+</ul>
+<blockquote>
+<p>行车制动=脚刹，<br><br>
+驻车制动=手刹，<br><br>
+发动机制动=档刹</p>
+</blockquote>
+<ul>
+<li>夜间驾驶灯光使用方式：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">时速</th>
+<th style="text-align:center">灯光</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">&lt;30km/h</td>
+<td style="text-align:center">近光灯</td>
+</tr>
+<tr>
+<td style="text-align:center">≥30km/h</td>
+<td style="text-align:center">远光灯</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>车辆仪表盘标志含义<br>
+<img src="https://z3.ax1x.com/2021/11/18/ITYqJS.png" alt="img" loading="lazy"></li>
+</ul>
+<h1 id="科目二">科目二</h1>
+<h3 id="1-倒车入库">1. 倒车入库</h3>
+<p>分为左倒库和右倒库<br>
+<img src="https://z3.ax1x.com/2021/10/25/55mj4s.jpg" alt="img" loading="lazy"></p>
+<h4 id="右倒库时">右倒库时：</h4>
+<ol>
+<li>当视线、左后视镜根部下沿和控制线处于同一直线时，向右打满方向盘；</li>
+<li>观察右后视镜，当车身与AD第一节虚线中心平行时，方向盘向左回平；</li>
+<li>观察左后视镜，当车身与库线平行时，回正方向盘，适当进行修正；</li>
+<li>当左后视镜根部下沿与库线重合时，停车。</li>
+</ol>
+<h4 id="向左出库">向左出库：</h4>
+<ol>
+<li>向前直行到引擎盖顶距底线l 2指宽，向左打360º+90º；</li>
+<li>当左车门把手与控制线、视线重合时停车；</li>
+</ol>
+<h4 id="左倒库">左倒库：</h4>
+<ol>
+<li>保持360º+90º方向盘不变，挂倒档；</li>
+<li>车身与D点重合时，向左打满方向盘；</li>
+<li>左后视镜中，车身遮住DA第一节虚线一半时，方向盘回平；</li>
+<li>同时观察右后视镜，当车身与库线平行时，回正，适当修正方向；</li>
+<li>当左后视镜根部下沿与库线AD重合时，停车；</li>
+</ol>
+<h4 id="向右出库">向右出库：</h4>
+<ol>
+<li>向前直行到引擎盖顶与底线l重合时，向右打满方向盘；</li>
+<li>车身平行时，快速回正并驶离；</li>
+</ol>
+<h4 id="倒车时如何通过后视镜调整车身与库线平行">倒车时如何通过后视镜调整车身与库线平行？</h4>
+<ol>
+<li>左后视镜中，上窄下宽，向右打方向盘；</li>
+<li>右后视镜中，上窄下宽，向左打方向盘。</li>
+</ol>
+<h3 id="2-侧方位停车">2. 侧方位停车</h3>
+<figure data-type="image" tabindex="1"><img src="https://z3.ax1x.com/2021/10/25/55AKu4.jpg" alt="img" loading="lazy"></figure>
+<h4 id="停车时">停车时：</h4>
+<ol>
+<li>保持雨刷器中心点与右侧车道线重合；</li>
+<li>倒车档，右后视镜中A点刚要消失时，向右打360º；</li>
+<li>左后视镜中，车身与DA第四节虚线重合时，回正方向；</li>
+<li>前倾观察左后视镜后车轮，刚压上虚线时，向右打满方向；</li>
+<li>右后视镜观察车身与库线平行时，停车，保持方向盘不动；</li>
+</ol>
+<h4 id="驶离时">驶离时：</h4>
+<ol>
+<li>打左转灯，挂1档，当水晶线与左侧车道线相交时，快速回正方向；</li>
+<li>当左车门把手与车道线相交时，向右打一圈方向盘；</li>
+<li>当车身与车道线平行时，回正方向并驶离。</li>
+</ol>
+<h1 id="科目三">科目三</h1>
+<h2 id="1-上车准备及起步">1. 上车准备及起步</h2>
+<ul>
+<li>【椅】调座椅远近靠背角度。舒适为主，左脚离合可踩到底；</li>
+<li>【镜】按要求调左右后视镜。将看未看前门把手，门把手居中位置；</li>
+<li>【熄】发动机是否熄火，转速表归零，必须熄火；</li>
+<li>【灯】所有灯光复位，2个箭头必须停在OFF位置处，往面前抬一下灯光操纵杆；</li>
+<li>【看参照】观察雨刮器和边线相对位置，右后视镜里面车身与边线宽度。观察时保持头靠在头枕上，停车亦然。停车时雨刮器参考点往右推出去10cm后，再往左拉回到原参考点位置就回正方向简单调整一下即可停车。<br>
+举手示意，观察左后视镜安全后，打开车门逆时针绕车一周，按下左后右后左前感应器，上车系好安全带。<br>
+语音提示“请启动发动机”后启动发动机。</li>
+</ul>
+<h2 id="2-模拟灯光">2. 模拟灯光</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">序号</th>
+<th style="text-align:center">口令</th>
+<th style="text-align:center">操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">夜间通过人行横道</td>
+<td style="text-align:center">远近交替</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">夜间通过急弯、坡路、拱桥</td>
+<td style="text-align:center">远近交替</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">夜间通过没有交通信号灯控制的路口</td>
+<td style="text-align:center">远近交替</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">夜间在道路超车</td>
+<td style="text-align:center">远近交替</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">夜间在没有交通隔离设施的道路上与非机动车会车</td>
+<td style="text-align:center">近光灯</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">夜间在有路灯，照明良好的条件下行驶</td>
+<td style="text-align:center">近光灯</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">夜间同方向近距离跟车</td>
+<td style="text-align:center">近光灯</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center">夜间通过红绿灯路口</td>
+<td style="text-align:center">近光灯</td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td style="text-align:center">夜间在道路上发生故障难以移动</td>
+<td style="text-align:center">示宽灯+应急灯（下一口令开始时，开大灯，关应急灯）</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center">夜间在没有路灯，照明不良的条件下行驶</td>
+<td style="text-align:center">远光灯</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-起步流程">3. 起步流程：</h2>
+<ul>
+<li>打左转向灯；</li>
+<li>踩离合、踩刹车；</li>
+<li>挂一挡；</li>
+<li>松手刹；</li>
+<li>半联动稳住，车辆抖动变弱再松离合；</li>
+<li>平路或下坡路可先松刹车再缓抬离合至半联动状态，否则先缓抬离合。</li>
+<li>具备起步条件10s内未起步扣10分。</li>
+</ul>
+<h2 id="4-请保持直线行驶">4. 请保持直线行驶：</h2>
+<p>要求 ：车身偏移方向微调，左右行驶偏移不能超过15cm（方向随便修  早修早回）速度要求瞬间上一次25km/h左右即可.左右观察，看远（一定要看远）手放松。</p>
+<ul>
+<li>未在有效距离内达到规定速度的 扣100分</li>
+<li>车辆偏离距离过大未及时修整方向调整，不能保持直行的 扣100分</li>
+</ul>
+<h2 id="5-前方即将进行变更车道-请变更车道该项目不能用一挡行驶">5. 前方即将进行变更车道-请变更车道：（该项目不能用一挡行驶）</h2>
+<p>听到前方即将即将变更车道 语音 （开启正确的转向灯并确认挡位是否在2挡此时不需要进行变道）当听到请变更车道语音（开始计算距离150米内要确保安全的前提下完成相应的变更车道），变更车道可左可右，根据最开始行驶的车道为准(自主变更车道没有挡位要求)</p>
+<ul>
+<li>用1挡变更的 扣100分</li>
+<li>未在第二个语音“请变更车道&quot;后变道 扣100分</li>
+<li>不打转向灯的 扣100分</li>
+</ul>
+<h2 id="6-路口直行">6. 路口直行：</h2>
+<p>要求：听到语音后 （轻踩刹车左右摆头观察即可）</p>
+<ul>
+<li>不踩刹车或摆头左右观察的 扣100分</li>
+</ul>
+<h2 id="7-请会车">7. 请会车：</h2>
+<p>要求：听到语音后 （轻踩刹车左右摆头观察即可）</p>
+<ul>
+<li>不踩刹车或摆头左右观察的 扣100分</li>
+</ul>
+<h2 id="8-前方路口请调头">8. 前方路口请调头：</h2>
+<p>要求：三个动作（打左转向灯 点刹车 减一挡）</p>
+<ul>
+<li>调头前不打转向灯或错误使用转向灯 扣100分</li>
+<li>语音后不踩刹车或摆头左右观察的 扣100分</li>
+<li>转弯前压分道实线的 扣100分</li>
+</ul>
+<h2 id="9-前方路口左转弯-路口左转弯">9. 前方路口左转弯  -    路口左转弯</h2>
+<p>前方路口右转弯 － 路口右转弯<br>
+要求：三个动作（打左转向灯 点刹车 根据前方情况选择一挡还是二挡转弯 考试用一挡）</p>
+<ul>
+<li>转弯前不打转向灯或错误使用转向灯 扣100分</li>
+<li>语音后不踩刹车或摆头左右观察的 扣100分</li>
+<li>转弯前压分道实线的 扣100分</li>
+<li>通过人行横道线未踩刹车左右观察的 扣100分</li>
+</ul>
+<h2 id="10-请超车">10. 请超车：</h2>
+<p>打左转向灯，等转向灯亮3秒以后向左变更车道，在左车道把车走正方向端正后加油（同时打右转向灯）让速度上一次25km/h左右，速度超过25km／h后松油观察右后方安全变回右边车道，（如有车不安全可减1挡或停车，待安全后驶回原车道）超车语音到变回右车道需在200米内完成。</p>
+<ul>
+<li>不打转向灯或转向灯不足三秒变道的 扣100分</li>
+<li>未在规定距离200米内变回原车道的 扣100分</li>
+<li>在超车道未达到规定速度的 扣100分</li>
+</ul>
+<h2 id="11-请完成加减挡操作该项目不能抢挡">11. 请完成加减挡操作：（该项目不能抢挡）</h2>
+<p>要求：听语音操作，减挡直接减，加挡先加速</p>
+<ul>
+<li>该项目语音开始后停车的 扣100分</li>
+<li>抢挡或错误加减挡的 扣100分</li>
+<li>换挡后左脚长时间未能离开离合器的 扣100分</li>
+</ul>
+<h2 id="12-靠边停车车速-慢-慢-慢">12. 靠边停车：（车速 慢  慢 慢）</h2>
+<p>不需要一次停到位 在150米内可停车后进行多次调整<br>
+要求：听到靠边停车语音后 打右转向灯 用一挡 确认转向灯时间和右后方安全过后 看左雨刮器最高点与道路右侧白色实线的位置关系 右左右三把方向调整停车，离合器和刹车踩到慢慢调整</p>
+<ul>
+<li>不打转向灯或灯没三秒变道的 扣100分</li>
+<li>右前车头触碰或右前轮压右边线的  扣100分</li>
+<li>停车后车辆与边线大于50cm的 扣100分</li>
+<li>停车后车辆与边线大于30不大与50的 扣10分</li>
+<li>转向灯未亮或灯不足三秒拉手刹的 扣100分</li>
+<li>停车时先松开脚刹踏板再拉手刹的 扣100分</li>
+<li>开门前未熄火的 扣5分</li>
+</ul>
+<h2 id="13-通过人行横道-学校区域-公共汽车站">13. 通过人行横道 学校区域 公共汽车站：</h2>
+<p>距离人行横道 学校区域 公共汽车站10-5米左右各轻踩刹车一次（10米踩一次5米踩一次），左右摆头观察两侧交通情况，确认安全，合理控制车速通过，距离 学校区域 标志牌前后三十米左右速度必须在30km/h以内(以上三个项无语音提示)</p>
+<ul>
+<li>通过上述区域内不踩刹车或摆头左右观察的  扣100分</li>
+</ul>
+<p>踩刹车和可停车项目列表</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">序号</th>
+<th style="text-align:center">口令</th>
+<th style="text-align:center">踩刹车+左右观察</th>
+<th style="text-align:center">可以停车</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">路口左转弯</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">路口右转弯</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">路口直行</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">前方路口请调头</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">请会车</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">通过学校区域</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">通过公共汽车站</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center">√</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center">通过人行横道</td>
+<td style="text-align:center">√</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">9</td>
+<td style="text-align:center">请超车</td>
+<td style="text-align:center">单向观察</td>
+<td style="text-align:center">√</td>
+</tr>
+<tr>
+<td style="text-align:center">10</td>
+<td style="text-align:center">请变更车道</td>
+<td style="text-align:center">单向观察</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">11</td>
+<td style="text-align:center">请保持直线行驶</td>
+<td style="text-align:center">仅左右观察</td>
+<td style="text-align:center">√</td>
+</tr>
+<tr>
+<td style="text-align:center">12</td>
+<td style="text-align:center">加减档</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>此外虚线分道线不能停车</li>
+</ul>
+<h2 id="档速匹配">档速匹配</h2>
+<p>1挡加油不能超过20码<br>
+2挡加油不能超过30码</p>
+<p>自主加3挡4挡<br>
+2挡加3挡时超过20码即可<br>
+3挡加4挡速度提到30码<br>
+（不得低于30码）<br>
+4挡行驶不能低于25码</p>
+<p>动图违法行为种数：<br>
+1 2 3 7 8 9都是2种；4 5 6都是3种</p>
+<p>侧滑时前反后同；</p>
+<p>不同路面不同车速情况下，避免碰撞的方法不同：</p>
+<ol>
+<li>高速公路：先制动后转向</li>
+<li>交通复杂的城市快速路或国道：边制动边转向</li>
+<li>在城市道路：先转向后制动</li>
+</ol>
+<p>变道1234<br>
+爆胎2134<br>
+故障2314</p>
+<h2 id="4月1日新规后沙坪坝土主考场1号线视频">4月1日新规后沙坪坝土主考场1号线视频</h2>
+<div style="position: relative; padding: 30% 45%;">
+    <iframe style="
+        position: absolute; 
+        width: 100%; 
+        height: 100%; 
+        left: 0; top: 0;" 
+        src="//player.bilibili.com/player.html?aid=725300300&bvid=BV1CS4y1m7ax&cid=566831780&page=1&high_quality=1" 
+        scrolling="no" 
+        border="0" 
+        frameborder="no" 
+        framespacing="0" 
+        allowfullscreen="true">
+    </iframe>
+</div>]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Excel工具箱-ToolBox]]></title>
