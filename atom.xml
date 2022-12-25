@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://my-youth.github.io</id>
     <title>木易Young&apos;s Blog</title>
-    <updated>2022-05-04T11:46:00.386Z</updated>
+    <updated>2022-12-25T04:18:48.315Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://my-youth.github.io"/>
     <link rel="self" href="https://my-youth.github.io/atom.xml"/>
@@ -11,12 +11,1213 @@
     <icon>https://my-youth.github.io/favicon.ico</icon>
     <rights>All rights reserved 2022, 木易Young&apos;s Blog</rights>
     <entry>
+        <title type="html"><![CDATA[Oracle SQL和帆软学习备忘录]]></title>
+        <id>https://my-youth.github.io/post/oracle-sql/</id>
+        <link href="https://my-youth.github.io/post/oracle-sql/">
+        </link>
+        <updated>2022-12-25T03:08:20.000Z</updated>
+        <summary type="html"><![CDATA[<p>将日常所学的Oracle SQL的语法与结构进行整理，尤其是一些特殊用法，形成一份简单的教学文档，便于后续的查阅。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>将日常所学的Oracle SQL的语法与结构进行整理，尤其是一些特殊用法，形成一份简单的教学文档，便于后续的查阅。</p>
+<!-- more -->
+<h2 id="一-sql结构">一、SQL结构</h2>
+<p>SQL经典结构如下：</p>
+<pre><code class="language-sql">SELECT 字段名1,          --数据表中的字段名称，每个字段名之间用半角“,”逗号隔开，为了美观和结构可换行
+       字段名2,          --最后一个字段名后，不需要逗号
+       ……
+  FROM 数据表名           --系统中的表，表可以进行重命名
+ WHERE 字段名1='值1'
+   AND 字段名2&gt;'值2'      --多个条件语句可用AND、OR连接
+</code></pre>
+<ol>
+<li>
+<h3 id="缩进对齐和注释">缩进对齐和注释</h3>
+<p>首先要强调的是，无论是SQL或是其他编程语言，缩进对齐和注释是首要需要了解的。缩进对齐不仅是为了美观，更重要的是可以直观地了解层次结构，便于查阅过去自己写的或是他人的内容。适当的注释是为了便于更快速地理解写的内容，尤其是新字段或函数的定义与作用。所以，无论是初学者或是老手，书写时都应当适当的缩进对齐和添加注释，共勉谨记。</p>
+</li>
+<li>
+<h3 id="函数命名">函数命名</h3>
+<p>其次是无论是SQL或是其他编程语言，函数命名通常都与其英语单词有关，比如“Select”有“选择”之意，&quot;From&quot;有“从……”之意，“Where”有“在哪种情况下”之意，所以上述示例可理解为，从名为“数据表名”的数据表中，选择名为“字段名1”、“字段名2”的字段，条件是字段名1=值1并且字段名2&gt;值2，将结果整理为一张新的表单内容。编程语言中使用的单词比较单一，且不同编程语言之前使用的单词大都相同，词汇量从来不是变成要考量的点，所以自己在命名新字段名称时，第一要避免与内置函数或方法名重复，第二是命名代表了新的字段的功能或意义，应当慎用诸如a、b、c等无实际意义的字母组合。</p>
+<p>SQL中函数字母大小写没有区分，所以命名新函数、新字段不可单词重复，书写SQL查询语句时可以大写，也可以小写。</p>
+</li>
+<li>
+<h3 id="select字段">SELECT字段</h3>
+<p>后面跟随的是字段名，也就是列名。当使用聚合函数（SUM、AVG等）或者公式对字段进行了重新计算之后，可以将其重命名为新的字段，如：</p>
+<pre><code class="language-sql">SELECT COUNT(STUDENT_NAME) AS STUDENT_NUM FROM SCORE_LIST  --设置字段别名
+</code></pre>
+<p>其中的AS可以省略不写。</p>
+<ul>
+<li>
+<p>当写为下面的形式时，表示将数据表中的所有字段取出：</p>
+<pre><code class="language-sql">SELECT * FROM SCORE_LIST  --取出所有字段
+</code></pre>
+</li>
+<li>
+<p>当写为下面的形式时，表示取出其中的不重复数据：</p>
+<pre><code class="language-sql">SELECT DISTINCT CLASS FROM SCORE_LIST  --取出重复数据
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<h3 id="from字段">FROM字段</h3>
+<p>后面跟随的是数据表名，参考下表，格式为：表所在用户+.+表名+DB Link，例如：EDBADM. EDS_LOT_HIST或FABADM.LOTHISTORY@FAB2FR。当需要将表复制到BO时，DB Link中的FR需要修改为MDW，如：@FAB2MDW。</p>
+<table>
+<thead>
+<tr>
+<th><strong>表所在用户</strong></th>
+<th><strong>表名</strong></th>
+<th><strong>DB Link</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EDBADM</td>
+<td>EDS开头的表</td>
+<td>不需要</td>
+</tr>
+<tr>
+<td>WEBADM</td>
+<td>DM开头的表</td>
+<td>不需要</td>
+</tr>
+<tr>
+<td>YMSADM</td>
+<td>EDA开头的表</td>
+<td>@YMS2FR</td>
+</tr>
+<tr>
+<td>FABADM</td>
+<td>如：TPFOMPOLICY</td>
+<td>@FAB2FR</td>
+</tr>
+<tr>
+<td>MOADM</td>
+<td></td>
+<td>@MOD2FR</td>
+</tr>
+<tr>
+<td>M2ADM</td>
+<td></td>
+<td>@M22FR</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<h3 id="where字段">WHERE字段</h3>
+<p>后面跟随的是条件，可以使用的逻辑函数有AND、OR、NOT，判断相关&gt;、&gt;=、&lt;、&lt;=、=、&lt;&gt;，、BETWEEN…AND…、IN、Like、||。</p>
+<ul>
+<li>
+<p>AND、OR可以相互组合成更为复杂的逻辑，例如：</p>
+<pre><code class="language-sql">WHERE (条件1 AND 条件2) OR (条件3 AND 条件4)
+</code></pre>
+</li>
+<li>
+<p>=、&lt;&gt;、!=、^=：第一个表示等于，后面几个都表示不等于。</p>
+<p>不同编程语言中，对此写法不一样，例如C语言中“=”表示赋值，只有“==”才是数学含义的相等，C语言中不等于记为“!=”。<strong>尤其需要注意的是&gt;、&lt;符号不能写为全角的＞、＜，&gt;=、&lt;=不能写为≥、≤，也就是字母和符号都是半角，通俗地说是英文输入法状态的符号。</strong></p>
+</li>
+<li>
+<p>BETWEEN…AND…：下面两种写法是等效的，都表示介于：</p>
+<pre><code class="language-sql">WHERE 字段1 BETWEEN '值1' AND '值2'
+</code></pre>
+<p>相当于是：</p>
+<pre><code class="language-sql">WHERE 字段1 &gt;= '值1'
+  AND 字段1 &lt;= '值2'
+</code></pre>
+</li>
+<li>
+<p>IN相当于OR函数的简写，下面两种写法是等效的：</p>
+<pre><code class="language-sql">WHERE 字段1='值1'
+   OR 字段1='值2'
+   OR 字段1='值3'
+</code></pre>
+<p>相当于是：</p>
+<pre><code class="language-sql">WHERE 字段1 IN ('值1','值2','值3')
+</code></pre>
+</li>
+<li>
+<p>Like：该函数是SQL里面的通配符，SQL支持两种通配符：%和_，其中：</p>
+<p>%表示0个或若干个字符，</p>
+<p>_表示1个字符。</p>
+<p>例如在数据表中有ABC、ABC1、ABC2、AB1、ABC123，当使用下面的查询时取出ABC、ABC1、ABC2、ABC123。</p>
+<pre><code class="language-sql">SELECT 字符
+  FROM 数据表
+ WHERE 字符 LIKE 'ABC%'
+</code></pre>
+<p>当使用下面的查询时取出ABC1、ABC2，<strong>用“_”相当于同时限制了字符串的长度</strong>。</p>
+<pre><code class="language-sql">SELECT 字符
+  FROM 数据表
+ WHERE 字符 LIKE 'ABC_'
+</code></pre>
+<p>需要注意的是LIKE的查询方式是模糊查询，通常存在效率问题，在数据量较大是，尽量避免使用Like。</p>
+</li>
+<li>
+<p>||表示将多个字符串拼接为一个，WHERE条件中可以使用，SELECT字段中亦可使用。例如：</p>
+<pre><code class="language-sql">SELECT 字段名1||字段名2 字段名3 FROM 数据表
+</code></pre>
+<p>表示将字段名1和字段名2拼接为一个字符串，并重命名为字段名3.</p>
+<pre><code class="language-sql">SELECT *
+  FROM 数据表
+ WHERE 字段名1||字段名2 = '值1'
+</code></pre>
+<p>表示取出条件为拼接之后的字符串为值1时的所有数据。</p>
+</li>
+<li>
+<p>当然WHERE查询中还可以使用其他的函数配合查询，例如SUBSTR、LENGTH、regexp_like，但不能使用聚合函数（SUM、COUNT、MAX、MIN、AVG），具体函数语法与含义，后续讲解或搜索帮助。</p>
+</li>
+</ul>
+</li>
+<li>
+<h3 id="group-by">GROUP BY</h3>
+<p>当在SELECT字段中使用了聚合函数（SUM、COUNT、MAX、MIN、AVG）时，需要指定计算时按照哪些字段进行汇总，比如是按照天别和设备别求和，或是设备别求最值，此时需要在WHERE所有条件之后补充GROUP BY，添加分组的字段。</p>
+<p>例1，需要统计全校各班级各科目学生平均成绩，成绩表示例如下：</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Student_Name</th>
+<th>Subject</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一班</td>
+<td>张三</td>
+<td>语文</td>
+<td>92</td>
+</tr>
+<tr>
+<td>一班</td>
+<td>张三</td>
+<td>数学</td>
+<td>93</td>
+</tr>
+<tr>
+<td>一班</td>
+<td>张三</td>
+<td>英语</td>
+<td>89</td>
+</tr>
+</tbody>
+</table>
+<p>按照需求，此处需要使用聚合函数：</p>
+<pre><code class="language-sql">SELECT CLASS,
+       SUBJECT,
+       AVG(SCORE) AVG_SCORE
+  FROM SCORE_LIST 
+ GROUP BY CLASS,SUBJECT
+--此段SQL可以不写WHERE条件，表示将数据表中所有数据取出
+</code></pre>
+<p>例2：一维表转为二维表，即整理为类似于下述的表：</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Student_Name</th>
+<th>语文</th>
+<th>数学</th>
+<th>英语</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一班</td>
+<td>张三</td>
+<td>92</td>
+<td>93</td>
+<td>89</td>
+</tr>
+<tr>
+<td>一班</td>
+<td>李四</td>
+<td>94</td>
+<td>88</td>
+<td>89</td>
+</tr>
+</tbody>
+</table>
+<p>使用下面的查询语句可以实现一维表转为二维表，重点是DECODE的使用，要求是数据表中没有重复的科目，即：数据表中不能有两行张三同学的语文成绩记录，否则求和之后将把两行成绩相加。</p>
+<pre><code class="language-sql">SELECT CLASS,
+       STUDENT_NAME,
+       SUM(DECODE(SUBJECT,'语文',SCORE,0)) 语文,
+       SUM(DECODE(SUBJECT,'数学',SCORE,0)) 数学,
+       SUM(DECODE(SUBJECT,'英语',SCORE,0)) 英语
+  FROM SCORE_LIST
+ GROUP BY CLASS,STUDENT_NAME
+</code></pre>
+<p>有时候SELECT字段中，需要按照不同维度进行汇总，比如既要计算各班级各科目学生平均成绩，分组条件为班级和科目，又要计算各班级人数，分组条件为班级，那么此时的分组条件是不一致的，就不能直接使用GROUP BY，而要使用OVER函数，将在后面的内容中说明。</p>
+</li>
+<li>
+<h3 id="order-by">ORDER BY</h3>
+<ul>
+<li>
+<p>ORDER BY，顾名思义是按照……（次序）进行排序，将需要排序的字段罗列其后。比如上述成绩单需要依次按照班级、学生姓名排序，那么可以在<strong>WHERE条件语句后使用，有GROUP BY的须在其之后使用：</strong></p>
+<pre><code class="language-sql">ORDER BY CLASS,STUDENT_NAME
+</code></pre>
+<p>ORDER BY中可以指定字段按照升序或降序排列，默认为升序，当需要使用降序时，在字段名后添加DESC即可，如下按照各班级各学科成绩降序排列：</p>
+<pre><code class="language-sql">SELECT CLASS,
+       SUBJECT,
+       STUDENT_NAME,
+       SCORE
+  FROM SCORE_LIST
+ ORDER BY CLASS,SUBJECT,SCORE DESC
+</code></pre>
+</li>
+<li>
+<p>自定义排序</p>
+<p>可以发现的是，排序结果里，班级是中文数字，生成的结果中并不是按照一、二、三依次排序，甚至有时候排得莫名其妙，默认中文排序一般与字符集相关，如果需要按照指定的顺序自定义排序，可以参考下面的写法：</p>
+<pre><code class="language-sql">ORDER BY DECODE(CLASS,'一班',1,'二班',2,'三班',3,'四班',4),SUBJECT,SCORE DESC
+</code></pre>
+<p>班级和次序号绑定为一组数据，有多少班级需要排序，就在后面加多少组。当然该方法同样可以用于其他任意字符串的自定义排序。</p>
+</li>
+<li>
+<p>中文排序</p>
+<p>利用DECODE实现自定义排序的方法仅限于字符串内容已知，且数量较少时。如果数量多，可以参考下面的排序方式。</p>
+<ul>
+<li>
+<p>按中文拼音进行排序：SCHINESE_PINYIN_M</p>
+<pre><code class="language-sql">ORDER BY NLSSORT(字段名,'NLS_SORT = SCHINESE_PINYIN_M')
+</code></pre>
+</li>
+<li>
+<p>按中文部首进行排序：SCHINESE_RADICAL_M</p>
+<pre><code class="language-sql">ORDER BY NLSSORT(字段名,'NLS_SORT = SCHINESE_STROKE_M')
+</code></pre>
+</li>
+<li>
+<p>按中文笔画进行排序：SCHINESE_STROKE_M</p>
+<pre><code class="language-sql">ORDER BY NLSSORT(字段名,'NLS_SORT = SCHINESE_RADICAL_M')
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<h3 id="having">HAVING</h3>
+</li>
+</ol>
+<h2 id="二-单引号与双引号">二、单引号与双引号</h2>
+<ol>
+<li>
+<h3 id="单引号">单引号</h3>
+<ul>
+<li>
+<p>引用字符常量，即在两个单引号之间输入常量字符的内容，例如：</p>
+<pre><code class="language-sql">SELECT * 
+  FROM SCORE_LIST
+ WHERE CLASS='一班'
+</code></pre>
+</li>
+<li>
+<p>转义符，对紧随其后出现的字符(单引号)进行转义。由于单引号在Oracle中已经被定义，想要使用单引号本身时，就需要进行转义，例如：</p>
+<pre><code class="language-sql">SELECT '''' FROM DUAL          --结果为“'”，第二个单引号被作为转义符，第三个单引号被转义。
+SELECT 'NAME''''' FROM DUAL    --结果为“NAME''”，第2、4个单引号为转义符，第3、5个单引号被转义。
+SELECT 'NAME'||'''' FROM DUAL  --结果为“NAME'”，“||”表示字符串拼接
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<h3 id="双引号">双引号</h3>
+<ul>
+<li>
+<p>字段名或别名中含有特殊字符或关键字，需要使用双引号包住。</p>
+<pre><code class="language-sql">SELECT 'beijing' &quot;C S&quot; FROM DUAL         --字段名为“C S”，中间有空格
+SELECT 'beijing' &quot;from&quot; FROM DUAL   --字段名“from”为系统已定义关键字，需要引起来，另外还有date等
+</code></pre>
+</li>
+<li>
+<p>关键字、对象名、字段名、别名需要严格区分大小写时，需要使用双引号包住。</p>
+<pre><code class="language-sql">SELECT 'beijing' abc FROM DUAL      --字段名没有引起来，Oracle会自动大写；
+SELECT 'beijing' &quot;abc&quot; FROM DUAL    --字段名引起来之后，Oracle将严格区分大小写，非必要不应如此存数据
+</code></pre>
+</li>
+<li>
+<p>出现在to_char的格式字符串中时，双引号有特殊的作用， 就是将非法的格式符包装起来，避免出现ORA-01821: date format not recognized错误。 也就是说，去掉双引号和其包含的字符后，剩下的应该是一个合法的格式串。</p>
+<pre><code class="language-sql">SELECT TO_CHAR(sysdate,'hh24&quot;时&quot;mi&quot;分&quot;ss&quot;秒&quot;') results FROM DUAL --结果为“14时14分44秒”
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="三-数据类型">三、数据类型</h2>
+<ol>
+<li>
+<h3 id="字符串类型">字符串类型</h3>
+<ul>
+<li>
+<p>固定长度类型（CHAR/NCHAR) ：是指虽然输入的字段值小于该字段的限制长度，但是实际存储数据时，会先自动向右补足空格后，才将字段值的内容存储到数据块中；</p>
+</li>
+<li>
+<p>可变长度类型（VARCHAR2/NVARCHAR2)：是指当输入的字段值小于该字段的限制长度时，直接将字段值的内容存储到数据块中，而不会补上空白，这样可以节省数据块空间。</p>
+</li>
+</ul>
+</li>
+<li>
+<h3 id="数值类型">数值类型</h3>
+<ul>
+<li>NUMBER(P,S)：可以存放数据范围为10<sup>130~10</sup>126；</li>
+<li>INTEGER：用来存储整数。若插入、更新的数值有小数，则会被四舍五入；</li>
+<li>Float(n)：数n指示位的精度，可以存储的值的数目</li>
+</ul>
+</li>
+<li>
+<h3 id="日期类型">日期类型</h3>
+<ul>
+<li>DATE：最常用的数据类型，日期数据类型存储日期和时间信息。虽然可以用字符或数字类型表示日期和时间信息，但是日期数据类型具有特殊关联的属性。为每个日期值，Oracle 存储以下信息： 世纪、 年、 月、 日期、 小时、 分钟和秒。一般占用7个字节的存储空间。</li>
+<li>TIMESTAMP：是一个7字节或12字节的定宽日期/时间数据类型，是DATE类型的扩展类型。它与DATE数据类型不同，因为TIMESTAMP可以包含小数秒。</li>
+</ul>
+</li>
+<li>
+<h3 id="lob类型">LOB类型</h3>
+</li>
+<li>
+<h3 id="long-rawraw类型">LONG RAW&amp;RAW类型</h3>
+</li>
+<li>
+<h3 id="rowidurowid类型">ROWID&amp;UROWID类型</h3>
+<ul>
+<li>
+<p>一般数据表里面存储的日期可能是DATE型，也可能是字符串类型，所以WHERE条件语句书写前需确认数据类型，根据类型可能需要使用TO_DATE或TO_CHAR转换数据类型，例如系统存的DAILY字段为字符串（8位年月日），那么WHERE条件语句参考下面的写法：</p>
+<pre><code class="language-sql">WHERE DAILY&gt;='20221201'                     --直接使用字符串
+  AND DAILY&lt;=TO_CHAR(sysdate,'YYYYMMDD')    --需要转换数据类型
+</code></pre>
+<p>如系统存的DAILY字段为日期型，那么WHERE条件语句参考下面的写法：</p>
+<pre><code class="language-sql">WHERE DAILY&gt;=TO_DATE()'20221201','YYYYMMDD'      --直接使用字符串
+</code></pre>
+</li>
+<li>
+<p>同样地，数据表存存储的数字可能是字符串类型，也可能是数值类型，在WHERE条件语句中进行判断时，也需要提前查看数据类型。例如：</p>
+<pre><code class="language-sql">WHERE NUM1&gt;'0'   --NUM1字段以字符串类型存储
+  AND NUM2&gt;0     --NUM2字段以数值类型存储
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="四-函数及其语法">四、函数及其语法</h2>
+<ol>
+<li>
+<h3 id="substr">SUBSTR</h3>
+<p>语法：SUBSTR(string, pso,len)，截取字符串中的一部分。</p>
+<p>-- string：必需，指定的要截取的字符串；</p>
+<p>-- pos：必需，规定在字符串的何处开始；</p>
+<p>​            正数：在字符串的指定位置开始；</p>
+<p>​            负数：从字符串结尾的指定位置开始；</p>
+<p>-- len：截取的字符串长度，缺省即截取到结束位置；</p>
+<p>示例：substr('123456',3,2)，结果是“34”</p>
+<p>​           substr('123456',3)，结果是“3456”</p>
+<p>​           substr('123456',-3,2)，结果是“45”</p>
+<p>通常结合TRIM除去字符串中的空格和不可见字符，例如：</p>
+<pre><code class="language-sql">TRIM(SUBSTR('123456',3))   --结果是“3456”，主要某些场景SUBSTR截取的字符串中会带有不可见字符，可通过LENGTH比对出
+</code></pre>
+</li>
+<li>
+<h3 id="length">LENGTH</h3>
+<p>语法：LENGTH(string-expression)，字符串长度。</p>
+<p>--string-expression：字符串表达式，可以是列名、字符串文字或另一个标量函数的结果；</p>
+<p>示例：length('123456')，结果是6；</p>
+<p>同类函数还有LENGTHB（按照字节计算）、LENGTHC（按照Unicode计算）、LENGTH2（按照UCS2编码计算）、LENGTH4（按照UCS4编码计算）。</p>
+</li>
+<li>
+<h3 id="to_date">TO_DATE</h3>
+<p>语法：to_date(date_number,formula）将日期转为字符串。</p>
+<p>--date_number：日期或时间，date型数据；</p>
+<p>--formula：需要呈现的日期格式，<strong>不区分大小写</strong>；</p>
+<p>​          Year：YY：2位数字的年份，如22；</p>
+<p>​                     YYY：3位数字的年份，如022；</p>
+<p>​                     YYYY：4位数字的年份，如2022；</p>
+<p>​          Month：MM：2位数字的月份，如12；</p>
+<p>​                        MON：如12月，若是英文版，显示feb；</p>
+<p>​                        MONTH：如12月，若是英文版，显示December；</p>
+<p>​          Day：DD：一个月中当中的日期数，如15；</p>
+<p>​                    DDD：当年第几天，如350；</p>
+<p>​                    DY：当周第几天简写，如星期五，若是英文版，显示fri；</p>
+<p>​                    DAY：当周第几天全写，如星期五，若是英文版，显示friday；</p>
+<p>​          Hour： HH：小时，12小时制；</p>
+<p>​                      HH24：小时，24小时制；</p>
+<p>​          MI：Minute (00-59).（分钟）；</p>
+<p>​          SS：Second (00-59).（秒）；</p>
+<p>​          Q：季度，如4；</p>
+<p>​          WW：当年第几周，如50；</p>
+<p>​          W：当月第几周，如2</p>
+<p>年月日之间或时分秒之间可以使用其他符号链接，例如：</p>
+<pre><code class="language-sql">TO_DATE(sysdate,'YYYYMMDD HH24MISS')       --结果是“20221231 122530”
+TO_DATE(sysdate,'YYYY-MM-DD HH24:MI:SS')   --结果是“2022-12-31 12:25:30”
+--sysdate是生成系统默认当前时间，date型数据
+</code></pre>
+</li>
+<li>
+<h3 id="to_char">TO_CHAR</h3>
+<p>TO_CHAR功能与TO_DATE相反，语法相似：to_char(date_string,formula)，将字符串转为日期，例如：</p>
+<pre><code class="language-sql">TO_CHAR('20221231','YYYYMMDD')  --结果是2022-12-31，日期型数据
+</code></pre>
+</li>
+<li>
+<h3 id="decode">DECODE</h3>
+<p>语法1：decode(expression,value,result1,result2)，如果expression等于value，那么返回result1，否则返回result2，其中expression可以是表达式。需要注意的是该函数没有提供除等于以外的形式（大于、小于等），有这类需求时，可以使用CASE WHEN。例如：</p>
+<pre><code class="language-sql">SELECT DECODE(a,0,'零','非零') RESULT FROM DUAL  --当字段a为0时，结果为“零”，否则为“非零”
+</code></pre>
+<p>语法2：decode(expression,value1,result1,value2,result2,value3,result3......,default)，如果expression等于value1，返回result1，expression等于value2，返回result2，依次类推。</p>
+<p>​      --default：若expression不等于所列出的所有value，则输出为default；</p>
+<p>例如：</p>
+<pre><code class="language-sql">SELECT DECODE(a,'一',1,'二',2,'三',3,4) FROM 数据表
+</code></pre>
+<p><strong>该用法可用于ORDER BY自定义排序。</strong></p>
+</li>
+<li>
+<h3 id="case-when">CASE WHEN</h3>
+<p>用法：CASE WHEN 表达式1 THEN 表达式2 ELSE 表达式3 END AS 字段名。</p>
+<p>多条件判断赋值，与DECODE的语法2不同的是，CASE WHEN可以自由书写表达式，实现任意判断，例如关于成绩等级的判断：</p>
+<pre><code class="language-sql">SELECT CASE WHEN SCORE &gt;= 90 THEN '优'   --成绩大于等于90分时，为优
+            WHEN SCORE &gt;= 80 THEN '良'   --成绩大于等于80分时，为良
+            WHEN SCORE &gt;= 70 THEN '中'   --成绩大于等于70分时，为中
+            WHEN SCORE &gt;= 60 THEN '及格' --成绩大于等于60分时，为及格
+       ELSE '差' END AS GRADE            --成绩小于60分时，为差，并将判断结果存到GRADE字段中
+  FROM SCORE_LIST
+</code></pre>
+<p>WHEN/THEN/ELSE后面的表达式可以自由组合，或者嵌套DECODE函数，甚至再套一层CASE WHEN用法。</p>
+</li>
+<li>
+<h3 id="is-not-null">IS (NOT) NULL</h3>
+<p>NULL通常搭配IS一起使用，当数据表中内容缺失数据时，WHERE查询语句中通常需要使用。如下一张表王五的成绩为空，这里的空既不是空格，也不是0：</p>
+<table>
+<thead>
+<tr>
+<th>NAME</th>
+<th>SCORE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>张三</td>
+<td>80</td>
+</tr>
+<tr>
+<td>李四</td>
+<td>90</td>
+</tr>
+<tr>
+<td>王五</td>
+<td>(null)</td>
+</tr>
+</tbody>
+</table>
+<p>使用下面的查询语句可以统计实际有成绩的学生人数，</p>
+<pre><code class="language-sql">SELECT COUNT(NAME) STUDENT_NUM
+  FROM SCORE_LIST
+ WHERE SCORE IS NOT NULL
+</code></pre>
+</li>
+<li>
+<h3 id="nvl">NVL</h3>
+<p>语法：nvl(expression1, expression2)，如果expression1为不为空，则返回expression1，否则返回expression2。</p>
+<p>在4-7的例子中，如果计算学生平均成绩，可以写成下面这样：</p>
+<pre><code class="language-sql">SELECT AVG(SCORE) AVG_SCORE
+  FROM SCORE_LIST
+--结果返回的是80和90的均值：85
+</code></pre>
+<p>但如果需要将缺考成绩置换为零分计算平均成绩，那么可以写成下面这样：</p>
+<pre><code class="language-sql">SELECT AVG(NVL(SCORE,0)) AVG_SCORE
+  FROM SCORE_LIST
+--结果返回的是0、80和90的均值：56.67
+</code></pre>
+<p>NVL不仅可以用于字段的计算，还能在WHERE查询语句中使用：</p>
+<pre><code class="language-sql">SELECT COUNT(*) STUDENT_NUM
+  FROM SCORE_LIST
+ WHERE NVL(SCORE,0)&lt;60
+--统计不及格学生人数，结果为1
+--当SELECT中只使用了聚合函数时，可不添加GROUP BY语句
+</code></pre>
+</li>
+<li>
+<h3 id="instr">INSTR</h3>
+<p>语法1：instr( string1, string2 )，查找string2在string1第一次出现的位置；</p>
+<pre><code class="language-sql">SELECT INSTR('helloworld','l') FROM DUAL  --返回结果：3  默认第一次出现“l”的位置
+SELECT INSTR('helloworld','lo') FROM DUAL --返回结果：4  即“lo”同时出现，第一个字母“l”出现的位置
+SELECT INSTR('helloworld','wo') FROM DUAL --返回结果：6  即“wo”同时出现，第一个字母“w”出现的位置
+</code></pre>
+<p>语法2：instr( string1, string2 [, start_position [, nth_appearance ] ] )，从string1的start_position位置后开始查找string2字符串第nth_appearance次出现的位置。</p>
+<pre><code class="language-sql">SELECT INSTR('helloworld','l',4,2) FROM DUAL
+--返回结果：9，在&quot;helloworld&quot;的第4(l)号位置开始，查找第二次出现“l”的位置
+SELECT INSTR('helloworld','l',-1,1) FROM DUAL
+--返回结果：9，在&quot;helloworld&quot;的倒数第1(d)号位置开始，往回查找第一次出现“l”的位置
+</code></pre>
+<p>INSTR可用于WHERE条件语句中，但查询效率相对较低。</p>
+</li>
+<li>
+<h3 id="数据表关联相关函数join-union">数据表关联相关函数（JOIN、UNION）</h3>
+<ul>
+<li>
+<p><strong>SQL Join</strong></p>
+<p>JOIN相关的包含全外连接Full Outer Join、左外连接Left (Outer) Join、、右外连接Right (Outer) Join和内连接Inner Join，四种Join方式可参考图示：</p>
+<figure data-type="image" tabindex="1"><img src="https://www.runoob.com/wp-content/uploads/2019/01/sql-join.png" alt="SQL Join形式" loading="lazy"></figure>
+<p>以左外连接为例进行说明：</p>
+<pre><code class="language-sql">SELECT A.*,B.*        --选择A表和B表需要的字段
+  FROM TableA A       --A表重命名
+  LEFT JOIN TableB B  --B表重命名
+    ON A.key=B.key    --表关联的条件，可以写多个
+</code></pre>
+<p>A表与B表关联，关联的条件为A表中的Key与B表中的Key相等，最终呈现的表左表不加限制，保留左表的数据，匹配右表，右表没有匹配到的行中的列显示为null。Left Join和Right Join可以相互替换。</p>
+<p>左外连接和右外连接的书写方式可以用“(+)”表示，例如左外连接可改为：</p>
+<pre><code class="language-sql">SELECT A.*,B.*            --选择A表和B表需要的字段
+  FROM TableA A,TableB B  --表重命名
+ WHERE A.key=B.key(+)     --表关联的条件，可以写多个
+</code></pre>
+<p>两种写法是等效的，被匹配的表写上“(+)”即可，如果是右外连接，那么就在A表写上“(+)”。</p>
+</li>
+<li>
+<p><strong>SQL UNION</strong></p>
+<p>UNION：对两个结果集进行并集操作，<strong>不包括重复行，同时进行默认规则的排序</strong>。</p>
+<p>UNION ALL：对两个结果集进行并集操作**，包括重复行，不会对结果进行排序**。</p>
+<pre><code class="language-sql">SELECT A.* FROM TableA
+ UNION ALL
+SELECT B.* FROM TableB
+ UNION ALL
+(SELECT *     --合并子查询的结果，需要确认各查询的列数及其数据类型是否一致
+   FROM TableC C
+   LEFT JOIN TableD D
+     ON C.key=D.key
+)
+</code></pre>
+<p>如上述查询，被合并的可以是子查询。</p>
+<p>使用Union或Union All时，被合并的表，列数必须相同，列的数据类型也必须相同，列数不同时可以根据需要补充NULL值、''或0，如：</p>
+<pre><code class="language-sql">SELECT COL1,COL2,COL3 FROM Table1
+ UNION ALL
+SELECT COL1,COL2,NULL FROM Table2
+</code></pre>
+<p>最后一个UNION ALL前面不能有ORDER BY  ORDER BY只能在最后。</p>
+</li>
+</ul>
+</li>
+<li>
+<h3 id="over分析函数">OVER分析函数</h3>
+<p>分析函数和聚合函数很多是同名的，意思也一样，只是聚合函数用group by分组，每个分组返回一个统计值，而分析函数采用partition by分组，并且每组每行都可以返回一个统计值。简单的说就是聚合函数返回统计结果，分析函数返回明细加统计结果。</p>
+<p>语法：FUNCTION()OVER(PARTITION BY … ORDER BY …)，此处的FUNCTION可以是下表中的函数，PARTITION BY表示分组，ORDER BY表示排序。OVER分析函数和GROUP BY可以共存。</p>
+<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SUM</td>
+<td>该函数计算组中表达式的累积和</td>
+</tr>
+<tr>
+<td>MIN</td>
+<td>在一个组中的数据窗口中查找表达式的最小值</td>
+</tr>
+<tr>
+<td>MAX</td>
+<td>在一个组中的数据窗口中查找表达式的最大值</td>
+</tr>
+<tr>
+<td>AVG</td>
+<td>用于计算一个组和数据窗口内表达式的平均值</td>
+</tr>
+<tr>
+<td>COUNT</td>
+<td>对一组内发生的事情进行累积计数</td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>RANK</td>
+<td>根据ORDER BY子句中表达式的值，从查询返回的每一行，计算它们与其它行的相对位置</td>
+</tr>
+<tr>
+<td>DENSE_RANK</td>
+<td>根据ORDER BY子句中表达式的值，从查询返回的每一行，计算它们与其它行的相对位置</td>
+</tr>
+<tr>
+<td>ROW_NUMBER</td>
+<td>返回有序组中一行的偏移量，从而可用于按特定标准排序的行号</td>
+</tr>
+<tr>
+<td>FIRST</td>
+<td>从DENSE_RANK返回的集合中取出排在最前面的一个值的行</td>
+</tr>
+<tr>
+<td>LAST</td>
+<td>从DENSE_RANK返回的集合中取出排在最后面的一个值的行</td>
+</tr>
+<tr>
+<td>FIRST_VALUE</td>
+<td>返回组中数据窗口的第一个值</td>
+</tr>
+<tr>
+<td>LAST_VALUE</td>
+<td>返回组中数据窗口的最后一个值</td>
+</tr>
+<tr>
+<td>LAG</td>
+<td>可以访问结果集中的其它行而不用进行自连接</td>
+</tr>
+<tr>
+<td>LEAD</td>
+<td>LEAD与LAG相反，LEAD可以访问组中当前行之后的行</td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>STDDEV</td>
+<td>计算当前行关于组的标准偏离</td>
+</tr>
+<tr>
+<td>STDDEV_POP</td>
+<td>该函数计算总体标准偏离，并返回总体变量的平方根</td>
+</tr>
+<tr>
+<td>STDDEV_SAMP</td>
+<td>该函数计算累积样本标准偏离，并返回总体变量的平方根</td>
+</tr>
+<tr>
+<td>VAR_POP</td>
+<td>该函数返回非空集合的总体变量（忽略null）</td>
+</tr>
+<tr>
+<td>VAR_SAMP</td>
+<td>该函数返回非空集合的样本变量（忽略null）</td>
+</tr>
+<tr>
+<td>VARIANCE</td>
+<td>如果表达式中行数为1，则返回0，如果表达式中行数大于1，则返回VAR_SAMP</td>
+</tr>
+<tr>
+<td>COVAR_POP</td>
+<td>返回一对表达式的总体协方差</td>
+</tr>
+<tr>
+<td>COVAR_SAMP</td>
+<td>返回一对表达式的样本协方差</td>
+</tr>
+<tr>
+<td>CORR</td>
+<td>返回一对表达式的相关系数</td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>CUME_DIST</td>
+<td>计算一行在组中的相对位置</td>
+</tr>
+<tr>
+<td>NTILE</td>
+<td>将一个组分为&quot;表达式&quot;的散列表示，创建的是等高直方图</td>
+</tr>
+<tr>
+<td>PERCENT_RANK</td>
+<td>和CUME_DIST（累积分配）函数类似</td>
+</tr>
+<tr>
+<td>PERCENTILE_DISC</td>
+<td>返回一个与输入的分布百分比值相对应的数据值</td>
+</tr>
+<tr>
+<td>PERCENTILE_CONT</td>
+<td>返回一个与输入的分布百分比值相对应的数据值</td>
+</tr>
+<tr>
+<td>RATIO_TO_REPORT</td>
+<td>该函数计算expression/(sum(expression))的值，它给出相对于总数的百分比</td>
+</tr>
+<tr>
+<td>REGR_(Linear Regression) Functions</td>
+<td>这些线性回归函数适合最小二乘法回归线，有9个不同的回归函数可使用</td>
+</tr>
+<tr>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>CUBE</td>
+<td>按照OLAP的CUBE方式进行数据统计,即各个维度均需统计</td>
+</tr>
+<tr>
+<td>ROLLUP</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>示例1：</p>
+<pre><code class="language-sql">SELECT CLASS,
+       STUDENT_NAME,
+       SUBJECT,
+       SCORE,
+       AVG(SCORE)OVER(PARTITION BY CLASS,SUBJECT) AVG_SCORE
+  FROM SCORE_LIST
+--求各班各科目的平均成绩
+</code></pre>
+<p>在原有数据结果上，增加一列表示平均成绩，使用OVER分析函数，可以使用不同的分组和排序。</p>
+<p>示例2：企业生产中，常常需要根据小时别的生产量，统计每个小时的累计量（第四列）。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">MACHINE</th>
+<th style="text-align:center">HOUR_TIME</th>
+<th style="text-align:center">PRODUCTION</th>
+<th style="text-align:center">SUM_NUM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1#</td>
+<td style="text-align:center">20221201 06</td>
+<td style="text-align:center">48</td>
+<td style="text-align:center">48</td>
+</tr>
+<tr>
+<td style="text-align:center">1#</td>
+<td style="text-align:center">20221201 07</td>
+<td style="text-align:center">46</td>
+<td style="text-align:center">94</td>
+</tr>
+<tr>
+<td style="text-align:center">1#</td>
+<td style="text-align:center">20221201 08</td>
+<td style="text-align:center">50</td>
+<td style="text-align:center">144</td>
+</tr>
+<tr>
+<td style="text-align:center">1#</td>
+<td style="text-align:center">20221202 09</td>
+<td style="text-align:center">49</td>
+<td style="text-align:center">193</td>
+</tr>
+<tr>
+<td style="text-align:center">1#</td>
+<td style="text-align:center">20221202 10</td>
+<td style="text-align:center">49</td>
+<td style="text-align:center">242</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-sql">SELECT MACHINE,
+       HOUR_TIME,
+       PRODUCTION,
+       SUM(PRODUCTION)OVER(PARTITION BY MACHINE ORDER BY HOUR_TIME) SUM_NUM
+  FROM MACHINE_PRODUCTION_HOUR
+</code></pre>
+</li>
+<li>
+<h3 id="lag和lead偏移函数">LAG和LEAD偏移函数</h3>
+<p>语法：LAG(field, n, defaultvalue) OVER ( PARTITION BY … ORDER BY … )，LEAD语法与LAG相同，都需搭配OVER分析函数一起使用。</p>
+<p>LEAD是查询下一行数据，LAG是查询上一行数据，其中n年时数据表偏移的行数。以前述企业小时别生产量为例：</p>
+<pre><code class="language-sql">SELECT MACHINE,
+       HOUR_TIME,
+       PRODUCTION,
+       LEAD(PRODUCTION,1,NULL)OVER(PARTITION BY MACHINE ORDER BY HOUR_TIME) NEXT_PRODUCTION,
+       LAG(PRODUCTION,1,NULL)OVER(PARTITION BY MACHINE ORDER BY HOUR_TIME) PRE_PRODUCTION
+  FROM MACHINE_PRODUCTION_HOUR
+</code></pre>
+<p>上述查询结果为：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">MACHINE</th>
+<th style="text-align:center">HOUR_TIME</th>
+<th style="text-align:center">PRODUCTION</th>
+<th style="text-align:center">NEXT_PRODUCTION</th>
+<th style="text-align:center">PRE_PRODUCTION</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1#</td>
+<td style="text-align:center">20221201 06</td>
+<td style="text-align:center">48</td>
+<td style="text-align:center">46</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">1#</td>
+<td style="text-align:center">20221201 07</td>
+<td style="text-align:center">46</td>
+<td style="text-align:center">50</td>
+<td style="text-align:center">48</td>
+</tr>
+<tr>
+<td style="text-align:center">1#</td>
+<td style="text-align:center">20221201 08</td>
+<td style="text-align:center">50</td>
+<td style="text-align:center">49</td>
+<td style="text-align:center">46</td>
+</tr>
+<tr>
+<td style="text-align:center">1#</td>
+<td style="text-align:center">20221202 09</td>
+<td style="text-align:center">49</td>
+<td style="text-align:center">49</td>
+<td style="text-align:center">50</td>
+</tr>
+<tr>
+<td style="text-align:center">1#</td>
+<td style="text-align:center">20221202 10</td>
+<td style="text-align:center">49</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">49</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<h3 id="排名函数row_number-rank-dense_rank-count">排名函数（ROW_NUMBER、RANK、DENSE_RANK、COUNT）</h3>
+<ul>
+<li>
+<p><strong>ROW_NUMBER</strong></p>
+<p>为查询出来的每一行记录生成一个序号，<strong>依次排序且不会重复</strong>，注意使用row_number函数时必须要用over子句选择对某一列进行排序才能生成序号。</p>
+</li>
+<li>
+<p><strong>RANK</strong></p>
+<p>与row_number函数不同的是，over子句中排序字段值相同的序号是一样的，后面字段值不相同的序号将跳过相同的排名号排下一个，如：1、2、2、4。</p>
+</li>
+<li>
+<p><strong>DENSE_RANK</strong></p>
+<p>典型的中国式排名，rank函数生成的序号有可能不连续。dense_rank函数出现相同排名时，将不跳过相同排名号，如：1、2、2、3。</p>
+</li>
+<li>
+<p><strong>COUNT</strong></p>
+<p>count()是跳跃排序，例如出现相同排名时，会排成1、3、3、4的形式。</p>
+</li>
+</ul>
+<p>排名相关的函数需要使用OVER分析函数一起使用。举例说明，对成绩95、92、92、91、80分别使用四个函数进行排名：</p>
+<pre><code class="language-sql">--SCORE_LIST中SCORE字段成绩分别为95、92、92、91、80
+SELECT ROW_NUMBER()OVER(PARTITION BY CLASS,SUBJECT ORDER BY SCORE) ORD1,
+       --结果为：1、2、3、4、5
+       RANK()OVER(PARTITION BY CLASS,SUBJECT ORDER BY SCORE) ORD2,
+       --结果为：1、2、2、4、5
+       DENSE_RANK()OVER(PARTITION BY CLASS,SUBJECT ORDER BY SCORE) ORD3,
+       --结果为：1、2、2、3、4
+       COUNT()OVER(PARTITION BY CLASS,SUBJECT ORDER BY SCORE) ORD4
+       --结果为：1、3、3、4、5
+  FROM SCORE_LIST
+</code></pre>
+</li>
+<li>
+<h3 id="regexp_likeregexp_instrregexp_substrregexp_replace">regexp_like/regexp_instr/regexp_substr/regexp_replace</h3>
+<p>用法上与LIKE、INSTR、SUBSTR 和REPLACE函数相同，使Oracle支持了正则表达式的语法，实现更为丰富的查找或替换。</p>
+<pre><code class="language-sql">WHERE NOT regexp_like(USER_ID,'^[0-9]+[0-9]$')             --USER ID必须为数字
+WHERE VALUE LIKE '1___6'                                   --VALUE长度为5，开始和结尾分别为1、6
+WHERE regexp_like(VALUE,'1...6')                           --VALUE长度为5，开始和结尾分别为1、6
+SELECT REGEXP_INSTR('ABC123XYZ','[0-9]+') FROM DUAL        --结果为4
+SELECT REGEXP_SUBSTR('17,20,23','[^,]+',1,1,'i') FROM DUAL --结果是17
+</code></pre>
+<p>正则表达式语法主要符号标记如下：</p>
+<ul>
+<li><strong>非打印字符</strong>：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字符</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">\cx</td>
+<td style="text-align:left">匹配由x指明的控制字符。例如， \cM 匹配一个 Control-M 或回车符。x 的值必须为 A-Z 或 a-z 之一。否则，将 c 视为一个原义的 'c' 字符。</td>
+</tr>
+<tr>
+<td style="text-align:center">\f</td>
+<td style="text-align:left">匹配一个换页符。等价于 \x0c 和 \cL。</td>
+</tr>
+<tr>
+<td style="text-align:center">\n</td>
+<td style="text-align:left">匹配一个换行符。等价于 \x0a 和 \cJ。</td>
+</tr>
+<tr>
+<td style="text-align:center">\r</td>
+<td style="text-align:left">匹配一个回车符。等价于 \x0d 和 \cM。</td>
+</tr>
+<tr>
+<td style="text-align:center">\s</td>
+<td style="text-align:left">匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。注意 Unicode 正则表达式会匹配全角空格符。</td>
+</tr>
+<tr>
+<td style="text-align:center">\S</td>
+<td style="text-align:left">匹配任何非空白字符。等价于 [^ \f\n\r\t\v]。</td>
+</tr>
+<tr>
+<td style="text-align:center">\t</td>
+<td style="text-align:left">匹配一个制表符。等价于 \x09 和 \cI。</td>
+</tr>
+<tr>
+<td style="text-align:center">\v</td>
+<td style="text-align:left">匹配一个垂直制表符。等价于 \x0b 和 \cK。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>特殊字符：</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">特殊字符</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$</td>
+<td style="text-align:left">匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 $ 也匹配 '\n' 或 '\r'。要匹配 $ 字符本身，请使用 $。</td>
+</tr>
+<tr>
+<td style="text-align:center">( )</td>
+<td style="text-align:left">标记一个子表达式的开始和结束位置。子表达式可以获取供以后使用。要匹配这些字符，请使用 ( 和 )。</td>
+</tr>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:left">匹配前面的子表达式零次或多次。要匹配 * 字符，请使用 *。</td>
+</tr>
+<tr>
+<td style="text-align:center">+</td>
+<td style="text-align:left">匹配前面的子表达式一次或多次。要匹配 + 字符，请使用 +。</td>
+</tr>
+<tr>
+<td style="text-align:center">.</td>
+<td style="text-align:left">匹配除换行符 \n 之外的任何单字符。要匹配 . ，请使用 . 。</td>
+</tr>
+<tr>
+<td style="text-align:center">[</td>
+<td style="text-align:left">标记一个中括号表达式的开始。要匹配 [，请使用 [。</td>
+</tr>
+<tr>
+<td style="text-align:center">?</td>
+<td style="text-align:left">匹配前面的子表达式零次或一次，或指明一个非贪婪限定符。要匹配 ? 字符，请使用 ?。</td>
+</tr>
+<tr>
+<td style="text-align:center">\</td>
+<td style="text-align:left">将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如， 'n' 匹配字符 'n'。'\n' 匹配换行符。序列 '\' 匹配 &quot;&quot;，而 '(' 则匹配 &quot;(&quot;。</td>
+</tr>
+<tr>
+<td style="text-align:center">^</td>
+<td style="text-align:left">匹配输入字符串的开始位置，除非在方括号表达式中使用，当该符号在方括号表达式中使用时，表示不接受该方括号表达式中的字符集合。要匹配 ^ 字符本身，请使用 ^。</td>
+</tr>
+<tr>
+<td style="text-align:center">{</td>
+<td style="text-align:left">标记限定符表达式的开始。要匹配 {，请使用 {。</td>
+</tr>
+<tr>
+<td style="text-align:center">|</td>
+<td style="text-align:left">指明两项之间的一个选择。要匹配 |，请使用 |。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>限定符：</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字符</th>
+<th style="text-align:left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">*</td>
+<td style="text-align:left">匹配前面的子表达式零次或多次。例如，<strong>zo*</strong> 能匹配 <strong>&quot;z&quot;</strong> 以及 <strong>&quot;zoo&quot;</strong>。***** 等价于 <strong>{0,}</strong>。</td>
+</tr>
+<tr>
+<td style="text-align:center">+</td>
+<td style="text-align:left">匹配前面的子表达式一次或多次。例如，<strong>zo+</strong> 能匹配 <strong>&quot;zo&quot;</strong> 以及 &quot;<strong>zoo&quot;</strong>，但不能匹配 <strong>&quot;z&quot;</strong>。<strong>+</strong> 等价于 <strong>{1,}</strong>。</td>
+</tr>
+<tr>
+<td style="text-align:center">?</td>
+<td style="text-align:left">匹配前面的子表达式零次或一次。例如，<strong>do(es)?</strong> 可以匹配 <strong>&quot;do&quot;</strong> 、 <strong>&quot;does&quot;</strong>、 <strong>&quot;doxy&quot;</strong> 中的 <strong>&quot;do&quot;</strong> 。<strong>?</strong> 等价于 <strong>{0,1}</strong>。</td>
+</tr>
+<tr>
+<td style="text-align:center">{n}</td>
+<td style="text-align:left">n 是一个非负整数。匹配确定的 <strong>n</strong> 次。例如，<strong>o{2}</strong> 不能匹配 <strong>&quot;Bob&quot;</strong> 中的 <strong>o</strong>，但是能匹配 <strong>&quot;food&quot;</strong> 中的两个 <strong>o</strong>。</td>
+</tr>
+<tr>
+<td style="text-align:center">{n,}</td>
+<td style="text-align:left">n 是一个非负整数。至少匹配n 次。例如，<strong>o{2,}</strong> 不能匹配 <strong>&quot;Bob&quot;</strong> 中的 <strong>o</strong>，但能匹配 <strong>&quot;foooood&quot;</strong> 中的所有 <strong>o</strong>。<strong>o{1,}</strong> 等价于 <strong>o+</strong>。<strong>o{0,}</strong> 则等价于 <strong>o*</strong>。</td>
+</tr>
+<tr>
+<td style="text-align:center">{n,m}</td>
+<td style="text-align:left">m 和 n 均为非负整数，其中 n &lt;= m。最少匹配 n 次且最多匹配 m 次。例如，<strong>o{1,3}</strong> 将匹配 <strong>&quot;fooooood&quot;</strong> 中的前三个 <strong>o</strong>。<strong>o{0,1}</strong> 等价于 <strong>o?</strong>。请注意在逗号和两个数之间不能有空格。</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<h3 id="with">WITH</h3>
+<p>当SQL查询中反复使用到同一段一模一样的子查询时，可以将该子查询放到WITH中作为对象引用，多个对象之间用半角逗号(,)隔开，并且将所有对象置顶。可参考下面的形式。</p>
+<pre><code class="language-sql">WITH T1 AS (      --从Table1生成T1，第一个对象有以WITH开头，其他不需要
+    SELECT *
+      FROM TABLE1
+),                --逗号隔开
+T2 AS (           --从Table2生成T2
+    SELECT *
+      FROM TABLE2
+),                --逗号隔开
+T3 AS (           --在T1基础上结合其他数据生成T3
+    SELECT *
+      FROM T1
+     WHERE C1='value'
+)
+SELECT *          --在T3和T2的基础上处理，生成结果
+  FROM T3
+  LEFT JOIN T2
+    ON T3.key=T2.key
+</code></pre>
+<p>被引用的对象必须在当前查询语句之前，否则提示未定义。</p>
+</li>
+<li>
+<h3 id="创建临时表的两种方法">创建临时表的两种方法</h3>
+<ul>
+<li>
+<p>利用DUAL表和Union函数</p>
+<p>DUAL表可以认为是虚拟表，建立数据库的时候随数据字典创建而建立的单行单列的表。主要介绍一下用途。</p>
+<ul>
+<li>
+<p>做临时的计算，例如输出系统时间或者进行四则运算。</p>
+<pre><code class="language-sql">SELECT sysdate FROM DUAL  --获取系统时间，结果为2022-12-16 17:30:14.0
+SELECT 1+1 FROM DUAL      --进行四则运算，结果为2
+</code></pre>
+</li>
+<li>
+<p>创建临时表，可以使用Union或者Union All。</p>
+<pre><code class="language-sql">SELECT '1#' MACHINE, '20221201 06' HOUR_TIME, 48 PRODUCTION FROM DUAL UNION ALL
+SELECT '1#' MACHINE, '20221201 07' HOUR_TIME, 46 PRODUCTION FROM DUAL UNION ALL
+SELECT '1#' MACHINE, '20221201 08' HOUR_TIME, 50 PRODUCTION FROM DUAL UNION ALL
+SELECT '1#' MACHINE, '20221201 09' HOUR_TIME, 49 PRODUCTION FROM DUAL UNION ALL
+SELECT '1#' MACHINE, '20221201 10' HOUR_TIME, 49 PRODUCTION FROM DUAL
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>使用Connect By创建一列临时表。</p>
+<pre><code class="language-sql">SELECT REGEXP_SUBSTR (ITEM, '[^,]+', 1, ROWNUM) FACTORY 
+  FROM (SELECT 'ARRAY,CF,CELL' ITEM FROM DUAL)
+ CONNECT BY ROWNUM &lt;= LENGTH('ARRAY,CF,CELL')-LENGTH(REGEXP_REPLACE('ARRAY,CF,CELL', ',', ''))+1
+</code></pre>
+<pre><code class="language-sql">SELECT REGEXP_SUBSTR('ARRAY,CF,CELL','[^,]+',1,rownum) as col
+  FROM dual Connect by rownum &lt;= REGEXP_COUNT('ARRAY,CF,CELL','[^,]+')
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="五-帆软">五、帆软</h2>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[开源软件镜像站]]></title>
+        <id>https://my-youth.github.io/post/OpenSourceSoftwareMirrorSite/</id>
+        <link href="https://my-youth.github.io/post/OpenSourceSoftwareMirrorSite/">
+        </link>
+        <updated>2022-10-17T05:35:19.000Z</updated>
+        <summary type="html"><![CDATA[<p>开源的力量无疑是强大的，对于初学者非常友好，除了Github外，文章里的站点主要囊括了世界上比较知名的开源软件和系统。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>开源的力量无疑是强大的，对于初学者非常友好，除了Github外，文章里的站点主要囊括了世界上比较知名的开源软件和系统。</p>
+<!-- more -->
+<table>
+<thead>
+<tr>
+<th>公司类：</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://mirrors.163.com/">网易</a></td>
+<td><a href="http://mirrors.sohu.com/">搜狐</a></td>
+<td><a href="https://mirrors.huaweicloud.com/">华为</a></td>
+<td><a href="https://developer.aliyun.com/mirror/">阿里云</a></td>
+</tr>
+<tr>
+<td><a href="https://mirrors.cloud.tencent.com/">腾讯</a></td>
+<td><a href="https://pypi.doubanio.com/">豆瓣</a></td>
+<td><a href="http://mirrors.yun-idc.com/">云IDC</a></td>
+<td><a href="http://mirrors.pubyun.com/">公开云</a></td>
+</tr>
+<tr>
+<td><a href="https://mirror-hk.koddos.net/">Koddos</a></td>
+<td><a href="https://mirror.kumi.systems/">kumi</a></td>
+<td><a href="http://mirrors.skyshe.cn/">运维派</a></td>
+<td><a href="http://centos.bitcomm.cn/">bitcomm</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>教育类：</th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://mirrors.zju.edu.cn/">浙江大学</a></td>
+<td><a href="http://mirrors.hust.edu.cn/">华中科技大学</a></td>
+<td><a href="http://mirror.lzu.edu.cn/">兰州大学</a></td>
+<td><a href="https://mirror.sjtu.edu.cn/">上海交通大学</a></td>
+</tr>
+<tr>
+<td><a href="http://mirror.neu.edu.cn/">东北大学</a></td>
+<td><a href="http://mirrors.cqu.edu.cn/">重庆大学</a></td>
+<td><a href="http://mirror.bit.edu.cn/web/">北京理工大学</a></td>
+<td><a href="http://mirrors.ustc.edu.cn/">中国科学技术大学</a></td>
+</tr>
+<tr>
+<td><a href="https://mirror.nju.edu.cn/">南京大学</a></td>
+<td><a href="http://mirror.bit.edu.cn/web/">北京交通大学</a></td>
+<td><a href="https://mirrors.bfsu.edu.cn/">北京外国语大学</a></td>
+<td><a href="http://mirrors.tuna.tsinghua.edu.cn/">清华大学</a></td>
+</tr>
+<tr>
+<td><a href="http://mirrors.cqupt.edu.cn/">重庆邮电大学</a></td>
+<td><a href="https://mirrors.hit.edu.cn/#/home">哈尔滨工业大学</a></td>
+<td><a href="https://mirrors.scau.edu.cn/">华南农业大学</a></td>
+<td><a href="https://ac.scmor.com/">谷歌学术镜像</a></td>
+</tr>
+<tr>
+<td><a href="https://mirrors.dgut.edu.cn/">东莞理工学院</a></td>
+<td><a href="http://mirrors.wsyu.edu.cn/">武昌首义学院</a></td>
+<td><a href="http://mirrors.sdwu.edu.cn/">山东女子学院</a></td>
+<td><a href="http://mirrors.neusoft.edu.cn/">大连东软信息学院</a></td>
+</tr>
+<tr>
+<td><a href="https://mirrorservice.org/sites/">kent大学</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[html iframe播放B站视频]]></title>
         <id>https://my-youth.github.io/post/bilibili-iframe/</id>
         <link href="https://my-youth.github.io/post/bilibili-iframe/">
         </link>
         <updated>2022-04-09T10:48:27.000Z</updated>
-        <content type="html"><![CDATA[<p>使用如下的div块加载播放iframe，其中src替换为B站视频地址，B站视频地址提取方法：</p>
+        <summary type="html"><![CDATA[<p>在博客中加入iframe，可以在网页上播放视频。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>在博客中加入iframe，可以在网页上播放视频。</p>
+<!-- more -->
+<p>使用如下的div块加载播放iframe，其中src替换为B站视频地址，B站视频地址提取方法：</p>
 <ul>
 <li>打开视频播放界面；</li>
 <li>鼠标移动到下方分享界面；</li>
@@ -84,7 +1285,11 @@ https://jx.xmflv.com/?url=视频URL<br>
         <link href="https://my-youth.github.io/post/fake-pe/">
         </link>
         <updated>2022-03-20T09:51:38.000Z</updated>
-        <content type="html"><![CDATA[<p>近期软件业备受瞩目的事情，微软发布了Windows 11操作系统必占一位，虽然不同人群对该系统抱有不同看法，但也难以抵挡微软的脚步。</p>
+        <summary type="html"><![CDATA[<p>PE软件作为装机必备软件，但良莠不齐，层出不穷的冒牌者充斥着互联网，扰人视线。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>PE软件作为装机必备软件，但良莠不齐，层出不穷的冒牌者充斥着互联网，扰人视线。</p>
+<!-- more -->
+<p>近期软件业备受瞩目的事情，微软发布了Windows 11操作系统必占一位，虽然不同人群对该系统抱有不同看法，但也难以抵挡微软的脚步。</p>
 <p>在2021年国庆期间，微PE工具箱作者李培聪在无忧论坛分享了基于最新Windows 11内核的微PE工具箱2.2，引发众多PE和系统爱好者拥簇。本文作者在使用百度搜索引擎以“微PE”为关键词检索时发现，排名第1和第2的确实为李培聪开发的官网，但是排名第3的网站http://www.win7pe.com/ ，网站标题为“微PE工具箱 - 微PE官网”，网站logo来自于大白菜，很明显属于冒牌网站。这是什么样的盗版网站？我们一起来看看。<br>
 <img src="https://z3.ax1x.com/2021/10/12/5meT6s.png" alt="1. 百度检索结果" loading="lazy"></p>
 <p align="center">图1 百度检索结果</p>
@@ -257,10 +1462,10 @@ https://jx.xmflv.com/?url=视频URL<br>
 </li>
 </ul>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-1541835"><label class="task-list-item-label" for="task-item-1541835"> 复选列表</label>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-3886392"><label class="task-list-item-label" for="task-item-3886392"> 复选列表</label>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-1729758"><label class="task-list-item-label" for="task-item-1729758"> 已办事例</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9005175"><label class="task-list-item-label" for="task-item-9005175"> 待办事例</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-2095142"><label class="task-list-item-label" for="task-item-2095142"> 已办事例</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-6005265"><label class="task-list-item-label" for="task-item-6005265"> 待办事例</label></li>
 </ul>
 </li>
 </ul>
@@ -380,7 +1585,11 @@ https://jx.xmflv.com/?url=视频URL<br>
         <link href="https://my-youth.github.io/post/C1-Driver&apos;s-license/">
         </link>
         <updated>2021-07-11T12:33:45.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="目录">目录</h1>
+        <summary type="html"><![CDATA[<p>学习C1驾照期间的重点内容整理。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>学习C1驾照期间的重点内容整理。</p>
+<!-- more -->
+<h1 id="目录">目录</h1>
 <p><a href="#%E7%A7%91%E7%9B%AE%E4%B8%80">1. 科目一</a><br>
 <a href="#%E7%A7%91%E7%9B%AE%E4%BA%8C">2. 科目二</a><br>
 <a href="#%E7%A7%91%E7%9B%AE%E4%B8%89">3. 科目三</a></p>
@@ -487,17 +1696,11 @@ https://jx.xmflv.com/?url=视频URL<br>
 <th style="text-align:center">安全车距</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td style="text-align:center">&gt;100km/h</td>
-<td style="text-align:center">&gt;100m</td>
-</tr>
-<tr>
-<td style="text-align:center">&gt; &lt;100km/h</td>
-<td style="text-align:center">&gt;50m</td>
-</tr>
-</tbody>
 </table>
+<blockquote>
+<p>100km/h  |  &gt;100m<br>
+&lt;100km/h  | &gt;50m</p>
+</blockquote>
 <ul>
 <li>能见度、车速与车距</li>
 </ul>
@@ -1231,7 +2434,7 @@ https://jx.xmflv.com/?url=视频URL<br>
 <p>从2018年初开始学习VBA，学习过程中，不断遇到实际需要解决的问题，于是萌生了编写一个工具的想法，ToolBox就此诞生了。此过程中参考借鉴了很多网友的代码，也整合了进来，现在全部释放出来，仅供参考使用。<br>
 <img src="https://s1.ax1x.com/2020/04/24/Jr09MD.png" alt="" loading="lazy"></p>
 <blockquote>
-<p>下载地址：<a href="https://github.com/my-youth/ToolBox/releases">Github</a>   <a href="https://pan.baidu.com/s/14coXQLpKg1moJCYvOfzMGg">百度网盘</a>   <a href="https://cloud.189.cn/t/32aaAbJNbAry">天翼云盘</a></p>
+<p>下载地址：<a href="https://github.com/my-youth/ToolBox/releases">Github</a>   <a href="https://pan.baidu.com/s/14coXQLpKg1moJCYvOfzMGg">百度网盘</a>   <a href="https://cloud.189.cn/web/share?code=eABnAbIvQNrm&amp;pwd=oiz4#oiz4">天翼云盘</a></p>
 </blockquote>
 <hr style="height:10px;border:none;border-top:10px groove skyblue;" />
 <h2 id="安装方法">安装方法：</h2>
@@ -10059,17 +11262,6 @@ https://jx.xmflv.com/?url=视频URL<br>
   </td>
  </tr>
 </table>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[FISRT BLOOOOOOOG！]]></title>
-        <id>https://my-youth.github.io/post/fisrt-blooooooog/</id>
-        <link href="https://my-youth.github.io/post/fisrt-blooooooog/">
-        </link>
-        <updated>2019-11-17T14:21:38.000Z</updated>
-        <content type="html"><![CDATA[<p>这是我的第一篇博客文章，今后在这里慢慢维护吧！</p>
-<p>2019年11月17日 小雨<br>
-重庆</p>
 ]]></content>
     </entry>
 </feed>
