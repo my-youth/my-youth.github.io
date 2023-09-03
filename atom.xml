@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://my-youth.github.io</id>
+    <id>http://localhost:4001</id>
     <title>木易Young&apos;s Blog</title>
-    <updated>2023-09-03T14:47:00.677Z</updated>
+    <updated>2023-09-03T14:53:40.664Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://my-youth.github.io"/>
-    <link rel="self" href="https://my-youth.github.io/atom.xml"/>
+    <link rel="alternate" href="http://localhost:4001"/>
+    <link rel="self" href="http://localhost:4001/atom.xml"/>
     <subtitle>随笔，&lt;a href=&quot;https://my-youth.github.io/tag/wJByjnnFM&quot; target=&quot;_blank&quot;&gt;Excel&lt;/a&gt;，&lt;a href=&quot;https://my-youth.github.io/post/toolbox/&quot; target=&quot;_blank&quot;&gt;软件&lt;/a&gt;</subtitle>
-    <logo>https://my-youth.github.io/images/avatar.png</logo>
-    <icon>https://my-youth.github.io/favicon.ico</icon>
+    <logo>http://localhost:4001/images/avatar.png</logo>
+    <icon>http://localhost:4001/favicon.ico</icon>
     <rights>All rights reserved 2023, 木易Young&apos;s Blog</rights>
     <entry>
         <title type="html"><![CDATA[吐槽事一二三]]></title>
-        <id>https://my-youth.github.io/post/diary-20230903/</id>
-        <link href="https://my-youth.github.io/post/diary-20230903/">
+        <id>http://localhost:4001/post/diary-20230903/</id>
+        <link href="http://localhost:4001/post/diary-20230903/">
         </link>
         <updated>2023-09-03T13:56:21.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[Oracle SQL和帆软学习备忘录]]></title>
-        <id>https://my-youth.github.io/post/oracle-sql/</id>
-        <link href="https://my-youth.github.io/post/oracle-sql/">
+        <id>http://localhost:4001/post/oracle-sql/</id>
+        <link href="http://localhost:4001/post/oracle-sql/">
         </link>
         <updated>2022-12-25T03:08:20.000Z</updated>
         <summary type="html"><![CDATA[<p>将日常所学的Oracle SQL的语法与结构进行整理，尤其是一些特殊用法，形成一份简单的教学文档，便于后续的查阅。</p>
@@ -30,8 +30,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[开源软件镜像站]]></title>
-        <id>https://my-youth.github.io/post/OpenSourceSoftwareMirrorSite/</id>
-        <link href="https://my-youth.github.io/post/OpenSourceSoftwareMirrorSite/">
+        <id>http://localhost:4001/post/OpenSourceSoftwareMirrorSite/</id>
+        <link href="http://localhost:4001/post/OpenSourceSoftwareMirrorSite/">
         </link>
         <updated>2022-10-17T05:35:19.000Z</updated>
         <summary type="html"><![CDATA[<p>开源的力量无疑是强大的，对于初学者非常友好，除了Github外，文章里的站点主要囊括了世界上比较知名的开源软件和系统。</p>
@@ -41,8 +41,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[html iframe播放B站视频]]></title>
-        <id>https://my-youth.github.io/post/bilibili-iframe/</id>
-        <link href="https://my-youth.github.io/post/bilibili-iframe/">
+        <id>http://localhost:4001/post/bilibili-iframe/</id>
+        <link href="http://localhost:4001/post/bilibili-iframe/">
         </link>
         <updated>2022-04-09T10:48:27.000Z</updated>
         <summary type="html"><![CDATA[<p>在博客中加入iframe，可以在网页上播放视频。</p>
@@ -52,8 +52,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[神奇浏览器停运]]></title>
-        <id>https://my-youth.github.io/post/sqllq/</id>
-        <link href="https://my-youth.github.io/post/sqllq/">
+        <id>http://localhost:4001/post/sqllq/</id>
+        <link href="http://localhost:4001/post/sqllq/">
         </link>
         <updated>2022-03-24T12:49:28.000Z</updated>
         <summary type="html"><![CDATA[<p>神奇浏览器原本由武汉大学的个人开发者开发，具有体积小巧、功能齐全而强大的优点，奈何其内置的广告拦截功能过于强大，动了国内视频网站巨头的利益奶酪，被迫宣布破产停运，版本号停在了0.9.8.4。</p>
@@ -63,8 +63,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[冒牌微PE玄机暗藏，且看如何扒皮探底]]></title>
-        <id>https://my-youth.github.io/post/fake-pe/</id>
-        <link href="https://my-youth.github.io/post/fake-pe/">
+        <id>http://localhost:4001/post/fake-pe/</id>
+        <link href="http://localhost:4001/post/fake-pe/">
         </link>
         <updated>2022-03-20T09:51:38.000Z</updated>
         <summary type="html"><![CDATA[<p>PE软件作为装机必备软件，但良莠不齐，层出不穷的冒牌者充斥着互联网，扰人视线。</p>
@@ -74,8 +74,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[《九零后》​纪录片观后感]]></title>
-        <id>https://my-youth.github.io/post/jiulinghou/</id>
-        <link href="https://my-youth.github.io/post/jiulinghou/">
+        <id>http://localhost:4001/post/jiulinghou/</id>
+        <link href="http://localhost:4001/post/jiulinghou/">
         </link>
         <updated>2021-07-11T13:51:18.000Z</updated>
         <summary type="html"><![CDATA[<p>《九零后》一片讲述的是一帮耄耋之年的西南联大校友，以访谈形式追忆过往，从联大成立，到学生和老师不远万里齐聚昆明，再到大家的艰苦求学历程，最后新中国成立后，曾经的校友突破重重困阻，回到祖国，建设新中国。</p>
@@ -85,8 +85,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Markdown简明教程]]></title>
-        <id>https://my-youth.github.io/post/markdown-demo/</id>
-        <link href="https://my-youth.github.io/post/markdown-demo/">
+        <id>http://localhost:4001/post/markdown-demo/</id>
+        <link href="http://localhost:4001/post/markdown-demo/">
         </link>
         <updated>2021-07-11T13:34:02.000Z</updated>
         <summary type="html"><![CDATA[<p>本文原文是由Markdown生成</p>
@@ -96,8 +96,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[C1驾照笔记]]></title>
-        <id>https://my-youth.github.io/post/C1-Driver&apos;s-license/</id>
-        <link href="https://my-youth.github.io/post/C1-Driver&apos;s-license/">
+        <id>http://localhost:4001/post/C1-Driver&apos;s-license/</id>
+        <link href="http://localhost:4001/post/C1-Driver&apos;s-license/">
         </link>
         <updated>2021-07-11T12:33:45.000Z</updated>
         <summary type="html"><![CDATA[<p>学习C1驾照期间的重点内容整理。</p>
@@ -107,8 +107,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Excel工具箱-ToolBox]]></title>
-        <id>https://my-youth.github.io/post/toolbox/</id>
-        <link href="https://my-youth.github.io/post/toolbox/">
+        <id>http://localhost:4001/post/toolbox/</id>
+        <link href="http://localhost:4001/post/toolbox/">
         </link>
         <updated>2020-04-14T14:13:09.000Z</updated>
         <summary type="html"><![CDATA[<p>ToolBox是业余学习VBA编写的Excel插件，整合了部分网友的代码，也新写了很多功能。</p>
