@@ -5,16 +5,15 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes"/>
-<title>Oracle SQL和帆软学习备忘录 | 木易Young&#39;s Blog</title>
+<title>Oracle SQL和帆软学习笔记 | 木易Young&#39;s Blog</title>
 <link rel="shortcut icon" href="https://my-youth.github.io/favicon.ico">
 <link href="https://my-youth.github.io/styles/main.css" rel="stylesheet">
 <link href="//at.alicdn.com/t/font_1678829_7cn41ho9lyt.css" rel="stylesheet">
 <link rel="alternate" type="application/rss+xml" title="木易Young&#39;s Blog » Feed" href="https://my-youth.github.io/atom.xml">
-        <meta name="description" content="将日常所学的Oracle SQL的语法与结构进行整理，尤其是一些特殊用法，形成一份简单的教学文档，便于后续的查阅。
-
-一、SQL结构
+        <meta name="description" content="一、SQL结构
 SQL经典结构如下：
-SELECT 字段名1,          --数据表中的字段名称，每个字段名之间用..." />
+SELECT 字段名1,          --数据表中的字段名称，每个字段名之间用半角“,”逗号隔开，为了美观和结构可换行
+       字段名2,          --最后一个字段名后，不需要逗号..." />
         <meta name="keywords" content="SQL,笔记" />
 </head>
 
@@ -84,17 +83,15 @@ SELECT 字段名1,          --数据表中的字段名称，每个字段名之�
                     <div class="post_page">
                         <div class="post animated fadeInDown">
                             <div class="post_title post_detail_title">
-                                <h2>Oracle SQL和帆软学习备忘录</h2>
+                                <h2>Oracle SQL和帆软学习笔记</h2>
                                 <span class="article-info">
-                                    2022-12-25, 8139 words, 32 min read
+                                    2022-12-25, 9781 words, 39 min read
                                 </span>
                             </div>
                             <div class="post_content markdown">
                                 <p class="md_block">
                                     <span class="md_line md_line_start md_line_end">
-                                        <p>将日常所学的Oracle SQL的语法与结构进行整理，尤其是一些特殊用法，形成一份简单的教学文档，便于后续的查阅。</p>
-<!-- more -->
-<h2 id="一-sql结构">一、SQL结构</h2>
+                                        <h2 id="一-sql结构">一、SQL结构</h2>
 <p>SQL经典结构如下：</p>
 <pre><code class="language-sql">SELECT 字段名1,          --数据表中的字段名称，每个字段名之间用半角“,”逗号隔开，为了美观和结构可换行
        字段名2,          --最后一个字段名后，不需要逗号
@@ -103,18 +100,12 @@ SELECT 字段名1,          --数据表中的字段名称，每个字段名之�
  WHERE 字段名1='值1'
    AND 字段名2&gt;'值2'      --多个条件语句可用AND、OR连接
 </code></pre>
-<ol>
-<li>
-<h3 id="缩进对齐和注释">缩进对齐和注释</h3>
+<h3 id="1-缩进对齐和注释">1. 缩进对齐和注释</h3>
 <p>首先要强调的是，无论是SQL或是其他编程语言，缩进对齐和注释是首要需要了解的。缩进对齐不仅是为了美观，更重要的是可以直观地了解层次结构，便于查阅过去自己写的或是他人的内容。适当的注释是为了便于更快速地理解写的内容，尤其是新字段或函数的定义与作用。所以，无论是初学者或是老手，书写时都应当适当的缩进对齐和添加注释，共勉谨记。</p>
-</li>
-<li>
-<h3 id="函数命名">函数命名</h3>
+<h3 id="2-函数命名">2. 函数命名</h3>
 <p>其次是无论是SQL或是其他编程语言，函数命名通常都与其英语单词有关，比如“Select”有“选择”之意，&quot;From&quot;有“从……”之意，“Where”有“在哪种情况下”之意，所以上述示例可理解为，从名为“数据表名”的数据表中，选择名为“字段名1”、“字段名2”的字段，条件是字段名1=值1并且字段名2&gt;值2，将结果整理为一张新的表单内容。编程语言中使用的单词比较单一，且不同编程语言之前使用的单词大都相同，词汇量从来不是变成要考量的点，所以自己在命名新字段名称时，第一要避免与内置函数或方法名重复，第二是命名代表了新的字段的功能或意义，应当慎用诸如a、b、c等无实际意义的字母组合。</p>
 <p>SQL中函数字母大小写没有区分，所以命名新函数、新字段不可单词重复，书写SQL查询语句时可以大写，也可以小写。</p>
-</li>
-<li>
-<h3 id="select字段">SELECT字段</h3>
+<h3 id="3-select字段">3. SELECT字段</h3>
 <p>后面跟随的是字段名，也就是列名。当使用聚合函数（SUM、AVG等）或者公式对字段进行了重新计算之后，可以将其重命名为新的字段，如：</p>
 <pre><code class="language-sql">SELECT COUNT(STUDENT_NAME) AS STUDENT_NUM FROM SCORE_LIST  --设置字段别名
 </code></pre>
@@ -131,9 +122,7 @@ SELECT 字段名1,          --数据表中的字段名称，每个字段名之�
 </code></pre>
 </li>
 </ul>
-</li>
-<li>
-<h3 id="from字段">FROM字段</h3>
+<h3 id="4-from字段">4. FROM字段</h3>
 <p>后面跟随的是数据表名，参考下表，格式为：表所在用户+.+表名+DB Link，例如：EDBADM. EDS_LOT_HIST或FABADM.LOTHISTORY@FAB2FR。当需要将表复制到BO时，DB Link中的FR需要修改为MDW，如：@FAB2MDW。</p>
 <table>
 <thead>
@@ -176,9 +165,7 @@ SELECT 字段名1,          --数据表中的字段名称，每个字段名之�
 </tr>
 </tbody>
 </table>
-</li>
-<li>
-<h3 id="where字段">WHERE字段</h3>
+<h3 id="5-where字段">5. WHERE字段</h3>
 <p>后面跟随的是条件，可以使用的逻辑函数有AND、OR、NOT，判断相关&gt;、&gt;=、&lt;、&lt;=、=、&lt;&gt;，、BETWEEN…AND…、IN、Like、||。</p>
 <ul>
 <li>
@@ -240,9 +227,7 @@ SELECT 字段名1,          --数据表中的字段名称，每个字段名之�
 <p>当然WHERE查询中还可以使用其他的函数配合查询，例如SUBSTR、LENGTH、regexp_like，但不能使用聚合函数（SUM、COUNT、MAX、MIN、AVG），具体函数语法与含义，后续讲解或搜索帮助。</p>
 </li>
 </ul>
-</li>
-<li>
-<h3 id="group-by">GROUP BY</h3>
+<h3 id="6-group-by">6. GROUP BY</h3>
 <p>当在SELECT字段中使用了聚合函数（SUM、COUNT、MAX、MIN、AVG）时，需要指定计算时按照哪些字段进行汇总，比如是按照天别和设备别求和，或是设备别求最值，此时需要在WHERE所有条件之后补充GROUP BY，添加分组的字段。</p>
 <p>例1，需要统计全校各班级各科目学生平均成绩，成绩表示例如下：</p>
 <table>
@@ -321,9 +306,7 @@ SELECT 字段名1,          --数据表中的字段名称，每个字段名之�
  GROUP BY CLASS,STUDENT_NAME
 </code></pre>
 <p>有时候SELECT字段中，需要按照不同维度进行汇总，比如既要计算各班级各科目学生平均成绩，分组条件为班级和科目，又要计算各班级人数，分组条件为班级，那么此时的分组条件是不一致的，就不能直接使用GROUP BY，而要使用OVER函数，将在后面的内容中说明。</p>
-</li>
-<li>
-<h3 id="order-by">ORDER BY</h3>
+<h3 id="7-order-by">7. ORDER BY</h3>
 <ul>
 <li>
 <p>ORDER BY，顾名思义是按照……（次序）进行排序，将需要排序的字段罗列其后。比如上述成绩单需要依次按照班级、学生姓名排序，那么可以在<strong>WHERE条件语句后使用，有GROUP BY的须在其之后使用：</strong></p>
@@ -367,15 +350,9 @@ SELECT 字段名1,          --数据表中的字段名称，每个字段名之�
 </ul>
 </li>
 </ul>
-</li>
-<li>
-<h3 id="having">HAVING</h3>
-</li>
-</ol>
+<h3 id="8-having">8. HAVING</h3>
 <h2 id="二-单引号与双引号">二、单引号与双引号</h2>
-<ol>
-<li>
-<h3 id="单引号">单引号</h3>
+<h3 id="1-单引号">1. 单引号</h3>
 <ul>
 <li>
 <p>引用字符常量，即在两个单引号之间输入常量字符的内容，例如：</p>
@@ -392,9 +369,7 @@ SELECT 'NAME'||'''' FROM DUAL  --结果为“NAME'”，“||”表示字符串�
 </code></pre>
 </li>
 </ul>
-</li>
-<li>
-<h3 id="双引号">双引号</h3>
+<h3 id="2-双引号">2. 双引号</h3>
 <ul>
 <li>
 <p>字段名或别名中含有特殊字符或关键字，需要使用双引号包住。</p>
@@ -414,12 +389,8 @@ SELECT 'beijing' &quot;abc&quot; FROM DUAL    --字段名引起来之后，Oracl
 </code></pre>
 </li>
 </ul>
-</li>
-</ol>
 <h2 id="三-数据类型">三、数据类型</h2>
-<ol>
-<li>
-<h3 id="字符串类型">字符串类型</h3>
+<h3 id="1-字符串类型">1. 字符串类型</h3>
 <ul>
 <li>
 <p>固定长度类型（CHAR/NCHAR) ：是指虽然输入的字段值小于该字段的限制长度，但是实际存储数据时，会先自动向右补足空格后，才将字段值的内容存储到数据块中；</p>
@@ -428,30 +399,20 @@ SELECT 'beijing' &quot;abc&quot; FROM DUAL    --字段名引起来之后，Oracl
 <p>可变长度类型（VARCHAR2/NVARCHAR2)：是指当输入的字段值小于该字段的限制长度时，直接将字段值的内容存储到数据块中，而不会补上空白，这样可以节省数据块空间。</p>
 </li>
 </ul>
-</li>
-<li>
-<h3 id="数值类型">数值类型</h3>
+<h3 id="2-数值类型">2. 数值类型</h3>
 <ul>
 <li>NUMBER(P,S)：可以存放数据范围为10<sup>130~10</sup>126；</li>
 <li>INTEGER：用来存储整数。若插入、更新的数值有小数，则会被四舍五入；</li>
 <li>Float(n)：数n指示位的精度，可以存储的值的数目</li>
 </ul>
-</li>
-<li>
-<h3 id="日期类型">日期类型</h3>
+<h3 id="3-日期类型">3. 日期类型</h3>
 <ul>
 <li>DATE：最常用的数据类型，日期数据类型存储日期和时间信息。虽然可以用字符或数字类型表示日期和时间信息，但是日期数据类型具有特殊关联的属性。为每个日期值，Oracle 存储以下信息： 世纪、 年、 月、 日期、 小时、 分钟和秒。一般占用7个字节的存储空间。</li>
 <li>TIMESTAMP：是一个7字节或12字节的定宽日期/时间数据类型，是DATE类型的扩展类型。它与DATE数据类型不同，因为TIMESTAMP可以包含小数秒。</li>
 </ul>
-</li>
-<li>
-<h3 id="lob类型">LOB类型</h3>
-</li>
-<li>
-<h3 id="long-rawraw类型">LONG RAW&amp;RAW类型</h3>
-</li>
-<li>
-<h3 id="rowidurowid类型">ROWID&amp;UROWID类型</h3>
+<h3 id="4-lob类型">4. LOB类型</h3>
+<h3 id="5-long-rawraw类型">5. LONG RAW&amp;RAW类型</h3>
+<h3 id="6-rowidurowid类型">6. ROWID&amp;UROWID类型</h3>
 <ul>
 <li>
 <p>一般数据表里面存储的日期可能是DATE型，也可能是字符串类型，所以WHERE条件语句书写前需确认数据类型，根据类型可能需要使用TO_DATE或TO_CHAR转换数据类型，例如系统存的DAILY字段为字符串（8位年月日），那么WHERE条件语句参考下面的写法：</p>
@@ -469,12 +430,8 @@ SELECT 'beijing' &quot;abc&quot; FROM DUAL    --字段名引起来之后，Oracl
 </code></pre>
 </li>
 </ul>
-</li>
-</ol>
 <h2 id="四-函数及其语法">四、函数及其语法</h2>
-<ol>
-<li>
-<h3 id="substr">SUBSTR</h3>
+<h3 id="1-substr">1. SUBSTR</h3>
 <p>语法：SUBSTR(string, pso,len)，截取字符串中的一部分。</p>
 <p>-- string：必需，指定的要截取的字符串；</p>
 <p>-- pos：必需，规定在字符串的何处开始；</p>
@@ -487,16 +444,12 @@ SELECT 'beijing' &quot;abc&quot; FROM DUAL    --字段名引起来之后，Oracl
 <p>通常结合TRIM除去字符串中的空格和不可见字符，例如：</p>
 <pre><code class="language-sql">TRIM(SUBSTR('123456',3))   --结果是“3456”，主要某些场景SUBSTR截取的字符串中会带有不可见字符，可通过LENGTH比对出
 </code></pre>
-</li>
-<li>
-<h3 id="length">LENGTH</h3>
+<h3 id="2-length">2. LENGTH</h3>
 <p>语法：LENGTH(string-expression)，字符串长度。</p>
 <p>--string-expression：字符串表达式，可以是列名、字符串文字或另一个标量函数的结果；</p>
 <p>示例：length('123456')，结果是6；</p>
 <p>同类函数还有LENGTHB（按照字节计算）、LENGTHC（按照Unicode计算）、LENGTH2（按照UCS2编码计算）、LENGTH4（按照UCS4编码计算）。</p>
-</li>
-<li>
-<h3 id="to_date">TO_DATE</h3>
+<h3 id="3-to_date">3. TO_DATE</h3>
 <p>语法：to_date(date_number,formula）将日期转为字符串。</p>
 <p>--date_number：日期或时间，date型数据；</p>
 <p>--formula：需要呈现的日期格式，<strong>不区分大小写</strong>；</p>
@@ -522,15 +475,11 @@ SELECT 'beijing' &quot;abc&quot; FROM DUAL    --字段名引起来之后，Oracl
 TO_DATE(sysdate,'YYYY-MM-DD HH24:MI:SS')   --结果是“2022-12-31 12:25:30”
 --sysdate是生成系统默认当前时间，date型数据
 </code></pre>
-</li>
-<li>
-<h3 id="to_char">TO_CHAR</h3>
+<h3 id="4-to_char">4. TO_CHAR</h3>
 <p>TO_CHAR功能与TO_DATE相反，语法相似：to_char(date_string,formula)，将字符串转为日期，例如：</p>
 <pre><code class="language-sql">TO_CHAR('20221231','YYYYMMDD')  --结果是2022-12-31，日期型数据
 </code></pre>
-</li>
-<li>
-<h3 id="decode">DECODE</h3>
+<h3 id="5-decode">5. DECODE</h3>
 <p>语法1：decode(expression,value,result1,result2)，如果expression等于value，那么返回result1，否则返回result2，其中expression可以是表达式。需要注意的是该函数没有提供除等于以外的形式（大于、小于等），有这类需求时，可以使用CASE WHEN。例如：</p>
 <pre><code class="language-sql">SELECT DECODE(a,0,'零','非零') RESULT FROM DUAL  --当字段a为0时，结果为“零”，否则为“非零”
 </code></pre>
@@ -540,9 +489,7 @@ TO_DATE(sysdate,'YYYY-MM-DD HH24:MI:SS')   --结果是“2022-12-31 12:25:30”
 <pre><code class="language-sql">SELECT DECODE(a,'一',1,'二',2,'三',3,4) FROM 数据表
 </code></pre>
 <p><strong>该用法可用于ORDER BY自定义排序。</strong></p>
-</li>
-<li>
-<h3 id="case-when">CASE WHEN</h3>
+<h3 id="6-case-when">6. CASE WHEN</h3>
 <p>用法：CASE WHEN 表达式1 THEN 表达式2 ELSE 表达式3 END AS 字段名。</p>
 <p>多条件判断赋值，与DECODE的语法2不同的是，CASE WHEN可以自由书写表达式，实现任意判断，例如关于成绩等级的判断：</p>
 <pre><code class="language-sql">SELECT CASE WHEN SCORE &gt;= 90 THEN '优'   --成绩大于等于90分时，为优
@@ -553,9 +500,7 @@ TO_DATE(sysdate,'YYYY-MM-DD HH24:MI:SS')   --结果是“2022-12-31 12:25:30”
   FROM SCORE_LIST
 </code></pre>
 <p>WHEN/THEN/ELSE后面的表达式可以自由组合，或者嵌套DECODE函数，甚至再套一层CASE WHEN用法。</p>
-</li>
-<li>
-<h3 id="is-not-null">IS (NOT) NULL</h3>
+<h3 id="7-is-not-null">7. IS (NOT) NULL</h3>
 <p>NULL通常搭配IS一起使用，当数据表中内容缺失数据时，WHERE查询语句中通常需要使用。如下一张表王五的成绩为空，这里的空既不是空格，也不是0：</p>
 <table>
 <thead>
@@ -584,9 +529,7 @@ TO_DATE(sysdate,'YYYY-MM-DD HH24:MI:SS')   --结果是“2022-12-31 12:25:30”
   FROM SCORE_LIST
  WHERE SCORE IS NOT NULL
 </code></pre>
-</li>
-<li>
-<h3 id="nvl">NVL</h3>
+<h3 id="8-nvl">8. NVL</h3>
 <p>语法：nvl(expression1, expression2)，如果expression1为不为空，则返回expression1，否则返回expression2。</p>
 <p>在4-7的例子中，如果计算学生平均成绩，可以写成下面这样：</p>
 <pre><code class="language-sql">SELECT AVG(SCORE) AVG_SCORE
@@ -605,9 +548,7 @@ TO_DATE(sysdate,'YYYY-MM-DD HH24:MI:SS')   --结果是“2022-12-31 12:25:30”
 --统计不及格学生人数，结果为1
 --当SELECT中只使用了聚合函数时，可不添加GROUP BY语句
 </code></pre>
-</li>
-<li>
-<h3 id="instr">INSTR</h3>
+<h3 id="9-instr">9. INSTR</h3>
 <p>语法1：instr( string1, string2 )，查找string2在string1第一次出现的位置；</p>
 <pre><code class="language-sql">SELECT INSTR('helloworld','l') FROM DUAL  --返回结果：3  默认第一次出现“l”的位置
 SELECT INSTR('helloworld','lo') FROM DUAL --返回结果：4  即“lo”同时出现，第一个字母“l”出现的位置
@@ -620,9 +561,7 @@ SELECT INSTR('helloworld','l',-1,1) FROM DUAL
 --返回结果：9，在&quot;helloworld&quot;的倒数第1(d)号位置开始，往回查找第一次出现“l”的位置
 </code></pre>
 <p>INSTR可用于WHERE条件语句中，但查询效率相对较低。</p>
-</li>
-<li>
-<h3 id="数据表关联相关函数join-union">数据表关联相关函数（JOIN、UNION）</h3>
+<h3 id="10-join-union">10. JOIN、UNION</h3>
 <ul>
 <li>
 <p><strong>SQL Join</strong></p>
@@ -665,9 +604,7 @@ SELECT COL1,COL2,NULL FROM Table2
 <p>最后一个UNION ALL前面不能有ORDER BY  ORDER BY只能在最后。</p>
 </li>
 </ul>
-</li>
-<li>
-<h3 id="over分析函数">OVER分析函数</h3>
+<h3 id="11-over分析函数">11. OVER分析函数</h3>
 <p>分析函数和聚合函数很多是同名的，意思也一样，只是聚合函数用group by分组，每个分组返回一个统计值，而分析函数采用partition by分组，并且每组每行都可以返回一个统计值。简单的说就是聚合函数返回统计结果，分析函数返回明细加统计结果。</p>
 <p>语法：FUNCTION()OVER(PARTITION BY … ORDER BY …)，此处的FUNCTION可以是下表中的函数，PARTITION BY表示分组，ORDER BY表示排序。OVER分析函数和GROUP BY可以共存。</p>
 <table>
@@ -883,9 +820,7 @@ SELECT COL1,COL2,NULL FROM Table2
        SUM(PRODUCTION)OVER(PARTITION BY MACHINE ORDER BY HOUR_TIME) SUM_NUM
   FROM MACHINE_PRODUCTION_HOUR
 </code></pre>
-</li>
-<li>
-<h3 id="lag和lead偏移函数">LAG和LEAD偏移函数</h3>
+<h3 id="12-lag和lead偏移函数">12. LAG和LEAD偏移函数</h3>
 <p>语法：LAG(field, n, defaultvalue) OVER ( PARTITION BY … ORDER BY … )，LEAD语法与LAG相同，都需搭配OVER分析函数一起使用。</p>
 <p>LEAD是查询下一行数据，LAG是查询上一行数据，其中n年时数据表偏移的行数。以前述企业小时别生产量为例：</p>
 <pre><code class="language-sql">SELECT MACHINE,
@@ -944,9 +879,7 @@ SELECT COL1,COL2,NULL FROM Table2
 </tr>
 </tbody>
 </table>
-</li>
-<li>
-<h3 id="排名函数row_number-rank-dense_rank-count">排名函数（ROW_NUMBER、RANK、DENSE_RANK、COUNT）</h3>
+<h3 id="13-排名函数">13. 排名函数</h3>
 <ul>
 <li>
 <p><strong>ROW_NUMBER</strong></p>
@@ -977,9 +910,8 @@ SELECT ROW_NUMBER()OVER(PARTITION BY CLASS,SUBJECT ORDER BY SCORE) ORD1,
        --结果为：1、3、3、4、5
   FROM SCORE_LIST
 </code></pre>
-</li>
-<li>
-<h3 id="regexp_likeregexp_instrregexp_substrregexp_replace">regexp_like/regexp_instr/regexp_substr/regexp_replace</h3>
+<h3 id="14-正则表达式">14. 正则表达式</h3>
+<p>函数主要有：regexp_like/regexp_instr/regexp_substr/regexp_replace。</p>
 <p>用法上与LIKE、INSTR、SUBSTR 和REPLACE函数相同，使Oracle支持了正则表达式的语法，实现更为丰富的查找或替换。</p>
 <pre><code class="language-sql">WHERE NOT regexp_like(USER_ID,'^[0-9]+[0-9]$')             --USER ID必须为数字
 WHERE VALUE LIKE '1___6'                                   --VALUE长度为5，开始和结尾分别为1、6
@@ -1046,7 +978,7 @@ SELECT REGEXP_SUBSTR('17,20,23','[^,]+',1,1,'i') FROM DUAL --结果是17
 <tbody>
 <tr>
 <td style="text-align:center">$</td>
-<td style="text-align:left">匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 $ 也匹配 '\n' 或 '\r'。要匹配 $ 字符本身，请使用 $。</td>
+<td style="text-align:left">匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则$也匹配'\n'或'\r'。要匹配$字符本身，请使用 \$。</td>
 </tr>
 <tr>
 <td style="text-align:center">( )</td>
@@ -1054,19 +986,19 @@ SELECT REGEXP_SUBSTR('17,20,23','[^,]+',1,1,'i') FROM DUAL --结果是17
 </tr>
 <tr>
 <td style="text-align:center">*</td>
-<td style="text-align:left">匹配前面的子表达式零次或多次。要匹配 * 字符，请使用 *。</td>
+<td style="text-align:left">匹配前面的子表达式零次或多次。要匹配 * 字符，请使用 \*。</td>
 </tr>
 <tr>
 <td style="text-align:center">+</td>
-<td style="text-align:left">匹配前面的子表达式一次或多次。要匹配 + 字符，请使用 +。</td>
+<td style="text-align:left">匹配前面的子表达式一次或多次。要匹配 + 字符，请使用 \+。</td>
 </tr>
 <tr>
 <td style="text-align:center">.</td>
-<td style="text-align:left">匹配除换行符 \n 之外的任何单字符。要匹配 . ，请使用 . 。</td>
+<td style="text-align:left">匹配除换行符 \n 之外的任何单字符。要匹配 . ，请使用 \. 。</td>
 </tr>
 <tr>
 <td style="text-align:center">[</td>
-<td style="text-align:left">标记一个中括号表达式的开始。要匹配 [，请使用 [。</td>
+<td style="text-align:left">标记一个中括号表达式的开始。要匹配 [，请使用 \[。</td>
 </tr>
 <tr>
 <td style="text-align:center">?</td>
@@ -1074,7 +1006,7 @@ SELECT REGEXP_SUBSTR('17,20,23','[^,]+',1,1,'i') FROM DUAL --结果是17
 </tr>
 <tr>
 <td style="text-align:center">\</td>
-<td style="text-align:left">将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如， 'n' 匹配字符 'n'。'\n' 匹配换行符。序列 '\' 匹配 &quot;&quot;，而 '(' 则匹配 &quot;(&quot;。</td>
+<td style="text-align:left">将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如， 'n' 匹配字符 'n'。'\n' 匹配换行符。序列 '\\' 匹配 &quot;\&quot;，而 '\(' 则匹配 &quot;(&quot;。</td>
 </tr>
 <tr>
 <td style="text-align:center">^</td>
@@ -1082,11 +1014,11 @@ SELECT REGEXP_SUBSTR('17,20,23','[^,]+',1,1,'i') FROM DUAL --结果是17
 </tr>
 <tr>
 <td style="text-align:center">{</td>
-<td style="text-align:left">标记限定符表达式的开始。要匹配 {，请使用 {。</td>
+<td style="text-align:left">标记限定符表达式的开始。要匹配 {，请使用 \{。</td>
 </tr>
 <tr>
 <td style="text-align:center">|</td>
-<td style="text-align:left">指明两项之间的一个选择。要匹配 |，请使用 |。</td>
+<td style="text-align:left">指明两项之间的一个选择。要匹配 |，请使用 \</td>
 </tr>
 </tbody>
 </table>
@@ -1103,33 +1035,31 @@ SELECT REGEXP_SUBSTR('17,20,23','[^,]+',1,1,'i') FROM DUAL --结果是17
 <tbody>
 <tr>
 <td style="text-align:center">*</td>
-<td style="text-align:left">匹配前面的子表达式零次或多次。例如，<strong>zo*</strong> 能匹配 <strong>&quot;z&quot;</strong> 以及 <strong>&quot;zoo&quot;</strong>。***** 等价于 <strong>{0,}</strong>。</td>
+<td style="text-align:left">匹配前面的子表达式零次或多次。例如，zo* 能匹配 &quot;z&quot; 以及 &quot;zoo&quot;。* 等价于 {0,}。</td>
 </tr>
 <tr>
 <td style="text-align:center">+</td>
-<td style="text-align:left">匹配前面的子表达式一次或多次。例如，<strong>zo+</strong> 能匹配 <strong>&quot;zo&quot;</strong> 以及 &quot;<strong>zoo&quot;</strong>，但不能匹配 <strong>&quot;z&quot;</strong>。<strong>+</strong> 等价于 <strong>{1,}</strong>。</td>
+<td style="text-align:left">匹配前面的子表达式一次或多次。例如，zo+ 能匹配 &quot;zo&quot; 以及 &quot;zoo&quot;，但不能匹配 &quot;z&quot;。+ 等价于 {1,}。</td>
 </tr>
 <tr>
 <td style="text-align:center">?</td>
-<td style="text-align:left">匹配前面的子表达式零次或一次。例如，<strong>do(es)?</strong> 可以匹配 <strong>&quot;do&quot;</strong> 、 <strong>&quot;does&quot;</strong>、 <strong>&quot;doxy&quot;</strong> 中的 <strong>&quot;do&quot;</strong> 。<strong>?</strong> 等价于 <strong>{0,1}</strong>。</td>
+<td style="text-align:left">匹配前面的子表达式零次或一次。例如，do(es)? 可以匹配 &quot;do&quot; 、 &quot;does&quot;、 &quot;doxy&quot; 中的 &quot;do&quot; 。? 等价于 {0,1}。</td>
 </tr>
 <tr>
 <td style="text-align:center">{n}</td>
-<td style="text-align:left">n 是一个非负整数。匹配确定的 <strong>n</strong> 次。例如，<strong>o{2}</strong> 不能匹配 <strong>&quot;Bob&quot;</strong> 中的 <strong>o</strong>，但是能匹配 <strong>&quot;food&quot;</strong> 中的两个 <strong>o</strong>。</td>
+<td style="text-align:left">n 是一个非负整数。匹配确定的 n 次。例如，o{2} 不能匹配 &quot;Bob&quot; 中的 o，但是能匹配 &quot;food&quot; 中的两个 o。</td>
 </tr>
 <tr>
 <td style="text-align:center">{n,}</td>
-<td style="text-align:left">n 是一个非负整数。至少匹配n 次。例如，<strong>o{2,}</strong> 不能匹配 <strong>&quot;Bob&quot;</strong> 中的 <strong>o</strong>，但能匹配 <strong>&quot;foooood&quot;</strong> 中的所有 <strong>o</strong>。<strong>o{1,}</strong> 等价于 <strong>o+</strong>。<strong>o{0,}</strong> 则等价于 <strong>o*</strong>。</td>
+<td style="text-align:left">n 是一个非负整数。至少匹配n 次。例如，o{2,} 不能匹配 &quot;Bob&quot; 中的 o，但能匹配 &quot;foooood&quot; 中的所有 o。o{1,} 等价于 o+。o{0,} 则等价于 o*。</td>
 </tr>
 <tr>
 <td style="text-align:center">{n,m}</td>
-<td style="text-align:left">m 和 n 均为非负整数，其中 n &lt;= m。最少匹配 n 次且最多匹配 m 次。例如，<strong>o{1,3}</strong> 将匹配 <strong>&quot;fooooood&quot;</strong> 中的前三个 <strong>o</strong>。<strong>o{0,1}</strong> 等价于 <strong>o?</strong>。请注意在逗号和两个数之间不能有空格。</td>
+<td style="text-align:left">m 和 n 均为非负整数，其中 n &lt;= m。最少匹配 n 次且最多匹配 m 次。例如，o{1,3} 将匹配 &quot;fooooood&quot; 中的前三个 o。o{0,1} 等价于 o?。请注意在逗号和两个数之间不能有空格。</td>
 </tr>
 </tbody>
 </table>
-</li>
-<li>
-<h3 id="with">WITH</h3>
+<h3 id="15-with">15. WITH</h3>
 <p>当SQL查询中反复使用到同一段一模一样的子查询时，可以将该子查询放到WITH中作为对象引用，多个对象之间用半角逗号(,)隔开，并且将所有对象置顶。可参考下面的形式。</p>
 <pre><code class="language-sql">WITH T1 AS (      --从Table1生成T1，第一个对象有以WITH开头，其他不需要
     SELECT *
@@ -1150,9 +1080,12 @@ SELECT *          --在T3和T2的基础上处理，生成结果
     ON T3.key=T2.key
 </code></pre>
 <p>被引用的对象必须在当前查询语句之前，否则提示未定义。</p>
-</li>
-<li>
-<h3 id="创建临时表的两种方法">创建临时表的两种方法</h3>
+<h3 id="16-listagg"><strong>16. LISTAGG</strong></h3>
+<p>语法：ListAgg(字段名1,字符串)WITHIN GROUP(ORDER BY 字段名2)，将多个值合并为一个字符串，需要搭配GROUP BY使用。例如：</p>
+<pre><code class="language-sql">LISTAGG(m.maskspecname,'；')WITHIN GROUP(ORDER BY m.maskspecname) maskspecname
+--返回值为“A；B；C”17. ### 创建临时表的两种方法
+</code></pre>
+<h3 id="17-创建临时表的两种方法"><strong>17. 创建临时表的两种方法</strong></h3>
 <ul>
 <li>
 <p>利用DUAL表和Union函数</p>
@@ -1164,6 +1097,8 @@ SELECT *          --在T3和T2的基础上处理，生成结果
 SELECT 1+1 FROM DUAL      --进行四则运算，结果为2
 </code></pre>
 </li>
+</ul>
+</li>
 <li>
 <p>创建临时表，可以使用Union或者Union All。</p>
 <pre><code class="language-sql">SELECT '1#' MACHINE, '20221201 06' HOUR_TIME, 48 PRODUCTION FROM DUAL UNION ALL
@@ -1173,22 +1108,205 @@ SELECT '1#' MACHINE, '20221201 09' HOUR_TIME, 49 PRODUCTION FROM DUAL UNION ALL
 SELECT '1#' MACHINE, '20221201 10' HOUR_TIME, 49 PRODUCTION FROM DUAL
 </code></pre>
 </li>
-</ul>
-</li>
 <li>
 <p>使用Connect By创建一列临时表。</p>
-<pre><code class="language-sql">SELECT REGEXP_SUBSTR (ITEM, '[^,]+', 1, ROWNUM) FACTORY 
-  FROM (SELECT 'ARRAY,CF,CELL' ITEM FROM DUAL)
- CONNECT BY ROWNUM &lt;= LENGTH('ARRAY,CF,CELL')-LENGTH(REGEXP_REPLACE('ARRAY,CF,CELL', ',', ''))+1
-</code></pre>
-<pre><code class="language-sql">SELECT REGEXP_SUBSTR('ARRAY,CF,CELL','[^,]+',1,rownum) as col
-  FROM dual Connect by rownum &lt;= REGEXP_COUNT('ARRAY,CF,CELL','[^,]+')
+<pre><code class="language-sql">SELECT REGEXP_SUBSTR('ARRAY,CF,CELL','[^,]+',1,rownum) as col,
+         REGEXP_SUBSTR('A,B,C','[^,]+',1,rownum) as col2
+   FROM dual Connect by rownum &lt;= REGEXP_COUNT('ARRAY,CF,CELL','[^,]+')
+    --生成3行2列的临时表数据
 </code></pre>
 </li>
 </ul>
-</li>
-</ol>
+<h3 id="18-unix时间戳"><strong>18. Unix时间戳</strong></h3>
+<p>从1970年1月1日0点（北京时间为8点）开始所经过的秒数。</p>
+<pre><code class="language-sql">SELECT TO_CHAR(字段名/(3600*24)+TO_DATE('19700101 080000','YYYYMMDD HH24MISS'),'YYYY-MM-DD HH24:MI:SS') FROM DUAL
+--Unix时间戳转Date型，手动修改时区
+SELECT (sysdate-TO_DATE('19700101 080000','YYYYMMDD HH24MISS'))*3600*24 FROM DUAL
+--Date型转Unix时间戳，手动修改时区
+SELECT (sysdate-TO_DATE('19700101','YYYYMMDD'))*3600*24-TO_NUMBER(SUBSTR(TZ_OFFSET(sessiontimezone),1,3))*3600 FROM DUAL
+--Date型转Unix时间戳，自动修改时区
+</code></pre>
+<p>帆软函数DateToNumber实现相似功能，不过是返回的毫秒数。</p>
+<h3 id="19-系统数据表信息查询"><strong>19. 系统数据表信息查询</strong></h3>
+<pre><code class="language-sql">--获取表字段：
+select *
+ from all_tab_columns where table_name='FR_CF_NP_EN_BASE_INFO'
+--获取表字段：
+select * 
+  from user_tab_columns 
+ where Table_Name='FR_CF_NP_EN_BASE_INFO' 
+ order by column_name
+--获取表注释：
+select * 
+  from user_tab_comments 
+ where Table_Name='FR_CF_NP_EN_BASE_INFO'
+ order by Table_Name
+--获取字段注释：
+select * 
+  from user_col_comments 
+ where Table_Name='FR_CF_NP_EN_BASE_INFO'
+ order by column_name
+--当前用户的表
+select */*table_name*/ from user_tables
+--所有用户的表 
+select */*table_name*/ from all_tables
+</code></pre>
+<pre><code class="language-sql">--索引查询
+SELECT TABLE_NAME,
+       INDEX_NAME,
+       (SELECT LISTAGG( to_char(column_Name), ',') WITHIN GROUP(ORDER BY column_position)  
+          FROM all_ind_columns c  
+         WHERE 1=1 
+           and i.INDEX_NAME=c.index_name
+       ) col
+  FROM ALL_INDEXES i 
+ WHERE TABLE_NAME = TRIM(UPPER('${tab}'))
+   AND TABLE_OWNER = '${Owner}'
+
+</code></pre>
 <h2 id="五-帆软">五、帆软</h2>
+<h3 id="1-帆软公式和单元格相关">1. 帆软公式和单元格相关</h3>
+<ul>
+<li>
+<p>单元格隔行添加背景色，增强阅读性：</p>
+<pre><code class="language-javascript">mod(row(), 2) = 1
+</code></pre>
+</li>
+<li>
+<p>帆软公式从查询中获取数据：</p>
+<pre><code class="language-javascript">查询.SELECT(目标字段, 条件字段1 = &quot;8FPHT07&quot; &amp;&amp; 条件字段2 = &quot;F800-00&quot;)
+</code></pre>
+<p>多个条件需要使用“&amp;&amp;”连接起来，如果返回结果是多个值，可以使用Count或Sum进行处理。</p>
+</li>
+<li>
+<p>在单元格中插入了html相关内容时，如设置字体样式等，需要在单元格属性→其他→显示内容中选择“用HTML显示内容”，html分行的写法如下：</p>
+<pre><code class="language-html">这是第一行&lt;br&gt;这是第二行
+</code></pre>
+</li>
+<li>
+<p>查询中使用帆软公式实现下拉框不选时，默认查询所有。</p>
+<pre><code class="language-javascript">${=if(参数名=&quot;值&quot;,&quot;AND 字段名1= '&quot;+参数名+&quot;'&quot;,&quot;&quot;)}
+</code></pre>
+<p>该内容补充到Where条件子句中，并且该行以前应当有其他子句，没有则补充上“1=1”，因为该行中用到了AND函数。</p>
+</li>
+<li>
+<p>单元格使用SQL函数，获取查询结果。</p>
+<pre><code class="language-sql">SQL(connectionName,sql,columnIndex,rowIndex)
+--返回的数据是从 connectionName 数据库中获取的 SQL 语句的表中的第 columnIndex 列第 rowIndex 行所对应的元素。
+=sql(&quot;FRDemo&quot;,&quot;SELECT * FROM STSCORE where CLASSNO = '&quot;+$$$+&quot;' &quot;,3,4)
+--传递的参数是获取当前单元格的值，即用 $$$ 作为参数时，字符串类型同样需要拼接单引号
+=sql(&quot;FRDemo&quot;,&quot;SELECT * FROM STSCORE where CLASSNO in ('&quot;+$class+&quot;') and COURSE  in ('&quot;+$COURSE+&quot;') &quot;,3,4)
+--参数或者单元格值有多个的写法
+</code></pre>
+<p>-- connectionName，据连接名字，字符串形式，需要用引号如&quot;FRDemo&quot;；</p>
+<p>-- sql，SQL语句，字符串形式，需要用双引号；</p>
+<p>-- columnIndex，列序号，整型；</p>
+<p>-- rowIndex，行序号，整型。（<strong>行序号可以省略，这样返回值为数据列</strong>）</p>
+</li>
+</ul>
+<h3 id="2-参数面板设置">2. 参数面板设置</h3>
+<ul>
+<li>
+<p>隐藏参数面板小箭头。在参数面板的初始化事件中添加以下JavaScript脚本即可：</p>
+<pre><code class="language-javascript">//延迟执行
+setTimeout(function() {
+   //隐藏参数面板小箭头
+   $('.parameter-container-collapseimg-up').hide();  
+}, 10);  
+//删除参数面板小箭头
+//$('.parameter-container-collapseimg-up').remove();  
+</code></pre>
+</li>
+<li>
+<p>隐藏参数面板。决策平台引用报表、超链接引用报表、URL直连报表、单元格iframe等多种方式，在报表地址最后补充如下内容即可。</p>
+<pre><code class="language-javascript">&amp;__pi__=false
+</code></pre>
+</li>
+<li>
+<p>参数面板删除按钮提交时二次确认</p>
+<p>需要在参数面板绘制两个按钮，第一个是提示按钮，选择确认删除时，激活第二个按钮的操作，否则退出该过程。</p>
+<p>第一个按钮添加点击事件如下：</p>
+<pre><code class="language-javascript">FR.Msg.confirm(&quot;警告&quot;, &quot;确定要删除吗？&quot;, function(value) {
+	if (value) {
+		_g().parameterEl.getWidgetByName(&quot;button0&quot;).fireEvent(&quot;click&quot;);
+	}
+});
+</code></pre>
+<p>第二个按钮名称需与第一个按钮事件中一致，事件设置为删除提交，取消按钮可见性即可。</p>
+<p><strong>删除提交必须设置主键</strong></p>
+</li>
+<li>
+<p>参数面板提交按钮</p>
+<p>增加按钮并添加点击事件：</p>
+<pre><code class="language-javascript">_g().verifyAndWriteReport();
+//_g('${sessionID}').writeReport();  
+//location.reload();   //初始化参数栏后，重新加载页面
+contentPane.parameterCommit();  //参数栏不刷新，按所选查询条件刷新数据
+alert(&quot;提交成功！&quot;);
+FR.Msg.toast(&quot;提交成功！&quot;); 
+</code></pre>
+</li>
+<li>
+<p>参数面板导出按钮</p>
+<p>增加按钮并添加点击事件：</p>
+<pre><code class="language-javascript">var url = FR.servletURL + &quot;?op=export&amp;format=excel&amp;extype=simple&amp;sessionID=&quot;+_g().currentSessionID; //原样导出
+window.location =url;
+</code></pre>
+</li>
+</ul>
+<h3 id="3-图表">3. 图表</h3>
+<ul>
+<li>
+<p>图表联动，点击一个图表时，调整其他图表查询条件，实现互动。</p>
+<p>第一个图表设置：单元格属性→特性→交互属性，超链接添加图表联动单元格为第二个图表左上角单元格地址，并添加参数，参数可以是分类名、系列名、公式等。</p>
+<figure data-type="image" tabindex="2"><img src="https://s21.ax1x.com/2024/03/21/pFf8Qlq.jpg" alt="图表1设置" loading="lazy"></figure>
+<p>第二个图表设置：查询语句中，增加图表1的参数，可结合帆软IF函数实现未选中时默认全选。</p>
+</li>
+<li>
+<p>图表显示标签使用JavaScript实现自定义。</p>
+<p>主要使用了indexOf查找函数，substr字符串截取函数，toFixed四舍五入函数，示例如下：</p>
+<pre><code class="language-javascript">function() {
+	return this.category.substr(0,  this.category.indexOf('No.')) + '&lt;br&gt;' + this.seriesName + '：' + (this.value / 60).toFixed(1) + 'min';
+}
+</code></pre>
+</li>
+</ul>
+<h3 id="4-报表参数">4. 报表参数</h3>
+<ul>
+<li>
+<p>报表链接后增加参数“&amp;bypagesize=false”可以实现不分页预览报表。例如：</p>
+<pre><code class="language-javascript">/03.CF部/CF制造科/用户报表/98050035-杨柳/Movement/Coater流片履历.cpt&amp;__bypagesize__=false
+</code></pre>
+</li>
+<li>
+<p>报表预览情况下定时刷新</p>
+<p>在模板→模板Web属性→分页预览设置，增加事件设置，写入以下JS脚本：</p>
+<pre><code class="language-javascript">setInterval(function() {
+
+	$(&quot;.vancharts-series-&quot; + window.a).find(&quot;rect&quot;).css(&quot;stroke-width&quot;, &quot;0.5&quot;)
+	$(&quot;.vancharts-series-&quot; + window.a).find(&quot;rect&quot;).css(&quot;stroke&quot;, &quot;rgb(150,150,150)&quot;)
+}, 100)
+
+setInterval(&quot;self.location.reload();&quot;,1800000); //单位：毫秒；即每30min刷新一次页面
+</code></pre>
+<p>其中setInterval的第二个参数设置时长，单位为毫秒。</p>
+</li>
+<li>
+<p>天气JS</p>
+<pre><code class="language-html">&lt;iframe width=&quot;350&quot; align=&quot;left&quot; scrolling=&quot;no&quot; height=&quot;30&quot; frameborder=&quot;0&quot; allowtransparency=&quot;true&quot; src=&quot;https://i.tianqi.com?c=code&amp;id=40&amp;color=%2300B0F0&amp;icon=1&amp;site=12&quot;&gt;&lt;/iframe&gt;
+</code></pre>
+</li>
+<li>
+<p>鼠标点击/悬浮行和列变色，再次点击/悬浮时恢复</p>
+<p>菜单栏选择「模板&gt;模板 Web 属性&gt;分页预览设置」，选择「为该模板单独设置」，然后添加「加载结束事件」:</p>
+<pre><code class="language-javascript">_g().addEffect('highlightCross',{
+	color: 'red',
+	trigger: 'mousedown',//悬浮则为mouseover
+	single:false
+});
+</code></pre>
+</li>
+</ul>
 <br />
                                             
                                 </p>

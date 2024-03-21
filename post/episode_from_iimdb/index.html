@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<title>追剧助手from IMDB | 木易Young&#39;s Blog</title>
+<link rel="shortcut icon" href="https://my-youth.github.io/favicon.ico">
+<link href="https://my-youth.github.io/styles/main.css" rel="stylesheet">
+<link href="//at.alicdn.com/t/font_1678829_7cn41ho9lyt.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" title="木易Young&#39;s Blog » Feed" href="https://my-youth.github.io/atom.xml">
+        <meta name="description" content="1. 前言
+今年是AI元年，自Chat GPT之后，国内各大互联网公司也推出了自家的AI大语言模型。我连Python编程的函数和语法都没入门，日常也就使用VBA辅助来处理工作中的重复事项，所以今天分享的代码完全来自于AI所写。
+从上学的时候..." />
+        <meta name="keywords" content="Pyhton,AI" />
+</head>
+
+<body>
+    <div class="main animated">
+        <div class="header animated fadeInDown">
+    <div class="site_title_container">
+        <div class="site_title">
+            <a href="https://my-youth.github.io">木易Young&#39;s Blog</a>
+        </div>
+    </div>
+    <div class="my_socials">
+        
+            
+                <a href="https://github.com/my-youth" target="_blank"><i class="iconfont icon-github"></i></a>
+            
+        
+            
+        
+            
+                <a href="https://weibo.com/u/1723068373" target="_blank"><i class="iconfont icon-weibo"></i></a>
+            
+        
+            
+        
+            
+        
+        <a href="https://my-youth.github.io/atom.xml" target="_blank"><i class="iconfont icon-rss"></i></a>
+    </div>
+</div>
+
+    <div class="header_menu">
+        
+            
+                <a href="/" class="menu">首页</a>
+            
+        
+            
+                <a href="/archives" class="menu">归档</a>
+            
+        
+            
+                <a href="/tags" class="menu">标签</a>
+            
+        
+            
+                <a href="https://my-youth.github.io/post/software" class="menu">软件</a>
+            
+        
+            
+                <a href="https://my-youth.github.io/guide/" class="menu">导航</a>
+            
+        
+            
+                <a href="/post/about" class="menu">关于</a>
+            
+        
+        <div class="gridea-search-div">
+            <form id="gridea-search-form" action="https://my-youth.github.io/search/">
+                <input class="gridea-search-input" autocomplete="off" spellcheck="false" name="q"/>
+            </form>
+        </div>
+    </div>
+
+            <div class="autopagerize_page_element">
+                <div class="content">
+                    <div class="post_page">
+                        <div class="post animated fadeInDown">
+                            <div class="post_title post_detail_title">
+                                <h2>追剧助手from IMDB</h2>
+                                <span class="article-info">
+                                    2024-03-21, 2560 words, 12 min read
+                                </span>
+                            </div>
+                            <div class="post_content markdown">
+                                <p class="md_block">
+                                    <span class="md_line md_line_start md_line_end">
+                                        <h1 id="1-前言">1. 前言</h1>
+<p>今年是AI元年，自Chat GPT之后，国内各大互联网公司也推出了自家的AI大语言模型。我连Python编程的函数和语法都没入门，日常也就使用VBA辅助来处理工作中的重复事项，所以今天分享的代码完全来自于AI所写。<br>
+从上学的时候养成了看美剧的习惯，入门美剧是超人前传和神盾局特工。以前Series Guide还能正常使用的时候，一直用来记录追剧进度，后来也用过人人开发的软件。但是到现在就一直没有心水的软件，要么就是功能对于我来说不够轻量，要么就是用不上的功能太多。所以一直是在便签中记录。乘着AI的风，索性奴役它来为我服务一次。</p>
+<h1 id="2-软件对比">2. 软件对比</h1>
+<p>这次写追剧助手前，分别试用了文心一言和通义千问一段时间，过程中也发现两家的模型各有优劣，下面就我个人使用体验分享一下。</p>
+<table>
+<thead>
+<tr>
+<th>对比项目</th>
+<th>文心一言</th>
+<th>通义千问</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数据同步</td>
+<td>多端同步，相互可以打开记录</td>
+<td>网页和app无法互通</td>
+</tr>
+<tr>
+<td>软件体验</td>
+<td>有社区性质，安装包较大</td>
+<td>功能专注，安装包小</td>
+</tr>
+<tr>
+<td>上下文理解</td>
+<td>有时候会忘了之前的对话，连续性差点，对话的时候直接提示前文会改善</td>
+<td>连续性较好，无提示也能连续</td>
+</tr>
+<tr>
+<td>代码质量</td>
+<td>注释和代码常混到一行，需手动换行</td>
+<td>注释和代码完美分开</td>
+</tr>
+<tr>
+<td>对话字符限制</td>
+<td>网页和app均为2000字符</td>
+<td>网页10000字符，app 2000字符</td>
+</tr>
+</tbody>
+</table>
+<h1 id="3-正文代码">3. 正文代码</h1>
+<ul>
+<li>库的导入。在代码的前六行是引用了Python库，官方库安装速度较慢，甚至有时候连不上，所以安装时可以使用镜像源代替，比如清华源。<br>
+安装单个库：</li>
+</ul>
+<pre><code class="language-python">pip install re -i https://pypi.tuna.tsinghua.edu.cn/simple
+</code></pre>
+<p>安装多个库：</p>
+<pre><code class="language-python">pip install bs4 datetime requests wcwidth pytz -i https://pypi.tuna.tsinghua.edu.cn/simple
+</code></pre>
+<ul>
+<li>程序使用方法：<br>
+代码第一段tv_shows字典存储的是每部美剧的信息，包括名称、IMDB ID和已观看剧集。<br>
+修改tv_show字典中的内容，watched_episodes的格式可是是S01E01也可以写成S1E1，但是必须是大写。新剧可以写成S01E00形式。</li>
+<li>完整代码：</li>
+</ul>
+<pre><code class="language-python">import requests
+import re
+from bs4 import BeautifulSoup
+from datetime import datetime
+import wcwidth
+from pytz import timezone
+
+# 创建一个字典来存储美剧信息
+tv_shows = {
+    &quot;IronHeart钢铁之心&quot;: {&quot;imdb_id&quot;: &quot;tt13623126&quot;, &quot;watched_episodes&quot;: &quot;S01E00&quot;},
+    &quot;Loki洛基&quot;: {&quot;imdb_id&quot;: &quot;tt9140554&quot;, &quot;watched_episodes&quot;: &quot;S02E06&quot;},
+    &quot;What If假如&quot;: {&quot;imdb_id&quot;: &quot;tt10168312&quot;, &quot;watched_episodes&quot;: &quot;S02E03&quot;},
+    &quot;Halo光环&quot;: {&quot;imdb_id&quot;: &quot;tt2934286&quot;, &quot;watched_episodes&quot;: &quot;S01E09&quot;},
+    &quot;Superman &amp; Lois超人与露易丝&quot;: {&quot;imdb_id&quot;: &quot;tt11192306&quot;, &quot;watched_episodes&quot;: &quot;S03E13&quot;},
+    &quot;The Boys黑袍纠察队&quot;: {&quot;imdb_id&quot;: &quot;tt1190634&quot;, &quot;watched_episodes&quot;: &quot;S03E08&quot;},
+    &quot;3 Body Problem三体&quot;: {&quot;imdb_id&quot;: &quot;tt13016388&quot;, &quot;watched_episodes&quot;: &quot;S01E00&quot;}
+}
+
+def get_episode_info(imdb_id, watched_episodes):
+    # 构造请求URL，用于获取指定IMDb ID的剧集信息
+    episode_url = f&quot;https://www.imdb.com/title/{imdb_id}/episodes&quot;
+    
+    # 设置请求头，模拟浏览器发送请求
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3'
+    }
+    
+    # 发送请求并获取响应
+    response = requests.get(episode_url, headers=headers)
+    
+    # 检查请求是否成功（状态码为200表示成功）
+    if response.status_code == 200:
+        # 使用BeautifulSoup解析HTML响应
+        soup = BeautifulSoup(response.text, 'html.parser')
+        
+        # 从HTML中提取所有季节编号
+        episode_elements = soup.select('.ipc-tab')
+
+        # 创建一个新的字典来存储季节编号
+        print(&quot;\n&quot;)
+        season_numbers = {}
+        for element in episode_elements:
+            html_fragment = str(element)
+            matches = re.findall(r'&lt;li.*?&gt;(\d+)&lt;/li&gt;', html_fragment)
+            if matches:
+                for season_number in matches:
+                    season_numbers[season_number] = None  # 这里你可以根据需要存储其他相关信息
+                    print(f&quot;{show}的季: {season_number}&quot;)
+
+        # 初始化一个列表，用于存储剧集信息
+        episode_infos = []
+        
+        # 打印表格标题
+        print(f&quot;Show\t\tIMDb ID\t\tWatched\t\tEpisodes\tRelease Date&quot;)
+
+        # 标记是否已经找到已观看的剧集
+        found_watched_episode = False
+        
+        # 遍历所有季节
+        for season_number in sorted(season_numbers.keys(), reverse=True):
+            if found_watched_episode:
+                break
+            
+            # 构造请求URL，用于获取指定季节的剧集信息
+            season_episode_url = f&quot;https://www.imdb.com/title/{imdb_id}/episodes/?season={season_number}&quot;
+            
+            # 发送请求并获取响应
+            season_response = requests.get(season_episode_url, headers=headers)
+
+            # 检查请求是否成功（状态码为200表示成功）
+            if season_response.status_code == 200:
+                # 使用BeautifulSoup解析HTML响应
+                season_soup = BeautifulSoup(season_response.text, 'html.parser')
+                
+                # 从HTML中提取所有剧集的日期和编号
+                episodes_dates = season_soup.select('article &gt; div &gt; div &gt; div &gt; div &gt; span')
+                episodes = season_soup.select('article &gt; div &gt; div &gt; div &gt; div &gt; h4 &gt; div &gt; a &gt; div')
+
+                # 遍历所有剧集
+                for episode_date, episode in zip(episodes_dates, episodes):
+                    html_fragment = str(episode)
+                    matches = re.findall(r'S(\d+)\.E(\d+)', html_fragment)
+                    if matches:
+                        season_number_str, episode_number_str = matches[0]
+                        season_number = int(season_number_str)
+                        episode_number = int(episode_number_str)
+
+                        # 提取已观看剧集的季节和编号
+                        watched_season, watched_episode = watched_episodes.replace(&quot;S&quot;, &quot;&quot;).replace(&quot;E&quot;, &quot;.&quot;).split('.')
+                        watched_season_num = int(watched_season)
+                        watched_episode_num = int(watched_episode)
+
+                        # 判断当前剧集是否在已观看剧集之后
+                        if watched_season_num &lt; season_number or (watched_season_num == season_number and watched_episode_num &lt; episode_number):
+                            episode_date_text = episode_date.text.strip()
+                            
+                            try:
+                                # 将剧集日期字符串转换为日期对象（假设日期是美国洛杉矶时间）
+                                episode_date_obj = datetime.strptime(episode_date_text, &quot;%a, %b %d, %Y&quot;)
+                                
+                                # 将美国洛杉矶时间转换为UTC时间
+                                episode_date_utc = episode_date_obj.astimezone(timezone('US/Pacific'))
+
+                                # 将UTC时间转换为北京时间
+                                episode_date_bj = episode_date_utc.astimezone(timezone('Asia/Shanghai'))
+                                
+                                date_str = episode_date_bj.strftime(&quot;%Y-%m-%d&quot;)
+
+                                # 获取当前日期对象（北京时间）
+                                current_date_obj = datetime.now(timezone('Asia/Shanghai'))
+
+                                # 判断剧集日期是否早于当前日期
+                                if episode_date_bj &lt; current_date_obj:
+                                    episode_info = {
+                                        'show': show,
+                                        'imdb_id': imdb_id,
+                                        'watched_episodes': watched_episodes,
+                                        'episode_number': f&quot;S{season_number}E{episode_number}&quot;,
+                                        'episode_date': date_str  # episode_date_text
+                                    }
+                                    
+                                    # 将剧集信息添加到列表中
+                                    episode_infos.append(episode_info)
+                                    
+                                    # 打印剧集信息
+                                    print(f&quot;{show}\t{imdb_id}\t{watched_episodes}\t\tS{season_number}E{episode_number}\t\t{date_str}&quot;)
+                                    
+                                    # 如果找到了已观看的剧集，停止循环
+                                    if watched_season_num == season_number and watched_episode_num == episode_number:
+                                        found_watched_episode = True
+                                        break
+                            except ValueError:
+                                # 如果无法解析日期或仅包含年份，跳过此剧集
+                                pass
+
+            else:
+                # 如果请求失败，打印错误信息
+                print(f&quot;请求失败，状态码：{season_response.status_code}&quot;)
+
+        return episode_infos
+    else:
+        # 如果请求失败，打印错误信息
+        print(f&quot;请求失败，状态码：{response.status_code}&quot;)
+        return None
+
+# 获取并更新剧集信息
+all_episode_infos = {}
+for show in tv_shows.keys():
+    episode_infos = get_episode_info(tv_shows[show][&quot;imdb_id&quot;], tv_shows[show][&quot;watched_episodes&quot;])
+    if episode_infos:
+        all_episode_infos[show] = episode_infos
+
+# 计算所有剧名的最大宽度（考虑多字节字符）
+max_show_width = max(sum(wcwidth.wcwidth(c) for c in show) for show in tv_shows.keys())
+
+print('\n\n\n追剧进度: ')
+print(f&quot;{'Show':&lt;{max_show_width}}\tIMDb ID\t\tWatched\t\tStatus&quot;)
+
+# 统计展示
+for show in tv_shows.keys():
+    if show in all_episode_infos:
+        unwatched_episodes = len(all_episode_infos[show])
+        status = f&quot;待观看{unwatched_episodes}集&quot;
+    else:
+        status = &quot;未更新&quot;
+
+    # 计算剧名的填充空格数量
+    padding = ' ' * (max_show_width - sum(wcwidth.wcwidth(c) for c in show))
+    
+    # 打印剧集统计信息
+    print(f&quot;{show}{padding}\t{tv_shows[show]['imdb_id']}\t{tv_shows[show]['watched_episodes']}\t\t{status}&quot;)
+
+</code></pre>
+<h1 id="4-安卓运行">4. 安卓运行</h1>
+<p>写助手的初衷也是多平台都可以通用，PC端运行Python程序比较方便，安卓平台目前使用了Pydroid 3运行程序。Pydroid 3目前安装版本为5.00，有需要可以从下面的链接自取。</p>
+<p>下载地址：<a href="https://www.alipan.com/s/trsJpuRV9uB">https://www.alipan.com/s/trsJpuRV9uB</a><br>
+提取码: 8lq0</p>
+<p>运行结果参考：</p>
+<pre><code class="language-python">IronHeart钢铁之心的季: 1
+Show            IMDb ID         Watched         Episodes        Release Date
+
+
+Loki洛基的季: 1
+Loki洛基的季: 2
+Show            IMDb ID         Watched         Episodes        Release Date
+
+
+What If假如的季: 1
+What If假如的季: 2
+What If假如的季: 3
+Show            IMDb ID         Watched         Episodes        Release Date
+What If假如     tt10168312      S02E03          S2E4            2023-12-25
+What If假如     tt10168312      S02E03          S2E5            2023-12-26
+What If假如     tt10168312      S02E03          S2E6            2023-12-27
+What If假如     tt10168312      S02E03          S2E7            2023-12-28
+What If假如     tt10168312      S02E03          S2E8            2023-12-29
+
+
+Halo光环的季: 1
+Halo光环的季: 2
+Show            IMDb ID         Watched         Episodes        Release Date
+
+
+Superman &amp; Lois超人与露易丝的季: 1
+Superman &amp; Lois超人与露易丝的季: 2
+Superman &amp; Lois超人与露易丝的季: 3
+Superman &amp; Lois超人与露易丝的季: 4
+Show            IMDb ID         Watched         Episodes        Release Date
+
+
+The Boys黑袍纠察队的季: 1
+The Boys黑袍纠察队的季: 2
+The Boys黑袍纠察队的季: 3
+The Boys黑袍纠察队的季: 4
+Show            IMDb ID         Watched         Episodes        Release Date
+
+
+3 Body Problem三体的季: 1
+Show            IMDb ID         Watched         Episodes        Release Date
+
+
+
+追剧进度:
+Show                            IMDb ID         Watched         Status
+IronHeart钢铁之心               tt13623126      S01E00          未更新
+Loki洛基                        tt9140554       S02E06          未更新
+What If假如                     tt10168312      S02E03          待观看5集
+Halo光环                        tt2934286       S01E09          未更新
+Superman &amp; Lois超人与露易丝     tt11192306      S03E13          未更新
+The Boys黑袍纠察队              tt1190634       S03E08          未更新
+3 Body Problem三体              tt13016388      S01E00          未更新
+
+[Program finished]
+</code></pre>
+<blockquote>
+<p>最后的追剧进度在控制台打印出来是对齐的，因为等宽字体的原因。</p>
+</blockquote>
+<p>本来计划要在最后一列展示今天以后下一集的播放日期，但是奴役了通义千问一个晚上也还差点意思，所以看看后面能不能补充咯。</p>
+<h1 id="5-后记">5. 后记</h1>
+<ul>
+<li>Q：为什么没有采用多线程或者异步请求加快程序运行速度？<br>
+A：首先是技术限制，作为Python小白我不会写，即便是让通义千问写出来，我也不知道是否适用。<br>
+其次是网络上一直提爬网站容易封IP，所以虽然运行速度慢，但作为自用也足够了，比上网站一部一部查快多了。</li>
+<li>Q：程序能否长期稳定使用？<br>
+A：取决于IMDB网站结构是否变化，或者对爬取网站有了什么新的要求。</li>
+</ul>
+<p>总的来说，个人认为大语言模型的推出比什么元宇宙融合概念更具有跨时代的意义，也让技术小白在娱乐和工作中更加自如。搜索效率比百度等网页搜索更高（语言类）；让不懂编程的人也可以把自己的想法变成现实；以前写文章材料，需要绞尽脑汁去用优雅的语言润色，现在甩给AI就可以得到答案。总的来说，搞文字它是在行的。<br>
+不过它们的出现是不是会限制个人的思考能力和再学习能力，相信最终时间会给出答案。</p>
+<p>2023年12月29日</p>
+<br />
+                                            
+                                </p>
+                            </div>
+                            <div class="post_footer">
+                                
+                                    <div class="meta">
+                                        <div class="info"><span class="field tags"><i class="iconfont icon-tag-sm"></i>
+                                                
+                                                    <a href="https://my-youth.github.io/tag/qaOsxjmY6/" class="article-info">
+                                                        Pyhton
+                                                    </a>
+                                                    
+                                                    <a href="https://my-youth.github.io/tag/QbFn02XrrK/" class="article-info">
+                                                        AI
+                                                    </a>
+                                                    
+                                            </span>
+                                        </div>
+                                    </div>
+                                    
+                                        
+                                            <div class="next-post" style="margin-top: 20px;">
+                                                <div class="next">下一篇</div>
+                                                <a href="https://my-youth.github.io/post/renzhijuexing/">
+                                                    <h3 class="post-title">
+                                                        《认知觉醒》读书笔记
+                                                    </h3>
+                                                </a>
+                                            </div>
+                                            
+                            </div>
+                        </div>
+                        
+                            
+                                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div id="gitalk-container" style="padding-bottom: 20px;"></div>
+<script>
+    var pageId = (location.pathname).substring(1, 49) // Ensure uniqueness and length less than 50
+    pageId = pageId.endsWith('/') ? pageId.slice(0, -1) : pageId // 以斜杠结尾则去除
+    var gitalk = new Gitalk({
+        clientID: '08b31d35288ec136ee5f',
+        clientSecret: '9d70056efad7bf8da325663e3a7288b295136aa8',
+        repo: 'Talk',
+        owner: 'my-youth',
+        admin: ['my-youth'],
+        id: pageId,
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    })
+    gitalk.render('gitalk-container')
+</script>
+                                    
+                                        
+                                                    
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="footer">
+    
+    <div class="powered_by">
+        <a href="https://github.com/kytrun/gridea-theme-one" target="_blank">Theme One,</a>
+        <a href="https://gridea.dev/" target="_blank">Powered by Gridea&#65281;</a>
+    </div>
+    <div class="footer_slogan">
+        随笔，<a href="https://my-youth.github.io/tag/wJByjnnFM" target="_blank">Excel</a>，<a href="https://my-youth.github.io/post/toolbox/" target="_blank">软件</a>
+    </div>
+    <div id="back_to_top" class="back_to_top">
+        <span>△</span>
+    </div>
+    
+        <p class="statistic" id="busuanzi_container_site_pv">
+            Traffic statistics: site <span id="busuanzi_value_site_pv"></span> times, page
+            <span id="busuanzi_value_page_pv"></span> times.
+        </p>
+    
+</div>
+
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script src="https://my-youth.github.io/media/scripts/util.js"></script>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/styles/default.min.css">
+        <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+</body>
+
+</html>
