@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://my-youth.github.io</id>
     <title>木易Young&apos;s Blog</title>
-    <updated>2024-03-21T13:10:36.597Z</updated>
+    <updated>2024-03-24T03:19:01.276Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://my-youth.github.io"/>
     <link rel="self" href="https://my-youth.github.io/atom.xml"/>
@@ -111,5 +111,45 @@
 ]]></summary>
         <content type="html"><![CDATA[<p>本文原文是由Markdown生成</p>
 ]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[C1驾照笔记]]></title>
+        <id>https://my-youth.github.io/post/C1-Driver&apos;s-license/</id>
+        <link href="https://my-youth.github.io/post/C1-Driver&apos;s-license/">
+        </link>
+        <updated>2021-07-11T12:33:45.000Z</updated>
+        <summary type="html"><![CDATA[<p>学习C1驾照期间的重点内容整理。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>学习C1驾照期间的重点内容整理。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Excel工具箱-ToolBox]]></title>
+        <id>https://my-youth.github.io/post/toolbox/</id>
+        <link href="https://my-youth.github.io/post/toolbox/">
+        </link>
+        <updated>2020-04-14T14:13:09.000Z</updated>
+        <summary type="html"><![CDATA[<p>ToolBox是业余学习VBA编写的Excel插件，整合了部分网友的代码，也新写了很多功能。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>ToolBox是业余学习VBA编写的Excel插件，整合了部分网友的代码，也新写了很多功能。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[千字文-周兴嗣]]></title>
+        <id>https://my-youth.github.io/post/qianziwen/</id>
+        <link href="https://my-youth.github.io/post/qianziwen/">
+        </link>
+        <updated>2019-12-21T06:16:10.000Z</updated>
+        <summary type="html"><![CDATA[<p>千字文，由南北朝时期梁朝散骑侍郎、给事中周兴嗣编纂、一千个汉字组成的韵文（在隋唐之前，不押韵、不对仗的文字，被称为“笔”，而非“文”）。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>千字文，由南北朝时期梁朝散骑侍郎、给事中周兴嗣编纂、一千个汉字组成的韵文（在隋唐之前，不押韵、不对仗的文字，被称为“笔”，而非“文”）。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[FISRT BLOOOOOOOG！]]></title>
+        <id>https://my-youth.github.io/post/fisrt-blooooooog/</id>
+        <link href="https://my-youth.github.io/post/fisrt-blooooooog/">
+        </link>
+        <updated>2019-11-17T14:21:38.000Z</updated>
     </entry>
 </feed>
