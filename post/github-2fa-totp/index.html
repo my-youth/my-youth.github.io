@@ -9,7 +9,7 @@
 <meta name="renderer"content="webkit">
 <meta name="description"content="随笔，&lt;a href=&#34;https://my-youth.github.io/tag/wJByjnnFM&#34; target=&#34;_blank&#34;&gt;Excel&lt;/a&gt;，&lt;a href=&#34;https://my-youth.github.io/post/toolbox/&#34; target=&#34;_blank&#34;&gt;软件&lt;/a&gt;">
 <meta charset="UTF-8">
-<title>木易Young&#39;s Blog</title>
+<title>Github 2FA TOTP验证 | 木易Young&#39;s Blog</title>
 
 <link href="https://my-youth.github.io/styles/main.css" type="text/css" rel="stylesheet" /><link href="https://at.alicdn.com/t/font_1621793_zatzzgvf30g.css" type="text/css" rel="stylesheet" /><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css"><script async src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.min.js"></script><script src="https://my-youth.github.io/media/js/magnify.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"></script>
 <script type="text/javascript">function btn_toggle(){document.getElementById("hn").classList.contains("no-js")?document.getElementById("hn").classList.remove("no-js"):document.getElementById("hn").classList.add("no-js")}</script>
@@ -21,7 +21,7 @@
 	
 </style>
 
-<link rel="canonical" href="https://my-youth.github.io" /> 
+<link rel="canonical" href="https://my-youth.github.io/post/github-2fa-totp/" />
 </head>
 <body>
 <div class="progress"></div><style>.progress{background:linear-gradient(to right,#87ceeb var(--scroll),transparent 0);background-repeat:no-repeat;position:fixed;width:100%;height:4px;z-index:1}</style><div class="darkmode-background"></div><div class="darkmode-layer"></div>
@@ -38,71 +38,92 @@
 <script>function enableDarkmode(){document.body.classList.add("darkmode"),document.getElementById("switch_default").checked=1,document.getElementById("switch_default_h").checked=1}function removeDarkmode(){document.body.classList.remove("darkmode"),document.getElementById("switch_default").checked=0,document.getElementById("switch_default_h").checked=0}function getCookie(a){var b,c=new RegExp("(^| )"+a+"=([^;]*)(;|$)");return(b=document.cookie.match(c))?unescape(b[2]):null}cookie=getCookie("darkmode"),"enable"==cookie&&enableDarkmode(),window.matchMedia("(prefers-color-scheme: dark)").matches&&"disable"!==cookie&&(enableDarkmode(),document.cookie="darkmode=enable; path=/");var mobileBtn=function(){1==document.getElementById("switch_default").checked?(enableDarkmode(),document.cookie="darkmode=enable; path=/"):(removeDarkmode(),document.cookie="darkmode=disable; path=/")};</script>
 
 
-<div class="main">
-<div class="main-inner">
-<div class="content">
-<div class="post_list" >
+<div class="main"><div class="main-inner"><div class="content">
+<article class="post">
+<h2 class="post_title sm_margin"><a>Github 2FA TOTP验证</a></h2>
+<script>function lan(){if(document.getElementById("lan").innerText=="繁"){var s=document.getElementById("tongwenlet_cn");if(s!=null){document.body.removeChild(s)}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://cdn.jsdelivr.net/gh/qyxtim/Static@1.1/bookmarklet_tw.js";s.id="tongwenlet_cn";document.body.appendChild(s);document.getElementById("lan").innerHTML="简"}else{if(document.getElementById("lan").innerText=="簡"){var s=document.getElementById("tongwenlet_cn");if(s!=null){document.body.removeChild(s)}var s=document.createElement("script");s.language="javascript";s.type="text/javascript";s.src="https://cdn.jsdelivr.net/gh/qyxtim/Static@1.1/bookmarklet_cn.js";s.id="tongwenlet_cn";document.body.appendChild(s);document.getElementById("lan").innerHTML="繁"}}};</script>
+<section class="post_details"><i class="iconfont icon-calendar"></i><span style="margin-right:15px"> 2024-03-22</span><i class="iconfont icon-browse"></i><span style="margin-right:15px"> <span id="busuanzi_value_page_pv"></span> Views</span><i class="iconfont icon-category"></i><span class="weaklink" style="margin-right:15px">	<a href="https://my-youth.github.io/tag/KTWDTIqw7/" class="tag">密码学</a> | 	<a href="https://my-youth.github.io/tag/qaOsxjmY6/" class="tag">Pyhton</a></span><i class="iconfont icon-caret-down"></i><span style="margin-right:15px">576字</span><i class="iconfont icon-naozhong"></i><span style="margin-right:15px">3 min read</span><a id="lan" href="javascript:void(0);"onclick="lan();"title="调整简繁体" style="margin-right:15px;">繁</a>
+</section>
+
+<div style="display:flex">
+<div class="md_block" id="md_block">
 
 <div class="round-shape-one"></div>
 
+<h2 id="1-背景">1. 背景</h2>
+<p>2FA即双因素认证（Two-factor authentication），在进行风险操作时，不仅要求密码，还要通过一次性密码（One Time Password）验证通过之后才可以进行操作。<br>
+Github要求，到2023年底前，所有用户都必须开启双因素认证，否则无法登录。Github采用的是TOTP验证，即基于时间的一次性密码。网站和用户的共享同一个密钥，双方同时进行相同的运算，在一定时间内（通常30秒）将计算出的验证码提交给Github验证。<br>
+安全性：</p>
+<ul>
+<li>
+<p>暴力破解。运算出的验证码为6位数字，暴力破解将有100万种组合。由于验证方法基于时间，便要求30秒内能进行100万次验证。</p>
+</li>
+<li>
+<p>站方拦截。站方可以设置同一时段（30秒）内的验证码提交次数上限，超过后只能等待下一时段的验证码。</p>
+</li>
+</ul>
+<p>所以基于时间进行验证，在无法拿到密钥的情况下，难以破解TOTP验证方式，其安全性得到一定保障。</p>
+<h2 id="2-代码">2. 代码</h2>
+<p>下面是Python代码实现TOTP验证，运行以前，需要导入模块：</p>
+<pre><code class="language-python">pip install pyotp time -i https://pypi.tuna.tsinghua.edu.cn/simple
+</code></pre>
+<p>此处导入时使用了清华大学源，主要是为了提高导入速度。</p>
+<p>使用代码时，需要在keys字典中输入网站名称及其密钥，然后运行即可。</p>
+<pre><code class="language-python">import pyotp
+import time
+# 创建一个包含网站和密钥的字典
+keys = {
+    &quot;GitHub1&quot;: &quot;X5CTBOMEYE3TXIIS&quot;, 
+    &quot;Github2&quot;: &quot;X5CTBOMEYE3TXIIS&quot; 
+}
+# 打印标题和验证码
+print(&quot;网站\t\t验证码&quot;)
+# 遍历每个网站，并为每个密钥生成TOTP验证码并打印
+for website, key in keys.items():
+    # 对网站名称进行截断，确保不超过一定长度
+    truncated_website = website[:20] + &quot;...&quot; if len(website) &gt; 20 else website
+    totp_obj = pyotp.TOTP(key)
+    verification_code = totp_obj.now()
+    print(f&quot;{truncated_website}\t{verification_code}&quot;)
 
-<div class="post">
+</code></pre>
+<h2 id="3-密钥的获取">3. 密钥的获取</h2>
+<p>以Github网站为例，进入到2FA验证的界面后，提供了一个二维码如下，扫描结果如下：otpauth://totp/GitHub:evilsophietheking?secret=ECX3VKG4XX2D5V55&amp;issuer=GitHub​，其中secret后面的字符串即是密钥。通过扫码方式可以实现无信息交换的数据传输，更加确保了安全性。</p>
+<figure data-type="image" tabindex="1"><img src="https://docs.github.com/assets/cb-31013/mw-1440/images/help/2fa/ghes-3.8-and-higher-2fa-wizard-app-click-code.webp" alt="" loading="lazy"></figure>
 
-<div class="post_title weaklink">
-<h2><a href="https://my-youth.github.io/post/markdown-demo/" >Markdown简明教程</a>
-</h2>
+<span id="footnote"></span>
+<div id = "warn"></div>
 </div>
-<div class="post_content markdown"><div class="p_part"><p><p>本文原文是由Markdown生成</p>
-</p></div></div>
-<div class="post_footer">
-<section class="info weaklink"><i class="iconfont icon-calendar"></i><span style="margin-right:15px">2021-07-11</span><i class="iconfont icon-category"></i><span class="weaklink" style="margin-right:13px"><a href="https://my-youth.github.io/tag/43bgMp0uB/"class="tag">Markdown</a>| <a href="https://my-youth.github.io/tag/c476k7FjV/"class="tag">笔记</a></span><i class="iconfont icon-caret-down"></i><span class="weaklink"style="margin-right:20px;">344字</span><i class="iconfont icon-naozhong"></i><span class="weaklink"style="margin-right:15px;">2 min read</span></section></div></div>
-<div class="post">
-
-<div class="post_title weaklink">
-<h2><a href="https://my-youth.github.io/post/C1-Driver&#39;s-license/" >C1驾照笔记</a>
-</h2>
+<div class="toc-container"><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#1-%E8%83%8C%E6%99%AF">1. 背景</a></li>
+<li><a href="#2-%E4%BB%A3%E7%A0%81">2. 代码</a></li>
+<li><a href="#3-%E5%AF%86%E9%92%A5%E7%9A%84%E8%8E%B7%E5%8F%96">3. 密钥的获取</a></li>
+</ul>
+</li>
+</ul>
 </div>
-<div class="post_content markdown"><div class="p_part"><p><p>学习C1驾照期间的重点内容整理。</p>
-</p></div></div>
-<div class="post_footer">
-<section class="info weaklink"><i class="iconfont icon-calendar"></i><span style="margin-right:15px">2021-07-11</span><i class="iconfont icon-category"></i><span class="weaklink" style="margin-right:13px"><a href="https://my-youth.github.io/tag/c476k7FjV/"class="tag">笔记</a>| <a href="https://my-youth.github.io/tag/ZKDpZwIwlG/"class="tag">驾照</a></span><i class="iconfont icon-caret-down"></i><span class="weaklink"style="margin-right:20px;">3691字</span><i class="iconfont icon-naozhong"></i><span class="weaklink"style="margin-right:15px;">14 min read</span></section></div></div>
-<div class="post">
-
-<div class="post_title weaklink">
-<h2><a href="https://my-youth.github.io/post/toolbox/" >Excel工具箱-ToolBox</a>
-</h2>
 </div>
-<div class="post_content markdown"><div class="p_part"><p><p>ToolBox是业余学习VBA编写的Excel插件，整合了部分网友的代码，也新写了很多功能。</p>
-</p></div></div>
-<div class="post_footer">
-<section class="info weaklink"><i class="iconfont icon-calendar"></i><span style="margin-right:15px">2020-04-14</span><i class="iconfont icon-category"></i><span class="weaklink" style="margin-right:13px"><a href="https://my-youth.github.io/tag/mB9Et_hC-q/"class="tag">软件</a>| <a href="https://my-youth.github.io/tag/wJByjnnFM/"class="tag">Excel</a></span><i class="iconfont icon-caret-down"></i><span class="weaklink"style="margin-right:20px;">559字</span><i class="iconfont icon-naozhong"></i><span class="weaklink"style="margin-right:15px;">3 min read</span></section></div></div>
-<div class="post">
-
-<div class="post_title weaklink">
-<h2><a href="https://my-youth.github.io/post/qianziwen/" >千字文-周兴嗣</a>
-</h2>
-</div>
-<div class="post_content markdown"><div class="p_part"><p><p>千字文，由南北朝时期梁朝散骑侍郎、给事中周兴嗣编纂、一千个汉字组成的韵文（在隋唐之前，不押韵、不对仗的文字，被称为“笔”，而非“文”）。</p>
-</p></div></div>
-<div class="post_footer">
-<section class="info weaklink"><i class="iconfont icon-calendar"></i><span style="margin-right:15px">2019-12-21</span><i class="iconfont icon-category"></i><span class="weaklink" style="margin-right:13px"><a href="https://my-youth.github.io/tag/kSxksnfN-/"class="tag">文学</a>| <a href="https://my-youth.github.io/tag/c476k7FjV/"class="tag">笔记</a></span><i class="iconfont icon-caret-down"></i><span class="weaklink"style="margin-right:20px;">5840字</span><i class="iconfont icon-naozhong"></i><span class="weaklink"style="margin-right:15px;">24 min read</span></section></div></div>
-<div class="post">
-
-<div class="post_title weaklink">
-<h2><a href="https://my-youth.github.io/post/fisrt-blooooooog/" >FISRT BLOOOOOOOG！</a>
-</h2>
-</div>
-<div class="post_content markdown"><div class="p_part"><p></p></div></div>
-<div class="post_footer">
-<section class="info weaklink"><i class="iconfont icon-calendar"></i><span style="margin-right:15px">2019-11-17</span><i class="iconfont icon-category"></i><span class="weaklink" style="margin-right:13px"></span><i class="iconfont icon-caret-down"></i><span class="weaklink"style="margin-right:20px;">29字</span><i class="iconfont icon-naozhong"></i><span class="weaklink"style="margin-right:15px;">1 min read</span></section></div></div>
+<div id="fullPage"><canvas id="canvas"></canvas></div>
+</article>
+<div id="eof"><span>EOF</span></div>
 
 <div class="round-shape-one"></div>
 
-</div><div class="paginator pager pagination"><div class="paginator_container pagination_container"><a href="https://my-youth.github.io/"class="btn pre newer-posts newer_posts">Newer Posts</a><div style="clear:both;height:0;"></div></div></div>
-</div>
-</div>
-</div>
-</div>
+<section>
+<div class="doc_comments">
+
+
+</div></section>
+</div></div></div><script>
+"use strict";!function(){for(var n=document.getElementsByTagName("pre"),e=n.length,s=0;s<e;s++){n[s].innerHTML='<span class="line-number"></span>'+n[s].innerHTML+'<span class="cl"></span>';for(var a=n[s].innerHTML.split(/\n/).length,r=0;r<a-1;r++){n[s].getElementsByTagName("span")[0].innerHTML+="<span>"+(r+1)+"</span>"}}}();
+let mainNavLinks=document.querySelectorAll(".markdownIt-TOC a");window.addEventListener("scroll",event=>{let fromTop=window.scrollY;mainNavLinks.forEach((link,index)=>{let section=document.getElementById(decodeURI(link.hash).substring(1));let nextSection=null
+if(mainNavLinks[index+1]){nextSection=document.getElementById(decodeURI(mainNavLinks[index+1].hash).substring(1));}
+if(section.offsetTop<=fromTop){if(nextSection){if(nextSection.offsetTop>fromTop){link.classList.add("currentToc");}else{link.classList.remove("currentToc");}}else{link.classList.add("currentToc");}}else{link.classList.remove("currentToc");}});});
+var h=document.documentElement,b=document.body,st="scrollTop",sh="scrollHeight",progress=document.querySelector(".progress"),scroll;document.addEventListener("scroll",function(){scroll=(h[st]||b[st])/((h[sh]||b[sh])-h.clientHeight)*100;progress.style.setProperty("--scroll",scroll+"%")});
+var wxScale=new WxScale({fullPage:document.querySelector("#fullPage"),canvas:document.querySelector("#canvas")});var imgBox=document.querySelectorAll("#md_block img");for(var i=0;i<imgBox.length;i++){imgBox[i].onclick=function(e){wxScale.start(this)}};
+</script>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
 <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
@@ -162,5 +183,6 @@
     } 
 </script>
 
+<script type="text/javascript" async src="https://my-youth.github.io/media/js/prism.js"></script>
 </body>
 </html>

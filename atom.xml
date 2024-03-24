@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://my-youth.github.io</id>
     <title>木易Young&apos;s Blog</title>
-    <updated>2024-03-24T03:41:26.698Z</updated>
+    <updated>2024-03-24T09:04:36.776Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://my-youth.github.io"/>
     <link rel="self" href="https://my-youth.github.io/atom.xml"/>
@@ -11,11 +11,11 @@
     <icon>https://my-youth.github.io/favicon.ico</icon>
     <rights>All rights reserved 2024, 木易Young&apos;s Blog</rights>
     <entry>
-        <title type="html"><![CDATA[追剧助手from IMDB]]></title>
-        <id>https://my-youth.github.io/post/episode_from_iimdb/</id>
-        <link href="https://my-youth.github.io/post/episode_from_iimdb/">
+        <title type="html"><![CDATA[Github 2FA TOTP验证]]></title>
+        <id>https://my-youth.github.io/post/github-2fa-totp/</id>
+        <link href="https://my-youth.github.io/post/github-2fa-totp/">
         </link>
-        <updated>2024-03-21T10:31:56.000Z</updated>
+        <updated>2024-03-22T07:26:05.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[《认知觉醒》读书笔记]]></title>
@@ -27,6 +27,13 @@
 ]]></summary>
         <content type="html"><![CDATA[<p>2020年出版的《认知觉醒》读后感。保持学习积极性，以兴趣为基础，坚持“活到老，学到老”，并做好相应的笔记。推及生活，则要吾日三省吾身，通过不断地反思来提升为人处世能力。</p>
 ]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[追剧助手from IMDB]]></title>
+        <id>https://my-youth.github.io/post/episode_from_iimdb/</id>
+        <link href="https://my-youth.github.io/post/episode_from_iimdb/">
+        </link>
+        <updated>2024-01-23T10:31:56.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[业务推进自上而下好还是自下而上好？]]></title>
