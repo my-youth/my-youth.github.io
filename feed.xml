@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>木易Young&#39;s Blog</title>
+    <link>https://my-youth.github.io/</link>
+    <description>Welcome to my blog</description>
+    <language>zh-cn</language>
+    <generator>Gridea Pro</generator>
+    <lastBuildDate>Sat, 03 Oct 2026 19:54:47 +0800</lastBuildDate>
+    <atom:link href="https://my-youth.github.io/feed.xml" rel="self" type="application/rss+xml"></atom:link>
+    <item>
+      <title>Python学习笔记</title>
+      <link>https://my-youth.github.io/post/LearnAboutPython/</link>
+      <guid isPermaLink="true">https://my-youth.github.io/post/LearnAboutPython/</guid>
+      <pubDate>Sat, 03 Oct 2026 19:54:47 +0800</pubDate>
+      <description><![CDATA[<p>Python学习笔记</p>
+]]></description>
+      <category>笔记</category>
+      <category>Python</category>
+    </item>
+    <item>
+      <title>如何根据一张图片找到拍摄地</title>
+      <link>https://my-youth.github.io/post/pic_location/</link>
+      <guid isPermaLink="true">https://my-youth.github.io/post/pic_location/</guid>
+      <pubDate>Sat, 28 Sep 2024 19:52:46 +0800</pubDate>
+      <description><![CDATA[<p>通过图片信息推理拍摄地，提示往互联网发送信息时，关注个人隐私泄露风险。</p>
+]]></description>
+      <category>隐私</category>
+    </item>
+    <item>
+      <title>寻找勾股数</title>
+      <link>https://my-youth.github.io/post/Pythagorean_triple/</link>
+      <guid isPermaLink="true">https://my-youth.github.io/post/Pythagorean_triple/</guid>
+      <pubDate>Mon, 23 Sep 2024 19:53:48 +0800</pubDate>
+      <description><![CDATA[<p>从直观的、最简单的勾股数开始推到通用公式，直到推到完全公式。</p>
+]]></description>
+      <category>勾股数</category>
+      <category>笔记</category>
+    </item>
+    <item>
+      <title>Github 2FA TOTP验证</title>
+      <link>https://my-youth.github.io/post/github-2fa-totp/</link>
+      <guid isPermaLink="true">https://my-youth.github.io/post/github-2fa-totp/</guid>
+      <pubDate>Sat, 23 Mar 2024 03:46:18 +0800</pubDate>
+      <description><![CDATA[<p>使用AI工具编写代码，实现了双因素认证的TOTP验证码计算。</p>
+]]></description>
+      <category>密码学</category>
+      <category>Python</category>
+    </item>
+    <item>
+      <title>《认知觉醒》读书笔记</title>
+      <link>https://my-youth.github.io/post/ren-zhi-jue-xing/</link>
+      <guid isPermaLink="true">https://my-youth.github.io/post/ren-zhi-jue-xing/</guid>
+      <pubDate>Wed, 20 Mar 2024 19:56:14 +0800</pubDate>
+      <description><![CDATA[<p>2020年出版的《认知觉醒》读后感。保持学习积极性，以兴趣为基础，坚持“活到老，学到老”，并做好相应的笔记。推及生活，则要吾日三省吾身，通过不断地反思来提升为人处世能力。</p>
+]]></description>
+      <category>读后感</category>
+    </item>
+    <item>
+      <title>追剧助手from IMDB</title>
+      <link>https://my-youth.github.io/post/episode_from_iimdb/</link>
+      <guid isPermaLink="true">https://my-youth.github.io/post/episode_from_iimdb/</guid>
+      <pubDate>Wed, 24 Jan 2024 03:41:45 +0800</pubDate>
+      <description><![CDATA[<p>使用AI工具完成代码编写，实现从IMDB网站抓取信息。</p>
+]]></description>
+      <category>Python</category>
+      <category>AI</category>
+    </item>
+    <item>
+      <title>业务推进自上而下好还是自下而上好？</title>
+      <link>https://my-youth.github.io/post/diary-20230903/</link>
+      <guid isPermaLink="true">https://my-youth.github.io/post/diary-20230903/</guid>
+      <pubDate>Sun, 03 Sep 2023 19:40:14 +0800</pubDate>
+      <description><![CDATA[<p>工作中的点滴反思：面对消极懈怠的员工，某些业务的推进模式，自上而下总是优于自下而上。</p>
+]]></description>
+      <category>随笔</category>
+    </item>
+    <item>
+      <title>Oracle SQL和帆软学习备忘录</title>
+      <link>https://my-youth.github.io/post/oracle-sql/</link>
+      <guid isPermaLink="true">https://my-youth.github.io/post/oracle-sql/</guid>
+      <pubDate>Mon, 26 Dec 2022 03:51:21 +0800</pubDate>
+      <description><![CDATA[<p>记录学习SQL和帆软期间，一些重要知识点和语法。</p>
+]]></description>
+      <category>帆软</category>
+      <category>SQL</category>
+      <category>笔记</category>
+    </item>
+    <item>
+      <title>开源软件镜像站</title>
+      <link>https://my-youth.github.io/post/OpenSourceSoftwareMirrorSite/</link>
+      <guid isPermaLink="true">https://my-youth.github.io/post/OpenSourceSoftwareMirrorSite/</guid>
+      <pubDate>Mon, 17 Oct 2022 19:50:10 +0800</pubDate>
+      <description><![CDATA[<p>开源的力量无疑是强大的，对于初学者非常友好，除了Github外，文章里的站点主要囊括了世界上比较知名的开源软件和系统。</p>
+]]></description>
+      <category>开源</category>
+      <category>软件</category>
+    </item>
+    <item>
+      <title>html iframe播放B站视频</title>
+      <link>https://my-youth.github.io/post/bilibili-iframe/</link>
+      <guid isPermaLink="true">https://my-youth.github.io/post/bilibili-iframe/</guid>
+      <pubDate>Sun, 10 Apr 2022 03:35:59 +0800</pubDate>
+      <description><![CDATA[<p>在博客中加入iframe，可以在网页上播放视频。</p>
+]]></description>
+      <category>bilibilil</category>
+    </item>
+    <item>
+      <title>神奇浏览器停运</title>
+      <link>https://my-youth.github.io/post/sqllq/</link>
+      <guid isPermaLink="true">https://my-youth.github.io/post/sqllq/</guid>
+      <pubDate>Thu, 24 Mar 2022 19:58:00 +0800</pubDate>
+      <description><![CDATA[<p>神奇浏览器原本由武汉大学的个人开发者开发，具有体积小巧、功能齐全而强大的优点，奈何其内置的广告拦截功能过于强大，动了国内视频网站巨头的利益奶酪，被迫宣布破产停运，版本号停在了0.9.8.4。</p>
+]]></description>
+      <category>浏览器</category>
+      <category>逆向</category>
+    </item>
+    <item>
+      <title>冒牌微PE玄机暗藏，且看如何扒皮探底</title>
+      <link>https://my-youth.github.io/post/fake-pe/</link>
+      <guid isPermaLink="true">https://my-youth.github.io/post/fake-pe/</guid>
+      <pubDate>Mon, 21 Mar 2022 03:44:30 +0800</pubDate>
+      <description><![CDATA[<p>PE软件作为装机必备软件，但良莠不齐，层出不穷的冒牌者充斥着互联网，扰人视线。</p>
+]]></description>
+      <category>PE</category>
+      <category>Windows</category>
+    </item>
+    <item>
+      <title>Markdown简明教程</title>
+      <link>https://my-youth.github.io/post/markdown-demo/</link>
+      <guid isPermaLink="true">https://my-youth.github.io/post/markdown-demo/</guid>
+      <pubDate>Mon, 12 Jul 2021 03:49:01 +0800</pubDate>
+      <description><![CDATA[<p>本文原文是由Markdown生成</p>
+]]></description>
+      <category>Markdown</category>
+      <category>笔记</category>
+    </item>
+    <item>
+      <title>C1驾照笔记</title>
+      <link>https://my-youth.github.io/post/C1-Driver&#39;s-license/</link>
+      <guid isPermaLink="true">https://my-youth.github.io/post/C1-Driver&#39;s-license/</guid>
+      <pubDate>Mon, 12 Jul 2021 03:38:32 +0800</pubDate>
+      <description><![CDATA[<p>学习C1驾照期间的重点内容整理。</p>
+]]></description>
+      <category>笔记</category>
+      <category>驾照</category>
+    </item>
+    <item>
+      <title>《九零后》纪录片观后感</title>
+      <link>https://my-youth.github.io/post/jiulinghou/</link>
+      <guid isPermaLink="true">https://my-youth.github.io/post/jiulinghou/</guid>
+      <pubDate>Sun, 11 Jul 2021 19:47:38 +0800</pubDate>
+      <description><![CDATA[<p>《九零后》一片讲述的是一帮耄耋之年的西南联大校友，以访谈形式追忆过往，从联大成立，到学生和老师不远万里齐聚昆明，再到大家的艰苦求学历程，最后新中国成立后，曾经的校友突破重重困阻，回到祖国，建设新中国。</p>
+]]></description>
+      <category>观后感</category>
+    </item>
+    <item>
+      <title>Excel工具箱-ToolBox</title>
+      <link>https://my-youth.github.io/post/toolbox/</link>
+      <guid isPermaLink="true">https://my-youth.github.io/post/toolbox/</guid>
+      <pubDate>Tue, 14 Apr 2020 19:58:54 +0800</pubDate>
+      <description><![CDATA[<p>ToolBox是业余学习VBA编写的Excel插件，整合了部分网友的代码，也新写了很多功能。</p>
+]]></description>
+      <category>软件</category>
+      <category>Excel</category>
+    </item>
+    <item>
+      <title>千字文-周兴嗣</title>
+      <link>https://my-youth.github.io/post/qian-zi-wen/</link>
+      <guid isPermaLink="true">https://my-youth.github.io/post/qian-zi-wen/</guid>
+      <pubDate>Sat, 21 Dec 2019 19:59:55 +0800</pubDate>
+      <description><![CDATA[<p>千字文，由南北朝时期梁朝散骑侍郎、给事中周兴嗣编纂、一千个汉字组成的韵文（在隋唐之前，不押韵、不对仗的文字，被称为“笔”，而非“文”）。</p>
+]]></description>
+      <category>文学</category>
+      <category>笔记</category>
+    </item>
+  </channel>
+</rss>

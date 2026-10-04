@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/styles/base16/atelier-forest-light.min.css">
+<meta name="theme-color" content="#2a408e">
+<meta name="generator" content="Gridea Pro 1.3.0-beta.2">
+<title>Excel工具箱-ToolBox - 木易Young&#39;s Blog</title>
+<meta name="description" content="Welcome to my blog">
+<meta name="generator" content="Gridea Pro">
+<meta property="og:site_name" content="木易Young&#39;s Blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="木易Young&#39;s Blog">
+<meta property="og:description" content="Welcome to my blog">
+
+
+<link rel="alternate" type="application/rss+xml" title="木易Young&#39;s Blog - Feed" href="/feed.xml">
+<script>
+  (function () {
+    try {
+      // Mark <html> as i18n-pending BEFORE first paint. CSS hides all
+      // [data-i18n] nodes (visibility:hidden, layout preserved) until
+      // i18n-boot.js finishes translating them, eliminating the language
+      // "flash/jump" on load. Removed by i18n-boot.js after translation.
+      document.documentElement.classList.add('i18n-pending');
+      // Safety net: if i18n-boot.js fails to load/run, reveal content after 3s
+      // so the page is never permanently blank.
+      setTimeout(function () {
+        document.documentElement.classList.remove('i18n-pending');
+      }, 3000);
+
+      // Theme init only. Language defaulting + early i18n translation are now
+      // handled by i18n-boot.js (loaded at end of <body>, before main.js), which
+      // runs synchronously and translates static [data-i18n] nodes before paint.
+      var storageKey = 'chirping-gridea-theme';
+      var theme = localStorage.getItem(storageKey);
+      var mode = 'auto';
+      var resolvedTheme = 'light';
+
+      if (theme === 'dark' || theme === 'light') {
+        resolvedTheme = theme;
+      } else if (mode === 'dark') {
+        resolvedTheme = 'dark';
+      } else if (mode === 'light') {
+        resolvedTheme = 'light';
+      } else if (
+        window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches
+      ) {
+        resolvedTheme = 'dark';
+      }
+
+      document.documentElement.setAttribute('data-theme', resolvedTheme);
+    } catch (e) {}
+  })();
+</script>
+
+
+
+<meta name="description" content="ToolBox是业余学习VBA编写的Excel插件，整合了部分网友的代码，也新写了很多功能。">
+<link rel="canonical" href="https://my-youth.github.io/post/toolbox/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Excel工具箱-ToolBox","url":"https://my-youth.github.io/post/toolbox/","description":"ToolBox是业余学习VBA编写的Excel插件，整合了部分网友的代码，也新写了很多功能。","datePublished":"2020-04-14T19:58:54+08:00","dateModified":"2026-10-03T20:01:34+08:00","author":{"@type":"Person","name":"木易Young's Blog"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"木易Young's Blog"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://my-youth.github.io","name":"木易Young's Blog","position":1},{"@type":"ListItem","item":"https://my-youth.github.io/post/toolbox/","name":"Excel工具箱-ToolBox","position":2}]}</script>
+<meta property="og:title" content="Excel工具箱-ToolBox">
+<meta property="og:description" content="ToolBox是业余学习VBA编写的Excel插件，整合了部分网友的代码，也新写了很多功能。">
+<meta property="og:url" content="https://my-youth.github.io/post/toolbox/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="木易Young's Blog">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://my-youth.github.io/post/toolbox/">
+<meta name="twitter:title" content="Excel工具箱-ToolBox">
+<meta name="twitter:description" content="ToolBox是业余学习VBA编写的Excel插件，整合了部分网友的代码，也新写了很多功能。">
+<meta name="twitter:image" content="/images/avatar.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="木易Young's Blog">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icons/icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/icons/icon-192x192.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/images/icons/icon-192x192.png">
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js')}</script>
+</head>
+<body
+  data-theme-mode="auto"
+  style="--primary:#2a408e;--sidebar-width:280px;--content-max-width:800pxpx;"
+>
+<a class="skip-link" href="#main" data-i18n="ui.skip">跳到正文</a>
+<aside class="sidebar" id="sidebar">
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="sidebar-header">
+  <a class="avatar-wrap is-loading" href="/">
+    <img class="avatar-img is-loading" src="/images/avatar.png" alt="木易Young&#39;s Blog">
+  </a>
+  <a class="site-title" href="/">木易Young&#39;s Blog</a>
+  
+  <p class="site-bio">Welcome to my blog</p>
+  
+</header>
+
+<nav class="sidebar-nav" aria-label="Main Navigation">
+  <ul class="nav-list">
+    
+      
+      
+      
+      
+      
+      <li>
+        <a class="nav-link" href="/">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span data-i18n="nav.home">首页</span>
+          
+        </a>
+      </li>
+      
+      
+      
+      
+      
+      <li>
+        <a class="nav-link" href="/post">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="M4 6h16"/><path d="M4 18h16"/></svg>
+          <span>博客</span>
+          
+        </a>
+      </li>
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a class="nav-link" href="/memos">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2h8"/><path d="M9 2v3"/><path d="M15 2v3"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M7 10h10"/><path d="M7 14h10"/><path d="M7 18h6"/></svg>
+          <span data-i18n="nav.notes">闪念</span>
+          
+        </a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a class="nav-link" href="/archives/">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="3" x2="21" y1="9" y2="9"/><line x1="3" x2="21" y1="15" y2="15"/><line x1="9" x2="9" y1="3" y2="21"/><line x1="15" x2="15" y1="3" y2="21"/></svg>
+          <span data-i18n="nav.archives">归档</span>
+          
+        </a>
+      </li>
+      
+      
+      
+      
+      
+      <li>
+        <a class="nav-link" href="/tags">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"/><path d="M7 7h.01"/></svg>
+          <span data-i18n="nav.tags">标签</span>
+          
+        </a>
+      </li>
+      
+      
+      
+      
+      
+      <li>
+        <a class="nav-link" href="https://my-youth.github.io/post/software">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="M4 6h16"/><path d="M4 18h16"/></svg>
+          <span>软件</span>
+          
+        </a>
+      </li>
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a class="nav-link" href="/links">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6"/><path d="M22 11h-6"/></svg>
+          <span data-i18n="nav.friends">友链</span>
+          
+        </a>
+      </li>
+      
+      
+      
+      
+      
+      <li>
+        <a class="nav-link" href="https://my-youth.github.io/guide/">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="M4 6h16"/><path d="M4 18h16"/></svg>
+          <span>导航</span>
+          
+        </a>
+      </li>
+      
+      
+      
+      
+      
+      <li>
+        <a class="nav-link" href="/post/about">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          <span data-i18n="nav.about">关于</span>
+          
+        </a>
+      </li>
+      
+    
+  </ul>
+</nav>
+
+<footer class="sidebar-bottom">
+  <div class="sidebar-actions">
+    
+    <button class="action-btn theme-toggle-btn" id="sidebar-theme-toggle" type="button" aria-label="Toggle Theme">
+      <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+    </button>
+    <span class="sidebar-actions-separator" aria-hidden="true"></span>
+    
+    <div class="social-links">
+      
+      <a class="social-link" href="https://github.com/my-youth" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+      </a>
+      
+      
+      
+      <a class="social-link" href="/feed.xml" target="_blank" rel="noopener" aria-label="Feed">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+</aside>
+
+<button class="sidebar-mask" id="sidebar-mask" type="button" aria-label="关闭侧栏" data-i18n-aria="ui.closeSidebar"></button>
+
+<div class="main-wrapper">
+  <div class="shell">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="mobile-nav-toggle" id="sidebar-toggle" type="button" aria-label="Toggle Sidebar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="12" y2="12"/><line x1="3" x2="21" y1="6" y2="6"/><line x1="3" x2="21" y1="18" y2="18"/></svg>
+        </button>
+        <a class="topbar-site-title" href="/">木易Young&#39;s Blog</a>
+        <div class="breadcrumbs">
+          <a href="/" data-i18n="nav.home">Home</a><span class="separator">/</span><span class="crumb-current">Excel工具箱-ToolBox</span>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <button class="topbar-search" id="header-search-trigger" type="button" aria-label="Search" data-i18n-aria="ui.search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <span data-i18n="search.placeholder">搜索站内内容</span>
+          <kbd>/</kbd>
+        </button>
+        <button class="header-action-btn" id="header-lang-btn" type="button" aria-label="Language" data-i18n-aria="ui.language">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+        </button>
+      </div>
+    </header>
+
+    
+
+    <div class="main-container">
+      <div class="main-column">
+        <main id="main" class="content-area">
+          
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">Excel工具箱-ToolBox</h1>
+    
+    <p class="post-summary" data-decode-entities="true">ToolBox是业余学习VBA编写的Excel插件，整合了部分网友的代码，也新写了很多功能。</p>
+    
+    <div class="post-meta">
+      <span class="post-meta-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+        <time datetime="2020-04-14">2020-04-14</time>
+      </span>
+      
+      
+        <span class="post-meta-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>3 <span data-i18n="post.readingTime">min read</span></span>
+        </span>
+      
+      
+        
+          <a class="post-meta-item taxon-meta-item taxon-meta-item--tag" href="/tag/ruan-jian/">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 11 3.83A2 2 0 0 0 9.59 3H4a1 1 0 0 0-1 1v5.59A2 2 0 0 0 3.83 11l9.58 9.59a2 2 0 0 0 2.83 0l4.35-4.35a2 2 0 0 0 0-2.83Z"/><path d="M7 7h.01"/></svg>
+            <span>软件</span>
+          </a>
+        
+          <a class="post-meta-item taxon-meta-item taxon-meta-item--tag" href="/tag/excel/">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 11 3.83A2 2 0 0 0 9.59 3H4a1 1 0 0 0-1 1v5.59A2 2 0 0 0 3.83 11l9.58 9.59a2 2 0 0 0 2.83 0l4.35-4.35a2 2 0 0 0 0-2.83Z"/><path d="M7 7h.01"/></svg>
+            <span>Excel</span>
+          </a>
+        
+      
+      
+      
+    </div>
+  </header>
+
+  
+
+  <div class="post-content prose" id="post-content">
+    <p>ToolBox是业余学习VBA编写的Excel插件，整合了部分网友的代码，也新写了很多功能。</p>
+<!-- more -->
+<p>从2018年初开始学习VBA，学习过程中，不断遇到实际需要解决的问题，于是萌生了编写一个工具的想法，ToolBox就此诞生了。此过程中参考借鉴了很多网友的代码，也整合了进来，现在全部释放出来，仅供参考使用。</p>
+<p><img src="https://s1.ax1x.com/2020/04/24/Jr09MD.png" alt="" /></p>
+<blockquote>
+<p>下载地址：<a href="https://github.com/my-youth/ToolBox/releases">Github</a> <a href="https://pan.baidu.com/s/14coXQLpKg1moJCYvOfzMGg">百度网盘</a> <a href="https://cloud.189.cn/web/share?code=eABnAbIvQNrm&amp;pwd=oiz4#oiz4">天翼云盘</a></p>
+</blockquote>
+<hr />
+<h2 id="heading">安装方法：</h2>
+<p><strong>重要提示：x64版本仅用于64位Office（<a href="https://support.microsoft.com/zh-cn/office/%E5%85%B3%E4%BA%8E-office%EF%BC%9A%E6%88%91%E4%BD%BF%E7%94%A8%E7%9A%84%E6%98%AF%E5%93%AA%E4%B8%AA%E7%89%88%E6%9C%AC%E7%9A%84-office%EF%BC%9F-932788b8-a3ce-44bf-bb09-e334518b8b19">版本查看方式</a>），缺少方骥的汉字转拼音功能。</strong></p>
+<ol>
+<li>将ToolBox.xlam文件复制到Office加载项文件夹：<code>%userprofile%\AppData\Roaming\Microsoft\AddIns</code>；<br />
+<img src="https://s1.ax1x.com/2020/04/24/Jr0MLQ.png#pic_center" alt="" /></li>
+<li>回到Excel中，启用开发工具选项卡，在Excel加载项中勾选ToolBox即可使用。<br />
+<img src="https://s1.ax1x.com/2020/04/24/Jr0Giq.png#pic_center" alt="" /></li>
+</ol>
+<h2 id="heading-1">更新日志：</h2>
+<ol>
+<li>2020/12/20 新增：对工作表隐藏属性的批量设置</li>
+<li>2020/12/6 新增：对选定或所有单元格的批注统一设置</li>
+<li>2020/8/30 新增：整合Ron de Bruin的表驱动生成QAT菜单工具</li>
+<li>2020/8/30 新增：QAT快速访问工具栏添加常用命令按钮</li>
+<li>2020/6/27 新增：整合<a href="https://weibo.com/2190827182/BAeh1xbd9">Excel大全_方骥</a>的汉字转拼音功能</li>
+</ol>
+<h2 id="heading-2">主要功能</h2>
+<h3 id="1-">1. 选项卡功能</h3>
+<ol>
+<li>常用功能。整合Excel各个选项卡中常用的命令，如清除、冻结窗格、排序和筛选、数据透视向导等；<br />
+<img src="https://s1.ax1x.com/2020/04/24/Jr0oFI.png#pic_center" alt="常用功能" /></li>
+<li>BOE工具。是针对BOE开发的方便工作的工具。除了跳转命令外， 主要有加权Cycle Time的计算、字符合并的Plus版本和基板切割计算；<br />
+<img src="https://s1.ax1x.com/2020/04/24/Jr07fP.png#pic_center" alt="BOE工具" /></li>
+<li>数据处理。主要有区域转图、字符的合并和提取、表单处理、单元格处理、VBA功能的加解密；<br />
+<img src="https://s1.ax1x.com/2020/04/24/Jr0L6S.png#pic_center" alt="数据处理" /></li>
+<li>其他小工具。有从图表标签转移过来的取色器、二维码功能、翻译插件、个人所得税计算、进制转换、词频分析、批量插入图片、文件树等。<br />
+<img src="https://s1.ax1x.com/2020/04/24/JrBSkn.png#pic_center" alt="工具集" /></li>
+<li>万能输入表。整合了<a href="http://www.ladeng6666.com/blog/">拉小登</a>的万能输入表，可以将二维表快速转换为一维表。<br />
+<img src="https://s1.ax1x.com/2020/04/24/JrBF6U.png#pic_center" alt="万能输入表" /></li>
+</ol>
+<h3 id="2-">2. 自定义函数</h3>
+<p>根据需求，编写了很多Function，包含“Y_”开头的函数和“P_”开头的函数，其中“P_”来自<a href="http://www.ladeng6666.com/blog/">拉小登</a>。<br />
+<img src="https://s1.ax1x.com/2020/04/24/JrBufx.png#pic_center" alt="Y_函数" /></p>
+
+  </div>
+
+  
+  <footer class="post-footer">
+    <div class="post-taxonomy-group">
+      <span class="post-tags-label" data-i18n="nav.tags">Tags</span>
+      <div class="post-tags">
+        
+          <a class="taxon-chip taxon-chip--tag" href="/tag/ruan-jian/">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 11 3.83A2 2 0 0 0 9.59 3H4a1 1 0 0 0-1 1v5.59A2 2 0 0 0 3.83 11l9.58 9.59a2 2 0 0 0 2.83 0l4.35-4.35a2 2 0 0 0 0-2.83Z"/><path d="M7 7h.01"/></svg>
+            <span>软件</span>
+          </a>
+        
+          <a class="taxon-chip taxon-chip--tag" href="/tag/excel/">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 11 3.83A2 2 0 0 0 9.59 3H4a1 1 0 0 0-1 1v5.59A2 2 0 0 0 3.83 11l9.58 9.59a2 2 0 0 0 2.83 0l4.35-4.35a2 2 0 0 0 0-2.83Z"/><path d="M7 7h.01"/></svg>
+            <span>Excel</span>
+          </a>
+        
+      </div>
+    </div>
+  </footer>
+  
+
+  
+
+<nav class="post-nav" aria-label="Post navigation">
+  
+  <a class="post-nav-card post-nav-prev" href="/post/jiulinghou/" rel="prev">
+    <div class="post-nav-body">
+      <p class="post-nav-label">
+        <svg class="post-nav-arrow post-nav-arrow-prev" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
+        <span data-i18n="post.previous">上一篇</span>
+      </p>
+      <p class="post-nav-title">《九零后》纪录片观后感</p>
+    </div>
+  </a>
+  
+
+  
+  <a class="post-nav-card post-nav-next" href="/post/qian-zi-wen/" rel="next">
+    <div class="post-nav-body">
+      <p class="post-nav-label">
+        <span data-i18n="post.next">下一篇</span>
+        <svg class="post-nav-arrow post-nav-arrow-next" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
+      </p>
+      <p class="post-nav-title">千字文-周兴嗣</p>
+    </div>
+  </a>
+  
+</nav>
+
+
+
+  
+
+</article>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const content = document.getElementById('post-content');
+  const tocList = document.getElementById('toc-list');
+  if (!content || !tocList) return;
+  const headings = content.querySelectorAll('h2, h3');
+  
+  if (headings.length === 0) {
+    document.getElementById('toc-container').style.display = 'none';
+    return;
+  }
+
+  headings.forEach((heading, index) => {
+    const id = 'heading-' + index;
+    heading.setAttribute('id', id);
+    
+    const link = document.createElement('a');
+    link.href = '#' + id;
+    link.className = 'toc-link';
+    if (heading.tagName === 'H3') link.style.paddingLeft = '16px';
+    link.textContent = heading.textContent;
+    
+    tocList.appendChild(link);
+  });
+
+  // Simple scroll spy
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        document.querySelectorAll('.toc-link').forEach(l => l.classList.remove('active'));
+        const activeLink = document.querySelector(`.toc-link[href="#${entry.target.id}"]`);
+        if (activeLink) activeLink.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-100px 0px -66%' });
+
+  headings.forEach(h => observer.observe(h));
+});
+</script>
+
+        </main>
+        <footer class="site-footer">
+          <div class="footer-inner">
+  <div class="footer-left">
+    
+      © <time id="footer-year"></time>
+      <a href="/" class="footer-author">木易Young&#39;s Blog</a>.
+      <span data-i18n="footer.rights">All rights reserved.</span>
+    
+  </div>
+  
+  <div class="footer-right">
+    
+      
+        <span data-i18n="footer.poweredBy">Powered by</span>
+        <a href="https://www.gridea.pro/" target="_blank" rel="noopener">Gridea Pro</a>.
+      
+      <span data-i18n="footer.theme">Theme</span>
+      <a href="https://github.com/Sunhaha520/Chirpy-Gridea" target="_blank" rel="noopener">Chirpy-Gridea</a>
+    
+  </div>
+</div>
+
+        </footer>
+      </div>
+
+      <aside class="panel-rail" id="panel-rail">
+        
+<div class="toc-container" id="toc-container">
+  <h2 class="toc-title" data-i18n="toc.title">Table of Contents</h2>
+  <nav class="toc-list" id="toc-list"></nav>
+</div>
+
+      </aside>
+    </div>
+  </div>
+</div>
+
+<button class="back-to-top" id="back-to-top" type="button" aria-label="返回顶部" data-i18n-aria="ui.backToTop">↑</button>
+
+<!-- Search Modal -->
+<div class="search-modal" id="search-modal">
+  <div class="search-modal-content">
+    <div class="search-modal-header">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" id="search-input" placeholder="搜索站内内容..." aria-label="搜索">
+      <button class="search-modal-close" id="search-close" type="button">Esc</button>
+    </div>
+    <div class="search-modal-results" id="search-results">
+      <div class="search-no-results">输入关键词开始搜索...</div>
+    </div>
+    <div class="search-modal-footer">
+      <div class="search-hints">
+        <span><kbd>↵</kbd> 选择</span>
+        <span><kbd>↑↓</kbd> 切换</span>
+        <span><kbd>Esc</kbd> 关闭</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="search-source" hidden>
+  
+    
+    <article
+      class="search-source-item"
+      data-link="/post/LearnAboutPython/"
+      data-date="2026-10-03"
+    >
+      <h3 class="search-source-title">Python学习笔记</h3>
+      <p class="search-source-abstract">
+        
+          Python学习笔记
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/pic_location/"
+      data-date="2024-09-28"
+    >
+      <h3 class="search-source-title">如何根据一张图片找到拍摄地</h3>
+      <p class="search-source-abstract">
+        
+          通过图片信息推理拍摄地，提示往互联网发送信息时，关注个人隐私泄露风险。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/Pythagorean_triple/"
+      data-date="2024-09-23"
+    >
+      <h3 class="search-source-title">寻找勾股数</h3>
+      <p class="search-source-abstract">
+        
+          从直观的、最简单的勾股数开始推到通用公式，直到推到完全公式。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/github-2fa-totp/"
+      data-date="2024-03-23"
+    >
+      <h3 class="search-source-title">Github 2FA TOTP验证</h3>
+      <p class="search-source-abstract">
+        
+          使用AI工具编写代码，实现了双因素认证的TOTP验证码计算。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/ren-zhi-jue-xing/"
+      data-date="2024-03-20"
+    >
+      <h3 class="search-source-title">《认知觉醒》读书笔记</h3>
+      <p class="search-source-abstract">
+        
+          2020年出版的《认知觉醒》读后感。保持学习积极性，以兴趣为基础，坚持“活到老，学到老”，并做好相应的笔记。推及生活，则要吾日三省吾身，通过不断地反思来提升为人处世能力。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/episode_from_iimdb/"
+      data-date="2024-01-24"
+    >
+      <h3 class="search-source-title">追剧助手from IMDB</h3>
+      <p class="search-source-abstract">
+        
+          使用AI工具完成代码编写，实现从IMDB网站抓取信息。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/diary-20230903/"
+      data-date="2023-09-03"
+    >
+      <h3 class="search-source-title">业务推进自上而下好还是自下而上好？</h3>
+      <p class="search-source-abstract">
+        
+          工作中的点滴反思：面对消极懈怠的员工，某些业务的推进模式，自上而下总是优于自下而上。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/oracle-sql/"
+      data-date="2022-12-26"
+    >
+      <h3 class="search-source-title">Oracle SQL和帆软学习备忘录</h3>
+      <p class="search-source-abstract">
+        
+          记录学习SQL和帆软期间，一些重要知识点和语法。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/OpenSourceSoftwareMirrorSite/"
+      data-date="2022-10-17"
+    >
+      <h3 class="search-source-title">开源软件镜像站</h3>
+      <p class="search-source-abstract">
+        
+          开源的力量无疑是强大的，对于初学者非常友好，除了Github外，文章里的站点主要囊括了世界上比较知名的开源软件和系统。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/bilibili-iframe/"
+      data-date="2022-04-10"
+    >
+      <h3 class="search-source-title">html iframe播放B站视频</h3>
+      <p class="search-source-abstract">
+        
+          在博客中加入iframe，可以在网页上播放视频。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/sqllq/"
+      data-date="2022-03-24"
+    >
+      <h3 class="search-source-title">神奇浏览器停运</h3>
+      <p class="search-source-abstract">
+        
+          神奇浏览器原本由武汉大学的个人开发者开发，具有体积小巧、功能齐全而强大的优点，奈何其内置的广告拦截功能过于强大，动了国内视频网站巨头的利益奶酪，被迫宣布破产停运，版本号停在了0.9.8.4。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/fake-pe/"
+      data-date="2022-03-21"
+    >
+      <h3 class="search-source-title">冒牌微PE玄机暗藏，且看如何扒皮探底</h3>
+      <p class="search-source-abstract">
+        
+          PE软件作为装机必备软件，但良莠不齐，层出不穷的冒牌者充斥着互联网，扰人视线。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/markdown-demo/"
+      data-date="2021-07-12"
+    >
+      <h3 class="search-source-title">Markdown简明教程</h3>
+      <p class="search-source-abstract">
+        
+          本文原文是由Markdown生成
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/C1-Driver&#39;s-license/"
+      data-date="2021-07-12"
+    >
+      <h3 class="search-source-title">C1驾照笔记</h3>
+      <p class="search-source-abstract">
+        
+          学习C1驾照期间的重点内容整理。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/jiulinghou/"
+      data-date="2021-07-11"
+    >
+      <h3 class="search-source-title">《九零后》纪录片观后感</h3>
+      <p class="search-source-abstract">
+        
+          《九零后》一片讲述的是一帮耄耋之年的西南联大校友，以访谈形式追忆过往，从联大成立，到学生和老师不远万里齐聚昆明，再到大家的艰苦求学历程，最后新中国成立后，曾经的校友突破重重困阻，回到祖国，建设新中国。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/toolbox/"
+      data-date="2020-04-14"
+    >
+      <h3 class="search-source-title">Excel工具箱-ToolBox</h3>
+      <p class="search-source-abstract">
+        
+          ToolBox是业余学习VBA编写的Excel插件，整合了部分网友的代码，也新写了很多功能。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/qian-zi-wen/"
+      data-date="2019-12-21"
+    >
+      <h3 class="search-source-title">千字文-周兴嗣</h3>
+      <p class="search-source-abstract">
+        
+          千字文，由南北朝时期梁朝散骑侍郎、给事中周兴嗣编纂、一千个汉字组成的韵文（在隋唐之前，不押韵、不对仗的文字，被称为“笔”，而非“文”）。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/software/"
+      data-date="2019-11-27"
+    >
+      <h3 class="search-source-title">软件下载导航</h3>
+      <p class="search-source-abstract">
+        
+          如果单击不能进行下载，请复制链接用迅雷等工具进行下载。
+
+
+Adobe软件
+Autodesk软件
+Corel软件
+[Micros&amp;hellip;
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/about/"
+      data-date="2019-01-25"
+    >
+      <h3 class="search-source-title">关于</h3>
+      <p class="search-source-abstract">
+        
+          欢迎来到我的小站呀，很高兴遇见你！🤝
+
+🏠 关于本站
+本个人博客纯属兴趣建立，一方面是为了收集一些软件下载地址、好用的网站链接，另一方面也是为了分享一些软件相关的知识，方便自己，方便他人。
+👨‍...
+        
+      </p>
+    </article>
+    
+  
+</div>
+
+<script src="/scripts/i18n-boot.js"></script>
+<script src="/scripts/main.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/lib/highlight.min.js" defer></script>
+
+<!-- KaTeX math rendering removed to match cactus rendering behavior -->
+
+
+
+<script>console.log("\n%c ✦ Gridea Pro v1.3.0-beta.2 %c · Theme: Chirpy-Gridea v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+</html>
+

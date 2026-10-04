@@ -1,0 +1,2019 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/styles/base16/atelier-forest-light.min.css">
+<meta name="theme-color" content="#2a408e">
+<meta name="generator" content="Gridea Pro 1.3.0-beta.2">
+<title>Oracle SQL和帆软学习备忘录 - 木易Young&#39;s Blog</title>
+<meta name="description" content="Welcome to my blog">
+<meta name="generator" content="Gridea Pro">
+<meta property="og:site_name" content="木易Young&#39;s Blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="木易Young&#39;s Blog">
+<meta property="og:description" content="Welcome to my blog">
+
+
+<link rel="alternate" type="application/rss+xml" title="木易Young&#39;s Blog - Feed" href="/feed.xml">
+<script>
+  (function () {
+    try {
+      // Mark <html> as i18n-pending BEFORE first paint. CSS hides all
+      // [data-i18n] nodes (visibility:hidden, layout preserved) until
+      // i18n-boot.js finishes translating them, eliminating the language
+      // "flash/jump" on load. Removed by i18n-boot.js after translation.
+      document.documentElement.classList.add('i18n-pending');
+      // Safety net: if i18n-boot.js fails to load/run, reveal content after 3s
+      // so the page is never permanently blank.
+      setTimeout(function () {
+        document.documentElement.classList.remove('i18n-pending');
+      }, 3000);
+
+      // Theme init only. Language defaulting + early i18n translation are now
+      // handled by i18n-boot.js (loaded at end of <body>, before main.js), which
+      // runs synchronously and translates static [data-i18n] nodes before paint.
+      var storageKey = 'chirping-gridea-theme';
+      var theme = localStorage.getItem(storageKey);
+      var mode = 'auto';
+      var resolvedTheme = 'light';
+
+      if (theme === 'dark' || theme === 'light') {
+        resolvedTheme = theme;
+      } else if (mode === 'dark') {
+        resolvedTheme = 'dark';
+      } else if (mode === 'light') {
+        resolvedTheme = 'light';
+      } else if (
+        window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches
+      ) {
+        resolvedTheme = 'dark';
+      }
+
+      document.documentElement.setAttribute('data-theme', resolvedTheme);
+    } catch (e) {}
+  })();
+</script>
+
+
+
+<meta name="description" content="记录学习SQL和帆软期间，一些重要知识点和语法。">
+<link rel="canonical" href="https://my-youth.github.io/post/oracle-sql/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Oracle SQL和帆软学习备忘录","url":"https://my-youth.github.io/post/oracle-sql/","description":"记录学习SQL和帆软期间，一些重要知识点和语法。","datePublished":"2022-12-26T03:51:21+08:00","dateModified":"2026-10-03T19:52:33+08:00","author":{"@type":"Person","name":"木易Young's Blog"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"木易Young's Blog"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://my-youth.github.io","name":"木易Young's Blog","position":1},{"@type":"ListItem","item":"https://my-youth.github.io/post/oracle-sql/","name":"Oracle SQL和帆软学习备忘录","position":2}]}</script>
+<meta property="og:title" content="Oracle SQL和帆软学习备忘录">
+<meta property="og:description" content="记录学习SQL和帆软期间，一些重要知识点和语法。">
+<meta property="og:url" content="https://my-youth.github.io/post/oracle-sql/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="木易Young's Blog">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://my-youth.github.io/post/oracle-sql/">
+<meta name="twitter:title" content="Oracle SQL和帆软学习备忘录">
+<meta name="twitter:description" content="记录学习SQL和帆软期间，一些重要知识点和语法。">
+<meta name="twitter:image" content="/images/avatar.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="木易Young's Blog">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/icons/icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/images/icons/icon-192x192.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/images/icons/icon-192x192.png">
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/sw.js')}</script>
+</head>
+<body
+  data-theme-mode="auto"
+  style="--primary:#2a408e;--sidebar-width:280px;--content-max-width:800pxpx;"
+>
+<a class="skip-link" href="#main" data-i18n="ui.skip">跳到正文</a>
+<aside class="sidebar" id="sidebar">
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="sidebar-header">
+  <a class="avatar-wrap is-loading" href="/">
+    <img class="avatar-img is-loading" src="/images/avatar.png" alt="木易Young&#39;s Blog">
+  </a>
+  <a class="site-title" href="/">木易Young&#39;s Blog</a>
+  
+  <p class="site-bio">Welcome to my blog</p>
+  
+</header>
+
+<nav class="sidebar-nav" aria-label="Main Navigation">
+  <ul class="nav-list">
+    
+      
+      
+      
+      
+      
+      <li>
+        <a class="nav-link" href="/">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span data-i18n="nav.home">首页</span>
+          
+        </a>
+      </li>
+      
+      
+      
+      
+      
+      <li>
+        <a class="nav-link" href="/post">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="M4 6h16"/><path d="M4 18h16"/></svg>
+          <span>博客</span>
+          
+        </a>
+      </li>
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a class="nav-link" href="/memos">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2h8"/><path d="M9 2v3"/><path d="M15 2v3"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M7 10h10"/><path d="M7 14h10"/><path d="M7 18h6"/></svg>
+          <span data-i18n="nav.notes">闪念</span>
+          
+        </a>
+      </li>
+      
+      
+      
+      
+      
+      
+      
+      <li>
+        <a class="nav-link" href="/archives/">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><line x1="3" x2="21" y1="9" y2="9"/><line x1="3" x2="21" y1="15" y2="15"/><line x1="9" x2="9" y1="3" y2="21"/><line x1="15" x2="15" y1="3" y2="21"/></svg>
+          <span data-i18n="nav.archives">归档</span>
+          
+        </a>
+      </li>
+      
+      
+      
+      
+      
+      <li>
+        <a class="nav-link" href="/tags">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z"/><path d="M7 7h.01"/></svg>
+          <span data-i18n="nav.tags">标签</span>
+          
+        </a>
+      </li>
+      
+      
+      
+      
+      
+      <li>
+        <a class="nav-link" href="https://my-youth.github.io/post/software">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="M4 6h16"/><path d="M4 18h16"/></svg>
+          <span>软件</span>
+          
+        </a>
+      </li>
+      
+      
+      
+      
+      
+        
+      
+      <li>
+        <a class="nav-link" href="/links">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6"/><path d="M22 11h-6"/></svg>
+          <span data-i18n="nav.friends">友链</span>
+          
+        </a>
+      </li>
+      
+      
+      
+      
+      
+      <li>
+        <a class="nav-link" href="https://my-youth.github.io/guide/">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="M4 6h16"/><path d="M4 18h16"/></svg>
+          <span>导航</span>
+          
+        </a>
+      </li>
+      
+      
+      
+      
+      
+      <li>
+        <a class="nav-link" href="/post/about">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+          <span data-i18n="nav.about">关于</span>
+          
+        </a>
+      </li>
+      
+    
+  </ul>
+</nav>
+
+<footer class="sidebar-bottom">
+  <div class="sidebar-actions">
+    
+    <button class="action-btn theme-toggle-btn" id="sidebar-theme-toggle" type="button" aria-label="Toggle Theme">
+      <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+      <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+    </button>
+    <span class="sidebar-actions-separator" aria-hidden="true"></span>
+    
+    <div class="social-links">
+      
+      <a class="social-link" href="https://github.com/my-youth" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+      </a>
+      
+      
+      
+      <a class="social-link" href="/feed.xml" target="_blank" rel="noopener" aria-label="Feed">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+</aside>
+
+<button class="sidebar-mask" id="sidebar-mask" type="button" aria-label="关闭侧栏" data-i18n-aria="ui.closeSidebar"></button>
+
+<div class="main-wrapper">
+  <div class="shell">
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="mobile-nav-toggle" id="sidebar-toggle" type="button" aria-label="Toggle Sidebar">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="12" y2="12"/><line x1="3" x2="21" y1="6" y2="6"/><line x1="3" x2="21" y1="18" y2="18"/></svg>
+        </button>
+        <a class="topbar-site-title" href="/">木易Young&#39;s Blog</a>
+        <div class="breadcrumbs">
+          <a href="/" data-i18n="nav.home">Home</a><span class="separator">/</span><span class="crumb-current">Oracle SQL和帆软学习备忘录</span>
+        </div>
+      </div>
+
+      <div class="topbar-right">
+        <button class="topbar-search" id="header-search-trigger" type="button" aria-label="Search" data-i18n-aria="ui.search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <span data-i18n="search.placeholder">搜索站内内容</span>
+          <kbd>/</kbd>
+        </button>
+        <button class="header-action-btn" id="header-lang-btn" type="button" aria-label="Language" data-i18n-aria="ui.language">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></svg>
+        </button>
+      </div>
+    </header>
+
+    
+
+    <div class="main-container">
+      <div class="main-column">
+        <main id="main" class="content-area">
+          
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">Oracle SQL和帆软学习备忘录</h1>
+    
+    <p class="post-summary" data-decode-entities="true">记录学习SQL和帆软期间，一些重要知识点和语法。</p>
+    
+    <div class="post-meta">
+      <span class="post-meta-item">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+        <time datetime="2022-12-26">2022-12-26</time>
+      </span>
+      
+      
+        <span class="post-meta-item">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>49 <span data-i18n="post.readingTime">min read</span></span>
+        </span>
+      
+      
+        
+          <a class="post-meta-item taxon-meta-item taxon-meta-item--tag" href="/tag/fan-ruan/">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 11 3.83A2 2 0 0 0 9.59 3H4a1 1 0 0 0-1 1v5.59A2 2 0 0 0 3.83 11l9.58 9.59a2 2 0 0 0 2.83 0l4.35-4.35a2 2 0 0 0 0-2.83Z"/><path d="M7 7h.01"/></svg>
+            <span>帆软</span>
+          </a>
+        
+          <a class="post-meta-item taxon-meta-item taxon-meta-item--tag" href="/tag/sql/">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 11 3.83A2 2 0 0 0 9.59 3H4a1 1 0 0 0-1 1v5.59A2 2 0 0 0 3.83 11l9.58 9.59a2 2 0 0 0 2.83 0l4.35-4.35a2 2 0 0 0 0-2.83Z"/><path d="M7 7h.01"/></svg>
+            <span>SQL</span>
+          </a>
+        
+          <a class="post-meta-item taxon-meta-item taxon-meta-item--tag" href="/tag/bi-ji/">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 11 3.83A2 2 0 0 0 9.59 3H4a1 1 0 0 0-1 1v5.59A2 2 0 0 0 3.83 11l9.58 9.59a2 2 0 0 0 2.83 0l4.35-4.35a2 2 0 0 0 0-2.83Z"/><path d="M7 7h.01"/></svg>
+            <span>笔记</span>
+          </a>
+        
+      
+      
+      
+    </div>
+  </header>
+
+  
+
+  <div class="post-content prose" id="post-content">
+    <p>记录学习SQL和帆软期间，一些重要知识点和语法。</p>
+<!-- more -->
+<h2 id="sql">一、SQL结构</h2>
+<p>SQL经典结构如下：</p>
+<pre><code class="language-sql">SELECT 字段名1,          --数据表中的字段名称，每个字段名之间用半角“,”逗号隔开，为了美观和结构可换行
+       字段名2,          --最后一个字段名后，不需要逗号
+       ……
+  FROM 数据表名           --系统中的表，表可以进行重命名
+ WHERE 字段名1='值1'
+   AND 字段名2&gt;'值2'      --多个条件语句可用AND、OR连接
+</code></pre>
+<h3 id="1-">1. 缩进对齐和注释</h3>
+<p>首先要强调的是，无论是SQL或是其他编程语言，缩进对齐和注释是第一步需要进行规范的。缩进对齐不仅是为了美观，更重要的是可以直观地了解层次结构，便于查阅过去自己写的或是他人的内容。适当的注释是为了便于更快速地理解写的内容，尤其是新字段或函数的定义与作用。所以，无论是初学者或是老手，书写时都应当适当的缩进对齐和添加注释，共勉谨记。</p>
+<h3 id="2-">2. 函数命名</h3>
+<p>其次是无论是SQL或是其他编程语言，函数命名通常都与其英语单词有关，比如“Select”有“选择”之意，“From”有“从……”之意，“Where”有“在哪种情况下”之意，所以上述示例可理解为，从名为“数据表名”的数据表中，选择名为“字段名1”、“字段名2”的字段，条件是<code>字段名1=值1</code>并且<code>字段名2&gt;值2</code>，将结果整理为一张新的表单内容。编程语言中使用的单词比较单一，且不同编程语言之前使用的单词大都相同，词汇量从来不是变成要考量的点，所以自己在命名新字段名称时，第一要避免与内置函数或方法名重复，第二是命名代表了新的字段的功能或意义，应当慎用诸如a、b、c等无实际意义的字母组合。</p>
+<p>SQL中函数字母大小写没有区分，所以命名新函数、新字段不可单词重复，书写SQL查询语句时可以大写，也可以小写。</p>
+<h3 id="3-select">3. SELECT</h3>
+<p>后面跟随的是字段名，也就是列名。当使用聚合函数（SUM、AVG等）或者公式对字段进行了重新计算之后，可以将其重命名为新的字段，如：</p>
+<pre><code class="language-sql">SELECT COUNT(STUDENT_NAME) AS STUDENT_NUM  --设置字段别名
+  FROM SCORE_LIST
+</code></pre>
+<p>其中的AS可以省略不写。</p>
+<ul>
+<li>
+<p>当写为下面的形式时，表示将数据表中的所有字段取出：</p>
+<pre><code class="language-sql">--取出所有字段
+SELECT *
+  FROM SCORE_LIST
+</code></pre>
+</li>
+<li>
+<p>当写为下面的形式时，表示取出其中的不重复数据：</p>
+<pre><code class="language-sql">--去除重复数据
+SELECT DISTINCT CLASS
+  FROM SCORE_LIST
+</code></pre>
+</li>
+</ul>
+<h3 id="4-from">4. FROM</h3>
+<p>后面跟随的是数据表名，参考下表，格式为：表所在用户+.+表名+DB Link，例如：EDBADM. EDS_LOT_HIST或FABADM.LOTHISTORY@FAB2FR。当需要将表复制到BO时，DB Link中的FR需要修改为MDW，如：@FAB2MDW。Webreport中的监控代码也需要修改为MDW。</p>
+<table>
+<thead>
+<tr>
+<th><strong>表所在用户</strong></th>
+<th><strong>表名</strong></th>
+<th><strong>DB Link</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EDBADM</td>
+<td>EDS开头的表</td>
+<td>不需要</td>
+</tr>
+<tr>
+<td>WEBADM</td>
+<td>DM开头的表</td>
+<td>不需要</td>
+</tr>
+<tr>
+<td>YMSADM</td>
+<td>EDA开头的表</td>
+<td>@YMS2FR</td>
+</tr>
+<tr>
+<td>FABADM</td>
+<td>如：TPFOMPOLICY</td>
+<td>@FAB2FR</td>
+</tr>
+<tr>
+<td>MOADM</td>
+<td></td>
+<td>@MOD2FR</td>
+</tr>
+<tr>
+<td>M2ADM</td>
+<td></td>
+<td>@M22FR</td>
+</tr>
+</tbody>
+</table>
+<h3 id="5-where">5. WHERE</h3>
+<p>后面跟随的是条件，可以使用的逻辑函数有AND、OR、NOT，判断相关&gt;、&gt;=、&lt;、&lt;=、=、&lt;&gt;，、BETWEEN…AND…、IN、Like、||。</p>
+<ul>
+<li>
+<p>AND、OR可以相互组合成更为复杂的逻辑，例如：</p>
+<pre><code class="language-sql">WHERE (条件1 AND 条件2) OR (条件3 AND 条件4)
+</code></pre>
+</li>
+<li>
+<p>=、&lt;&gt;、!=、^=：第一个表示等于，后面几个都表示不等于。</p>
+<p>不同编程语言中，对此写法不一样，例如C语言中“=”表示赋值，只有“==”才是数学含义的相等，C语言中不等于记为“!=”。</p>
+<blockquote>
+<p><strong>尤其需要注意的是&gt;、&lt;符号不能写为全角的＞、＜，&gt;=、&lt;=不能写为≥、≤，也就是字母和符号都是半角，通俗地说是英文输入法状态的符号。</strong></p>
+</blockquote>
+</li>
+<li>
+<p>BETWEEN…AND…：下面两种写法是等效的，都表示介于：</p>
+<pre><code class="language-sql">WHERE 字段1 BETWEEN '值1' AND '值2'
+</code></pre>
+<p>相当于是：</p>
+<pre><code class="language-sql">WHERE 字段1 &gt;= '值1'
+  AND 字段1 &lt;= '值2'
+</code></pre>
+</li>
+<li>
+<p>IN相当于OR函数的简写，下面两种写法是等效的：</p>
+<pre><code class="language-sql">WHERE 字段1='值1'
+   OR 字段1='值2'
+   OR 字段1='值3'
+</code></pre>
+<p>相当于是：</p>
+<pre><code class="language-sql">WHERE 字段1 IN ('值1','值2','值3')
+</code></pre>
+</li>
+<li>
+<p>Like：该函数是SQL里面的通配符，SQL支持两种通配符：%和_，其中：</p>
+<p>%表示0个或若干个字符，</p>
+<p>_表示1个字符。</p>
+<p>例如在数据表中有ABC、ABC1、ABC2、AB1、ABC123，当使用下面的查询时取出ABC、ABC1、ABC2、ABC123。</p>
+<pre><code class="language-sql">SELECT 字符
+  FROM 数据表
+ WHERE 字符 LIKE 'ABC%'
+</code></pre>
+<p>当使用下面的查询时取出ABC1、ABC2，<strong>用“_”相当于同时限制了字符串的长度</strong>。</p>
+<pre><code class="language-sql">SELECT 字符
+  FROM 数据表
+ WHERE 字符 LIKE 'ABC_'
+</code></pre>
+<blockquote>
+<p>需要注意的是LIKE的查询方式是模糊查询，通常存在效率问题，在数据量较大是，尽量避免使用Like。</p>
+</blockquote>
+</li>
+<li>
+<p>||表示将多个字符串拼接为一个，WHERE条件中可以使用，SELECT字段中亦可使用。例如：</p>
+<pre><code class="language-sql">SELECT 字段名1||字段名2 字段名3
+  FROM 数据表
+</code></pre>
+<p>表示将字段名1和字段名2拼接为一个字符串，并重命名为字段名3。</p>
+<pre><code class="language-sql">SELECT *
+  FROM 数据表
+ WHERE 字段名1||字段名2 = '值1'
+</code></pre>
+<p>表示取出条件为拼接之后的字符串为值1时的所有数据。</p>
+</li>
+<li>
+<p>当然WHERE子句中还可以使用其他的函数配合查询，例如SUBSTR、LENGTH、regexp_like，但不能使用聚合函数（SUM、COUNT、MAX、MIN、AVG），具体函数语法与含义，通过后续的讲解或互联网检索进行学习使用。</p>
+</li>
+</ul>
+<h3 id="6-group-by">6. GROUP BY</h3>
+<p>当在SELECT字段中使用了聚合函数（SUM、COUNT、MAX、MIN、AVG）时，需要指定计算时按照哪些字段进行汇总，比如是按照天别和设备别求和，或是设备别求最值，此时需要在WHERE所有条件之后补充GROUP BY，添加分组的字段。</p>
+<p>例1，需要统计全校各班级各科目学生平均成绩，成绩表示例如下：</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Student_Name</th>
+<th>Subject</th>
+<th>Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一班</td>
+<td>张三</td>
+<td>语文</td>
+<td>92</td>
+</tr>
+<tr>
+<td>一班</td>
+<td>张三</td>
+<td>数学</td>
+<td>93</td>
+</tr>
+<tr>
+<td>一班</td>
+<td>张三</td>
+<td>英语</td>
+<td>89</td>
+</tr>
+</tbody>
+</table>
+<p>按照需求，此处需要使用聚合函数：</p>
+<pre><code class="language-sql">SELECT CLASS,
+       SUBJECT,
+       AVG(SCORE) AVG_SCORE
+  FROM SCORE_LIST 
+ GROUP BY CLASS,SUBJECT
+--此段SQL可以不写WHERE条件，表示将数据表中所有数据取出
+</code></pre>
+<p>例2：一维表转为二维表，即整理为类似于下述的表：</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Student_Name</th>
+<th>语文</th>
+<th>数学</th>
+<th>英语</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>一班</td>
+<td>张三</td>
+<td>92</td>
+<td>93</td>
+<td>89</td>
+</tr>
+<tr>
+<td>一班</td>
+<td>李四</td>
+<td>94</td>
+<td>88</td>
+<td>89</td>
+</tr>
+</tbody>
+</table>
+<p>使用下面的查询语句可以实现一维表转为二维表，重点是DECODE的使用，要求是数据表中没有重复的科目，即：数据表中不能有两行张三同学的语文成绩记录，否则求和之后将把两行成绩相加。DECODE语法可以参考[后文](#5. DECODE)。</p>
+<pre><code class="language-sql">SELECT CLASS,
+       STUDENT_NAME,
+       SUM(DECODE(SUBJECT,'语文',SCORE,0)) 语文,
+       SUM(DECODE(SUBJECT,'数学',SCORE,0)) 数学,
+       SUM(DECODE(SUBJECT,'英语',SCORE,0)) 英语
+  FROM SCORE_LIST
+ GROUP BY CLASS,STUDENT_NAME
+</code></pre>
+<p>有时候SELECT字段中，需要按照不同维度进行汇总，比如既要计算各班级各科目学生平均成绩，分组条件为班级和科目，又要计算各班级人数，分组条件为班级，那么此时的分组条件是不一致的，就不能直接使用GROUP BY，而要使用OVER函数进行聚合，将在后面的内容中说明。</p>
+<h3 id="7-order-by">7. ORDER BY</h3>
+<ul>
+<li>
+<p>ORDER BY，顾名思义是按照……（次序）进行排序，将需要排序的字段罗列其后。比如上述成绩单需要依次按照班级、学生姓名排序，那么可以在<strong>WHERE条件语句后使用，有GROUP BY的须在其之后使用：</strong></p>
+<pre><code class="language-sql">ORDER BY CLASS,STUDENT_NAME
+</code></pre>
+<p>ORDER BY中可以指定字段按照升序或降序排列，默认为升序，当需要使用降序时，在字段名后添加DESC即可，如下按照各班级各学科成绩降序排列：</p>
+<pre><code class="language-sql">SELECT CLASS,
+       SUBJECT,
+       STUDENT_NAME,
+       SCORE
+  FROM SCORE_LIST
+ ORDER BY CLASS,SUBJECT,SCORE DESC
+</code></pre>
+</li>
+<li>
+<p>自定义排序</p>
+<p>可以发现的是，排序结果里，班级是中文数字，生成的结果中并不是按照一、二、三依次排序，甚至有时候排得莫名其妙，默认中文排序一般与字符集相关，如果需要按照指定的顺序自定义排序，可以参考下面的写法：</p>
+<pre><code class="language-sql">ORDER BY DECODE(CLASS,'一班',1,'二班',2,'三班',3,'四班',4),SUBJECT,SCORE DESC
+</code></pre>
+<p>班级和次序号绑定为一组数据，有多少班级需要排序，就在后面加多少组。当然该方法同样可以用于其他任意字符串的自定义排序。</p>
+</li>
+<li>
+<p>中文排序</p>
+<p>利用DECODE实现自定义排序的方法仅限于字符串内容已知，且数量较少时。如果数量多，可以参考下面的排序方式。</p>
+<ul>
+<li>
+<p>按中文拼音进行排序：SCHINESE_PINYIN_M</p>
+<pre><code class="language-sql">ORDER BY NLSSORT(字段名,'NLS_SORT = SCHINESE_PINYIN_M')
+</code></pre>
+</li>
+<li>
+<p>按中文部首进行排序：SCHINESE_RADICAL_M</p>
+<pre><code class="language-sql">ORDER BY NLSSORT(字段名,'NLS_SORT = SCHINESE_STROKE_M')
+</code></pre>
+</li>
+<li>
+<p>按中文笔画进行排序：SCHINESE_STROKE_M</p>
+<pre><code class="language-sql">ORDER BY NLSSORT(字段名,'NLS_SORT = SCHINESE_RADICAL_M')
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="8-having">8. HAVING</h3>
+<h2 id="heading">二、单引号与双引号</h2>
+<h3 id="1--1">1. 单引号</h3>
+<ul>
+<li>
+<p>引用字符常量，即在两个单引号之间输入常量字符的内容，例如：</p>
+<pre><code class="language-sql">SELECT * 
+  FROM SCORE_LIST
+ WHERE CLASS='一班'
+</code></pre>
+</li>
+<li>
+<p>转义符，对紧随其后出现的字符(单引号)进行转义。由于单引号在Oracle中已经被定义，想要使用单引号本身时，就需要进行转义，例如：</p>
+<pre><code class="language-sql">SELECT '''' FROM DUAL          --结果为“'”，第二个单引号被作为转义符，第三个单引号被转义。
+SELECT 'NAME''''' FROM DUAL    --结果为“NAME''”，第2、4个单引号为转义符，第3、5个单引号被转义。
+SELECT 'NAME'||'''' FROM DUAL  --结果为“NAME'”，“||”表示字符串拼接
+</code></pre>
+</li>
+</ul>
+<h3 id="2--1">2. 双引号</h3>
+<ul>
+<li>
+<p>字段名或别名中含有特殊字符或关键字，需要使用双引号包住。</p>
+<pre><code class="language-sql">SELECT 'beijing' &quot;C S&quot; FROM DUAL         --字段名为“C S”，中间有空格
+SELECT 'beijing' &quot;from&quot; FROM DUAL   --字段名“from”为系统已定义关键字，需要引起来，另外还有date等
+</code></pre>
+</li>
+<li>
+<p>关键字、对象名、字段名、别名需要严格区分大小写时，需要使用双引号包住。</p>
+<pre><code class="language-sql">SELECT 'beijing' abc FROM DUAL      --字段名没有引起来，Oracle会自动大写；
+SELECT 'beijing' &quot;abc&quot; FROM DUAL    --字段名引起来之后，Oracle将严格区分大小写，非必要不应如此存数据
+</code></pre>
+</li>
+<li>
+<p>出现在TO_CHAR的格式字符串中时，双引号有特殊的作用， 就是将非法的格式符包装起来，避免出现ORA-01821: date format not recognized错误。 也就是说，去掉双引号和其包含的字符后，剩下的应该是一个合法的格式串。</p>
+<pre><code class="language-sql">SELECT TO_CHAR(sysdate,'hh24&quot;时&quot;mi&quot;分&quot;ss&quot;秒&quot;') results FROM DUAL --结果为“14时14分44秒”
+</code></pre>
+</li>
+</ul>
+<h2 id="heading-1">三、数据类型</h2>
+<h3 id="1--2">1. 字符串类型</h3>
+<ul>
+<li>
+<p>固定长度类型（CHAR/NCHAR) ：是指虽然输入的字段值小于该字段的限制长度，但是实际存储数据时，会先自动向右补足空格后，才将字段值的内容存储到数据块中；</p>
+</li>
+<li>
+<p>可变长度类型（VARCHAR2/NVARCHAR2)：是指当输入的字段值小于该字段的限制长度时，直接将字段值的内容存储到数据块中，而不会补上空白，这样可以节省数据块空间。</p>
+</li>
+</ul>
+<h3 id="2--2">2. 数值类型</h3>
+<ul>
+<li>NUMBER(P,S)：可以存放数据范围为10^-130^~10<sup>126</sup>（不包含该值）；</li>
+<li>INTEGER：用来存储整数。若插入、更新的数值有小数，则会被四舍五入；</li>
+<li>Float(n)：数n指示位的精度，可以存储的值的数目</li>
+</ul>
+<h3 id="3-">3. 日期类型</h3>
+<ul>
+<li>DATE：最常用的数据类型，日期数据类型存储日期和时间信息。虽然可以用字符或数字类型表示日期和时间信息，但是日期数据类型具有特殊关联的属性。为每个日期值，Oracle 存储以下信息： 世纪、 年、 月、 日期、 小时、 分钟和秒。一般占用7个字节的存储空间。</li>
+<li>TIMESTAMP：是一个7字节或12字节的定宽日期/时间数据类型，是DATE类型的扩展类型。它与DATE数据类型不同，因为TIMESTAMP可以包含小数秒。</li>
+</ul>
+<h3 id="4-lob">4. LOB类型</h3>
+<h3 id="5-long-rawraw">5. LONG RAW&amp;RAW类型</h3>
+<h3 id="6-rowidurowid">6. ROWID&amp;UROWID类型</h3>
+<ul>
+<li>
+<p>一般数据表里面存储的日期可能是DATE型，也可能是字符串类型，所以WHERE条件语句书写前需确认数据类型，根据类型可能需要使用TO_DATE或TO_CHAR转换数据类型，例如系统存的DAILY字段为字符串（8位年月日），那么WHERE条件语句参考下面的写法：</p>
+<pre><code class="language-sql">WHERE DAILY&gt;='20221201'                     --直接使用字符串
+  AND DAILY&lt;=TO_CHAR(sysdate,'YYYYMMDD')    --需要转换数据类型
+</code></pre>
+<p>如系统存的DAILY字段为日期型，那么WHERE条件语句参考下面的写法：</p>
+<pre><code class="language-sql">WHERE DAILY&gt;=TO_DATE()'20221201','YYYYMMDD'      --直接使用字符串
+</code></pre>
+</li>
+<li>
+<p>同样地，数据表存存储的数字可能是字符串类型，也可能是数值类型，在WHERE条件语句中进行判断时，也需要提前查看数据类型。例如：</p>
+<pre><code class="language-sql">WHERE NUM1&gt;'0'   --NUM1字段以字符串类型存储
+  AND NUM2&gt;0     --NUM2字段以数值类型存储
+</code></pre>
+</li>
+</ul>
+<h2 id="heading-2">四、函数及其语法</h2>
+<h3 id="1-substr">1. SUBSTR</h3>
+<p>语法：SUBSTR(string, pso,len)，截取字符串中的一部分。</p>
+<p>&ndash; string：必需，指定的要截取的字符串；</p>
+<p>&ndash; pos：必需，规定在字符串的何处开始；</p>
+<p>​            正数：在字符串的指定位置开始；</p>
+<p>​            负数：从字符串结尾的指定位置开始；</p>
+<p>&ndash; len：截取的字符串长度，缺省即截取到结束位置；</p>
+<p>示例：SUBSTR(&lsquo;123456&rsquo;,3,2)，结果是“34”</p>
+<p>​            SUBSTR(&lsquo;123456&rsquo;,3)，结果是“3456”</p>
+<p>​            SUBSTR(&lsquo;123456&rsquo;,-3,2)，结果是“45”</p>
+<p>通常结合TRIM除去字符串中的空格和不可见字符，例如：</p>
+<pre><code class="language-sql">TRIM(SUBSTR('123456',3))   --结果是“3456”，主要某些场景SUBSTR截取的字符串中会带有不可见字符，可通过LENGTH比对出
+</code></pre>
+<h3 id="2-length">2. LENGTH</h3>
+<p>语法：LENGTH(string-expression)，字符串长度。</p>
+<p>&ndash;string-expression：字符串表达式，可以是列名、字符串文字或另一个标量函数的结果；</p>
+<p>示例：LENGTH(&lsquo;123456&rsquo;)，结果是6；</p>
+<p>同类函数还有LENGTHB（按照字节计算）、LENGTHC（按照Unicode计算）、LENGTH2（按照UCS2编码计算）、LENGTH4（按照UCS4编码计算）。</p>
+<h3 id="3-to-date">3. TO_DATE</h3>
+<p>语法：TO_DATE(date_number,formula）将日期转为字符串。</p>
+<p>&ndash;date_number：日期或时间，date型数据；</p>
+<p>&ndash;formula：需要呈现的日期格式，<strong>不区分大小写</strong>；</p>
+<p>​          Year：YY：2位数字的年份，如22；</p>
+<p>​                     YYY：3位数字的年份，如022；</p>
+<p>​                     YYYY：4位数字的年份，如2022；</p>
+<p>​          Month：MM：2位数字的月份，如12；</p>
+<p>​                        MON：如12月，若是英文版，显示feb；</p>
+<p>​                        MONTH：如12月，若是英文版，显示December；</p>
+<p>​          Day：DD：一个月中当中的日期数，如15；</p>
+<p>​                    DDD：当年第几天，如350；</p>
+<p>​                    DY：当周第几天简写，如星期五，若是英文版，显示fri；</p>
+<p>​                    DAY：当周第几天全写，如星期五，若是英文版，显示friday；</p>
+<p>​          Hour： HH：小时，12小时制；</p>
+<p>​                       HH24：小时，24小时制；</p>
+<p>​          MI：Minute (00-59).（分钟）；</p>
+<p>​          SS：Second (00-59).（秒）；</p>
+<p>​          Q：季度，如4；</p>
+<p>​          WW：当年第几周，如50；</p>
+<p>​          W：当月第几周，如2</p>
+<p>年月日之间或时分秒之间可以使用其他符号链接，例如：</p>
+<pre><code class="language-sql">TO_DATE(sysdate,'YYYYMMDD HH24MISS')       --结果是“20221231 122530”
+TO_DATE(sysdate,'YYYY-MM-DD HH24:MI:SS')   --结果是“2022-12-31 12:25:30”
+--sysdate是生成系统默认当前时间，date型数据
+</code></pre>
+<h3 id="4-to-char">4. TO_CHAR</h3>
+<p>TO_CHAR功能与TO_DATE相反，语法相似：TO_CHAR(date_string,formula)，将字符串转为日期，例如：</p>
+<pre><code class="language-sql">TO_CHAR('20221231','YYYYMMDD')  --结果是2022-12-31，日期型数据
+</code></pre>
+<h3 id="5-decode">5. DECODE</h3>
+<p>语法1：DECODE(expression,value,result1,result2)，如果expression等于value，那么返回result1，否则返回result2，其中expression可以是表达式。需要注意的是该函数没有提供除等于以外的形式（大于、小于等），有这类需求时，可以使用CASE WHEN。例如：</p>
+<pre><code class="language-sql">SELECT DECODE(a,0,'零','非零') RESULT FROM DUAL  --当字段a为0时，结果为“零”，否则为“非零”
+</code></pre>
+<p>语法2：DECODE(expression,value1,result1,value2,result2,value3,result3&hellip;&hellip;,default)，如果expression等于value1，返回result1，expression等于value2，返回result2，依次类推。</p>
+<p>​      &ndash;default：若expression不等于所列出的所有value，则输出为default；</p>
+<p>例如：</p>
+<pre><code class="language-sql">SELECT DECODE(a,'一',1,'二',2,'三',3,4) FROM 数据表
+</code></pre>
+<blockquote>
+<p><strong>该用法可用于ORDER BY自定义排序。</strong></p>
+</blockquote>
+<h3 id="6-case-when">6. CASE WHEN</h3>
+<p>用法：CASE WHEN 条件1 THEN 表达式2 ELSE 表达式3 END AS 字段名。</p>
+<p>多条件判断赋值，与DECODE的语法2不同的是，CASE WHEN可以自由书写表达式，实现任意判断，例如关于成绩等级的判断：</p>
+<pre><code class="language-sql">SELECT CASE WHEN SCORE &gt;= 90 THEN '优'   --成绩大于等于90分时，为优
+            WHEN SCORE &gt;= 80 THEN '良'   --成绩大于等于80分时，为良
+            WHEN SCORE &gt;= 70 THEN '中'   --成绩大于等于70分时，为中
+            WHEN SCORE &gt;= 60 THEN '及格' --成绩大于等于60分时，为及格
+       ELSE '差' END AS GRADE            --成绩小于60分时，为差，并将判断结果存到GRADE字段中
+  FROM SCORE_LIST
+</code></pre>
+<p>WHEN/THEN/ELSE后面的表达式可以自由组合，或者嵌套DECODE函数，甚至再套一层CASE WHEN用法。</p>
+<h3 id="7-is-not-null">7. IS (NOT) NULL</h3>
+<p>NULL通常搭配IS一起使用，当数据表中内容缺失数据时，WHERE查询语句中通常需要使用。如下一张表王五的成绩为空，这里的空既不是空格，也不是0：</p>
+<table>
+<thead>
+<tr>
+<th>NAME</th>
+<th>SCORE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>张三</td>
+<td>80</td>
+</tr>
+<tr>
+<td>李四</td>
+<td>90</td>
+</tr>
+<tr>
+<td>王五</td>
+<td>(null)</td>
+</tr>
+</tbody>
+</table>
+<p>使用下面的查询语句可以统计实际有成绩的学生人数，</p>
+<pre><code class="language-sql">SELECT COUNT(NAME) STUDENT_NUM
+  FROM SCORE_LIST
+ WHERE SCORE IS NOT NULL
+</code></pre>
+<h3 id="8-nvl">8. NVL</h3>
+<p>语法：NVL(expression1, expression2)，如果expression1为不为空，则返回expression1，否则返回expression2。</p>
+<p>在4.7的例子中，如果计算学生平均成绩，可以写成下面这样：</p>
+<pre><code class="language-sql">SELECT AVG(SCORE) AVG_SCORE
+  FROM SCORE_LIST
+--结果返回的是80和90的均值：85
+</code></pre>
+<p>但如果需要将缺考成绩置换为零分计算平均成绩，那么可以写成下面这样：</p>
+<pre><code class="language-sql">SELECT AVG(NVL(SCORE,0)) AVG_SCORE
+  FROM SCORE_LIST
+--结果返回的是0、80和90的均值：56.67
+</code></pre>
+<p>NVL不仅可以用于字段的计算，还能在WHERE查询语句中使用：</p>
+<pre><code class="language-sql">SELECT COUNT(*) STUDENT_NUM
+  FROM SCORE_LIST
+ WHERE NVL(SCORE,0)&lt;60
+--统计不及格学生人数，结果为1
+--当SELECT中只使用了聚合函数时，可不添加GROUP BY语句
+</code></pre>
+<h3 id="9-instr">9. INSTR</h3>
+<p>语法1：INSTR( string1, string2 )，查找string2在string1第一次出现的位置；</p>
+<pre><code class="language-sql">SELECT INSTR('helloworld','l') FROM DUAL  --返回结果：3  默认第一次出现“l”的位置
+SELECT INSTR('helloworld','lo') FROM DUAL --返回结果：4  即“lo”同时出现，第一个字母“l”出现的位置
+SELECT INSTR('helloworld','wo') FROM DUAL --返回结果：6  即“wo”同时出现，第一个字母“w”出现的位置
+</code></pre>
+<p>语法2：INSTR( string1, string2 [, start_position [, nth_appearance ] ] )，从string1的start_position位置后开始查找string2字符串第nth_appearance次出现的位置。</p>
+<pre><code class="language-sql">SELECT INSTR('helloworld','l',4,2) FROM DUAL
+--返回结果：9，在&quot;helloworld&quot;的第4(l)号位置开始，查找第二次出现“l”的位置
+SELECT INSTR('helloworld','l',-1,1) FROM DUAL
+--返回结果：9，在&quot;helloworld&quot;的倒数第1(d)号位置开始，往回查找第一次出现“l”的位置
+</code></pre>
+<blockquote>
+<p>INSTR可用于WHERE条件语句中，但查询效率相对较低。</p>
+</blockquote>
+<h3 id="10-joinunion">10. JOIN、UNION</h3>
+<ul>
+<li>
+<p><strong>SQL Join</strong></p>
+<p>JOIN相关的包含全外连接Full Outer Join、左外连接Left (Outer) Join、、右外连接Right (Outer) Join和内连接Inner Join，四种Join方式可参考图示：</p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2019/01/sql-join.png" alt="SQL Join形式" /></p>
+<p>以左外连接为例进行说明：</p>
+<pre><code class="language-sql">SELECT A.*,B.*        --选择A表和B表需要的字段
+  FROM TableA A       --A表重命名
+  LEFT JOIN TableB B  --B表重命名
+    ON A.key=B.key    --表关联的条件，可以写多个
+</code></pre>
+<p>A表与B表关联，关联的条件为A表中的Key与B表中的Key相等，最终呈现的表左表不加限制，保留左表的数据，匹配右表，右表没有匹配到的行中的列显示为null。Left Join和Right Join可以相互改写。</p>
+<p>左外连接和右外连接的书写方式可以用“(+)”表示，例如左外连接可改为：</p>
+<pre><code class="language-sql">SELECT A.*,B.*            --选择A表和B表需要的字段
+  FROM TableA A,TableB B  --表重命名
+ WHERE A.key=B.key(+)     --表关联的条件，可以写多个
+</code></pre>
+<p>两种写法是等效的，被匹配的表写上“(+)”即可，如果是右外连接，那么就在A表写上“(+)”。</p>
+</li>
+<li>
+<p><strong>SQL UNION</strong></p>
+<p>UNION：对两个结果集进行并集操作，<strong>不包括重复行，同时进行默认规则的排序</strong>。</p>
+<p>UNION ALL：对两个结果集进行并集操作**，包括重复行，不会对结果进行排序**。</p>
+<pre><code class="language-sql">SELECT A.* FROM TableA
+ UNION ALL
+SELECT B.* FROM TableB
+ UNION ALL
+(SELECT *     --合并子查询的结果，需要确认各查询的列数及其数据类型是否一致
+   FROM TableC C
+   LEFT JOIN TableD D
+     ON C.key=D.key
+)
+</code></pre>
+<p>如上述查询，被合并的可以是子查询。</p>
+<p>使用UNION或UNION ALL时，被合并的表，列数必须相同，列的数据类型也必须相同，列数不同时可以根据需要补充NULL值、&lsquo;&lsquo;或0，如：</p>
+<pre><code class="language-sql">SELECT COL1,COL2,COL3 FROM Table1
+ UNION ALL
+SELECT COL1,COL2,NULL FROM Table2
+</code></pre>
+<blockquote>
+<p>最后一个UNION ALL前面不能有ORDER BY  ORDER BY只能在最后。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="11-over">11. OVER分析函数</h3>
+<p>分析函数和聚合函数很多是同名的，意思也一样，只是聚合函数用group by分组，每个分组返回一个统计值，而分析函数采用partition by分组，并且每组每行都可以返回一个统计值。简单地说就是聚合函数返回统计结果，分析函数返回明细加统计结果。</p>
+<p>语法：FUNCTION()OVER(PARTITION BY … ORDER BY …)，此处的FUNCTION可以是下表中的函数，PARTITION BY表示分组，ORDER BY表示排序。OVER分析函数和GROUP BY可以共存。</p>
+<table>
+<thead>
+<tr>
+<th>函数名</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SUM</td>
+<td>该函数计算组中表达式的累积和</td>
+</tr>
+<tr>
+<td>MIN</td>
+<td>在一个组中的数据窗口中查找表达式的最小值</td>
+</tr>
+<tr>
+<td>MAX</td>
+<td>在一个组中的数据窗口中查找表达式的最大值</td>
+</tr>
+<tr>
+<td>AVG</td>
+<td>用于计算一个组和数据窗口内表达式的平均值</td>
+</tr>
+<tr>
+<td>COUNT</td>
+<td>对一组内发生的事情进行累积计数</td>
+</tr>
+<tr>
+<td>RANK</td>
+<td>根据ORDER BY子句中表达式的值，从查询返回的每一行，计算它们与其它行的相对位置</td>
+</tr>
+<tr>
+<td>DENSE_RANK</td>
+<td>根据ORDER BY子句中表达式的值，从查询返回的每一行，计算它们与其它行的相对位置</td>
+</tr>
+<tr>
+<td>ROW_NUMBER</td>
+<td>返回有序组中一行的偏移量，从而可用于按特定标准排序的行号</td>
+</tr>
+<tr>
+<td>FIRST</td>
+<td>从DENSE_RANK返回的集合中取出排在最前面的一个值的行</td>
+</tr>
+<tr>
+<td>LAST</td>
+<td>从DENSE_RANK返回的集合中取出排在最后面的一个值的行</td>
+</tr>
+<tr>
+<td>FIRST_VALUE</td>
+<td>返回组中数据窗口的第一个值</td>
+</tr>
+<tr>
+<td>LAST_VALUE</td>
+<td>返回组中数据窗口的最后一个值</td>
+</tr>
+<tr>
+<td>LAG</td>
+<td>可以访问结果集中的其它行而不用进行自连接</td>
+</tr>
+<tr>
+<td>LEAD</td>
+<td>LEAD与LAG相反，LEAD可以访问组中当前行之后的行</td>
+</tr>
+<tr>
+<td>STDDEV</td>
+<td>计算当前行关于组的标准偏离</td>
+</tr>
+<tr>
+<td>STDDEV_POP</td>
+<td>该函数计算总体标准偏离，并返回总体变量的平方根</td>
+</tr>
+<tr>
+<td>STDDEV_SAMP</td>
+<td>该函数计算累积样本标准偏离，并返回总体变量的平方根</td>
+</tr>
+<tr>
+<td>VAR_POP</td>
+<td>该函数返回非空集合的总体变量（忽略null）</td>
+</tr>
+<tr>
+<td>VAR_SAMP</td>
+<td>该函数返回非空集合的样本变量（忽略null）</td>
+</tr>
+<tr>
+<td>VARIANCE</td>
+<td>如果表达式中行数为1，则返回0，如果表达式中行数大于1，则返回VAR_SAMP</td>
+</tr>
+<tr>
+<td>COVAR_POP</td>
+<td>返回一对表达式的总体协方差</td>
+</tr>
+<tr>
+<td>COVAR_SAMP</td>
+<td>返回一对表达式的样本协方差</td>
+</tr>
+<tr>
+<td>CORR</td>
+<td>返回一对表达式的相关系数</td>
+</tr>
+<tr>
+<td>CUME_DIST</td>
+<td>计算一行在组中的相对位置</td>
+</tr>
+<tr>
+<td>NTILE</td>
+<td>将一个组分为“表达式”的散列表示，创建的是等高直方图</td>
+</tr>
+<tr>
+<td>PERCENT_RANK</td>
+<td>和CUME_DIST（累积分配）函数类似</td>
+</tr>
+<tr>
+<td>PERCENTILE_DISC</td>
+<td>返回一个与输入的分布百分比值相对应的数据值</td>
+</tr>
+<tr>
+<td>PERCENTILE_CONT</td>
+<td>返回一个与输入的分布百分比值相对应的数据值</td>
+</tr>
+<tr>
+<td>RATIO_TO_REPORT</td>
+<td>该函数计算expression/(sum(expression))的值，它给出相对于总数的百分比</td>
+</tr>
+<tr>
+<td>REGR_(Linear Regression) Functions</td>
+<td>这些线性回归函数适合最小二乘法回归线，有9个不同的回归函数可使用</td>
+</tr>
+<tr>
+<td>CUBE</td>
+<td>按照OLAP的CUBE方式进行数据统计,即各个维度均需统计</td>
+</tr>
+<tr>
+<td>ROLLUP</td>
+<td>GROUP BY 的扩展，用于在一次查询中自动生成分组小计与总计</td>
+</tr>
+</tbody>
+</table>
+<p>示例1：</p>
+<pre><code class="language-sql">SELECT CLASS,
+       STUDENT_NAME,
+       SUBJECT,
+       SCORE,
+       AVG(SCORE)OVER(PARTITION BY CLASS,SUBJECT) AVG_SCORE
+  FROM SCORE_LIST
+--求各班各科目的平均成绩
+</code></pre>
+<p>在原有数据结果上，增加一列表示平均成绩，使用OVER分析函数，可以使用不同的分组和排序。</p>
+<p>示例2：企业生产中，常常需要根据小时别的生产量，统计每个小时的累计量（第四列）。</p>
+<table>
+<thead>
+<tr>
+<th align="center">MACHINE</th>
+<th align="center">HOUR_TIME</th>
+<th align="center">PRODUCTION</th>
+<th align="center">SUM_NUM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1#</td>
+<td align="center">20221201 06</td>
+<td align="center">48</td>
+<td align="center">48</td>
+</tr>
+<tr>
+<td align="center">1#</td>
+<td align="center">20221201 07</td>
+<td align="center">46</td>
+<td align="center">94</td>
+</tr>
+<tr>
+<td align="center">1#</td>
+<td align="center">20221201 08</td>
+<td align="center">50</td>
+<td align="center">144</td>
+</tr>
+<tr>
+<td align="center">1#</td>
+<td align="center">20221202 09</td>
+<td align="center">49</td>
+<td align="center">193</td>
+</tr>
+<tr>
+<td align="center">1#</td>
+<td align="center">20221202 10</td>
+<td align="center">49</td>
+<td align="center">242</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-sql">SELECT MACHINE,
+       HOUR_TIME,
+       PRODUCTION,
+       SUM(PRODUCTION)OVER(PARTITION BY MACHINE ORDER BY HOUR_TIME) SUM_NUM
+  FROM MACHINE_PRODUCTION_HOUR
+</code></pre>
+<h3 id="12-laglead">12. LAG和LEAD偏移函数</h3>
+<p>语法：LAG(field, n, defaultvalue) OVER ( PARTITION BY … ORDER BY … )，LEAD语法与LAG相同，都需搭配OVER分析函数一起使用。</p>
+<p>LEAD是查询下一行数据，LAG是查询上一行数据，其中n年时数据表偏移的行数。以前述企业小时别生产量为例：</p>
+<pre><code class="language-sql">SELECT MACHINE,
+       HOUR_TIME,
+       PRODUCTION,
+       LEAD(PRODUCTION,1,NULL)OVER(PARTITION BY MACHINE ORDER BY HOUR_TIME) NEXT_PRODUCTION,
+       LAG(PRODUCTION,1,NULL)OVER(PARTITION BY MACHINE ORDER BY HOUR_TIME) PRE_PRODUCTION
+  FROM MACHINE_PRODUCTION_HOUR
+</code></pre>
+<p>上述查询结果为：</p>
+<table>
+<thead>
+<tr>
+<th align="center">MACHINE</th>
+<th align="center">HOUR_TIME</th>
+<th align="center">PRODUCTION</th>
+<th align="center">NEXT_PRODUCTION</th>
+<th align="center">PRE_PRODUCTION</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1#</td>
+<td align="center">20221201 06</td>
+<td align="center">48</td>
+<td align="center">46</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">1#</td>
+<td align="center">20221201 07</td>
+<td align="center">46</td>
+<td align="center">50</td>
+<td align="center">48</td>
+</tr>
+<tr>
+<td align="center">1#</td>
+<td align="center">20221201 08</td>
+<td align="center">50</td>
+<td align="center">49</td>
+<td align="center">46</td>
+</tr>
+<tr>
+<td align="center">1#</td>
+<td align="center">20221202 09</td>
+<td align="center">49</td>
+<td align="center">49</td>
+<td align="center">50</td>
+</tr>
+<tr>
+<td align="center">1#</td>
+<td align="center">20221202 10</td>
+<td align="center">49</td>
+<td align="center"></td>
+<td align="center">49</td>
+</tr>
+</tbody>
+</table>
+<h3 id="13-">13. 排名函数</h3>
+<ul>
+<li>
+<p><strong>ROW_NUMBER</strong></p>
+<p>为查询出来的每一行记录生成一个序号，<strong>依次排序且不会重复</strong>，注意使用ROW_NUMBER函数时必须要用OVER子句选择对某一列进行排序才能生成序号。</p>
+</li>
+<li>
+<p><strong>RANK</strong></p>
+<p>与ROW_NUMBER函数不同的是，OVER子句中排序字段值相同的序号是一样的，后面字段值不相同的序号将跳过相同的排名号排下一个，如：1、2、2、4。</p>
+</li>
+<li>
+<p><strong>DENSE_RANK</strong></p>
+<p>典型的中国式排名，RANK函数生成的序号有可能不连续。DENSE_RANK函数出现相同排名时，将不跳过相同排名号，如：1、2、2、3。</p>
+</li>
+<li>
+<p><strong>COUNT</strong></p>
+<p>COUNT()是跳跃排序，例如出现相同排名时，会排成1、3、3、4的形式。</p>
+</li>
+</ul>
+<p>排名相关的函数需要使用OVER分析函数一起使用。举例说明，对成绩95、92、92、91、80分别使用四个函数进行排名：</p>
+<pre><code class="language-sql">--SCORE_LIST中SCORE字段成绩分别为95、92、92、91、80
+SELECT ROW_NUMBER()OVER(PARTITION BY CLASS,SUBJECT ORDER BY SCORE) ORD1,
+       --结果为：1、2、3、4、5
+       RANK()OVER(PARTITION BY CLASS,SUBJECT ORDER BY SCORE) ORD2,
+       --结果为：1、2、2、4、5
+       DENSE_RANK()OVER(PARTITION BY CLASS,SUBJECT ORDER BY SCORE) ORD3,
+       --结果为：1、2、2、3、4
+       COUNT()OVER(PARTITION BY CLASS,SUBJECT ORDER BY SCORE) ORD4
+       --结果为：1、3、3、4、5
+  FROM SCORE_LIST
+</code></pre>
+<h3 id="14-">14. 正则表达式</h3>
+<p>函数主要有：regexp_like/regexp_instr/regexp_substr/regexp_replace。</p>
+<p>用法上与LIKE、INSTR、SUBSTR 和REPLACE函数相同，使Oracle支持了正则表达式的语法，实现更为丰富的查找或替换。</p>
+<pre><code class="language-sql">WHERE NOT regexp_like(USER_ID,'^[0-9]+[0-9]$')             --USER ID必须为数字
+WHERE VALUE LIKE '1___6'                                   --VALUE长度为5，开始和结尾分别为1、6
+WHERE regexp_like(VALUE,'1...6')                           --VALUE长度为5，开始和结尾分别为1、6
+SELECT REGEXP_INSTR('ABC123XYZ','[0-9]+') FROM DUAL        --结果为4
+SELECT REGEXP_SUBSTR('17,20,23','[^,]+',1,1,'i') FROM DUAL --结果是17
+</code></pre>
+<p>正则表达式语法主要符号标记如下：</p>
+<ul>
+<li><strong>非打印字符</strong>：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">字符</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">\cx</td>
+<td align="left">匹配由x指明的控制字符。例如， \cM 匹配一个 Control-M 或回车符。x 的值必须为 A-Z 或 a-z 之一。否则，将 c 视为一个原义的 &lsquo;c&rsquo; 字符。</td>
+</tr>
+<tr>
+<td align="center">\f</td>
+<td align="left">匹配一个换页符。等价于 \x0c 和 \cL。</td>
+</tr>
+<tr>
+<td align="center">\n</td>
+<td align="left">匹配一个换行符。等价于 \x0a 和 \cJ。</td>
+</tr>
+<tr>
+<td align="center">\r</td>
+<td align="left">匹配一个回车符。等价于 \x0d 和 \cM。</td>
+</tr>
+<tr>
+<td align="center">\s</td>
+<td align="left">匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。注意 Unicode 正则表达式会匹配全角空格符。</td>
+</tr>
+<tr>
+<td align="center">\S</td>
+<td align="left">匹配任何非空白字符。等价于 [^ \f\n\r\t\v]。</td>
+</tr>
+<tr>
+<td align="center">\t</td>
+<td align="left">匹配一个制表符。等价于 \x09 和 \cI。</td>
+</tr>
+<tr>
+<td align="center">\v</td>
+<td align="left">匹配一个垂直制表符。等价于 \x0b 和 \cK。</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>特殊字符：</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">特殊字符</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">$</td>
+<td align="left">匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则$也匹配&rsquo;\n&rsquo;或&rsquo;\r&rsquo;。要匹配$字符本身，请使用 \$。</td>
+</tr>
+<tr>
+<td align="center">( )</td>
+<td align="left">标记一个子表达式的开始和结束位置。子表达式可以获取供以后使用。要匹配这些字符，请使用 ( 和 )。</td>
+</tr>
+<tr>
+<td align="center">*</td>
+<td align="left">匹配前面的子表达式零次或多次。要匹配 * 字符，请使用 \*。</td>
+</tr>
+<tr>
+<td align="center">+</td>
+<td align="left">匹配前面的子表达式一次或多次。要匹配 + 字符，请使用 \+。</td>
+</tr>
+<tr>
+<td align="center">.</td>
+<td align="left">匹配除换行符 \n 之外的任何单字符。要匹配 . ，请使用 \. 。</td>
+</tr>
+<tr>
+<td align="center">[</td>
+<td align="left">标记一个中括号表达式的开始。要匹配 [，请使用 \[。</td>
+</tr>
+<tr>
+<td align="center">?</td>
+<td align="left">匹配前面的子表达式零次或一次，或指明一个非贪婪限定符。要匹配 ? 字符，请使用 ?。</td>
+</tr>
+<tr>
+<td align="center">\</td>
+<td align="left">将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如， &rsquo;n&rsquo; 匹配字符 &rsquo;n&rsquo;。&rsquo;\n&rsquo; 匹配换行符。序列 &lsquo;\\&rsquo; 匹配 “\”，而 &lsquo;\(&rsquo; 则匹配 “(”。</td>
+</tr>
+<tr>
+<td align="center">^</td>
+<td align="left">匹配输入字符串的开始位置，除非在方括号表达式中使用，当该符号在方括号表达式中使用时，表示不接受该方括号表达式中的字符集合。要匹配 ^ 字符本身，请使用 \^。</td>
+</tr>
+<tr>
+<td align="center">{</td>
+<td align="left">标记限定符表达式的开始。要匹配 {，请使用 \{。</td>
+</tr>
+<tr>
+<td align="center">|</td>
+<td align="left">指明两项之间的一个选择。要匹配 |，请使用 \|</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>限定符：</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">字符</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">*</td>
+<td align="left">匹配前面的子表达式零次或多次。例如，zo* 能匹配 “z” 以及 “zoo”。* 等价于 {0,}。</td>
+</tr>
+<tr>
+<td align="center">+</td>
+<td align="left">匹配前面的子表达式一次或多次。例如，zo+ 能匹配 “zo” 以及 “zoo”，但不能匹配 “z”。+ 等价于 {1,}。</td>
+</tr>
+<tr>
+<td align="center">?</td>
+<td align="left">匹配前面的子表达式零次或一次。例如，do(es)? 可以匹配 “do” 、 “does”、 “doxy” 中的 “do” 。? 等价于 {0,1}。</td>
+</tr>
+<tr>
+<td align="center">{n}</td>
+<td align="left">n 是一个非负整数。匹配确定的 n 次。例如，o{2} 不能匹配 “Bob” 中的 o，但是能匹配 “food” 中的两个 o。</td>
+</tr>
+<tr>
+<td align="center">{n,}</td>
+<td align="left">n 是一个非负整数。至少匹配n 次。例如，o{2,} 不能匹配 “Bob” 中的 o，但能匹配 “foooood” 中的所有 o。o{1,} 等价于 o+。o{0,} 则等价于 o*。</td>
+</tr>
+<tr>
+<td align="center">{n,m}</td>
+<td align="left">m 和 n 均为非负整数，其中 n &lt;= m。最少匹配 n 次且最多匹配 m 次。例如，o{1,3} 将匹配 “fooooood” 中的前三个 o。o{0,1} 等价于 o?。请注意在逗号和两个数之间不能有空格。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="15-with">15. WITH</h3>
+<p>当SQL查询中反复使用到同一段一模一样的子查询时，可以将该子查询放到WITH中进行引用，多个子查询之间用半角逗号(,)隔开，并且将所有子查询置顶。可参考下面的形式。</p>
+<pre><code class="language-sql">WITH T1 AS (      --从Table1生成T1，第一个对象有以WITH开头，其他不需要
+    SELECT *
+      FROM TABLE1
+),                --逗号隔开
+T2 AS (           --从Table2生成T2
+    SELECT *
+      FROM TABLE2
+),                --逗号隔开
+T3 AS (           --在T1基础上结合其他数据生成T3
+    SELECT *
+      FROM T1
+     WHERE C1='value'
+)
+SELECT *          --在T3和T2的基础上处理，生成结果
+  FROM T3
+  LEFT JOIN T2
+    ON T3.key=T2.key
+</code></pre>
+<blockquote>
+<p>被引用的对象必须在当前查询语句之前，否则提示未定义。</p>
+</blockquote>
+<h3 id="16-listagg"><strong>16. LISTAGG</strong></h3>
+<p>语法：LISTAGG(字段名1,字符串)WITHIN GROUP(ORDER BY 字段名2)，将多个值合并为一个字符串，需要搭配GROUP BY使用。例如：</p>
+<pre><code class="language-sql">LISTAGG(m.maskspecname,'；')WITHIN GROUP(ORDER BY m.maskspecname) maskspecname
+--返回值为“A；B；C”17. ### 创建临时表的两种方法
+</code></pre>
+<h3 id="17-"><strong>17. 创建临时表的两种方法</strong></h3>
+<ul>
+<li>
+<p>利用DUAL表和UNION函数</p>
+<p>DUAL表可以认为是虚拟表，建立数据库的时候随数据字典创建而建立的单行单列的表。主要介绍一下用途。</p>
+<ul>
+<li>
+<p>做临时的计算，例如输出系统时间或者进行四则运算。</p>
+<pre><code class="language-sql">SELECT sysdate FROM DUAL  --获取系统时间，结果为2022-12-16 17:30:14.0
+SELECT 1+1 FROM DUAL      --进行四则运算，结果为2
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p>创建临时表，可以使用UNION或者UNION ALL。</p>
+<pre><code class="language-sql">SELECT '1#' MACHINE, '20221201 06' HOUR_TIME, 48 PRODUCTION FROM DUAL UNION ALL
+SELECT '1#' MACHINE, '20221201 07' HOUR_TIME, 46 PRODUCTION FROM DUAL UNION ALL
+SELECT '1#' MACHINE, '20221201 08' HOUR_TIME, 50 PRODUCTION FROM DUAL UNION ALL
+SELECT '1#' MACHINE, '20221201 09' HOUR_TIME, 49 PRODUCTION FROM DUAL UNION ALL
+SELECT '1#' MACHINE, '20221201 10' HOUR_TIME, 49 PRODUCTION FROM DUAL
+</code></pre>
+</li>
+<li>
+<p>使用Connect By创建一列临时表。</p>
+</li>
+</ul>
+<pre><code class="language-sql">SELECT REGEXP_SUBSTR('ARRAY,CF,CELL','[^,]+',1,rownum) as col,
+         REGEXP_SUBSTR('A,B,C','[^,]+',1,rownum) as col2
+   FROM dual Connect by rownum &lt;= REGEXP_COUNT('ARRAY,CF,CELL','[^,]+')
+    --生成3行2列的临时表数据
+</code></pre>
+<h3 id="18-unix"><strong>18. Unix时间戳</strong></h3>
+<p>从1970年1月1日0点（北京时间为8点）开始所经过的秒数。</p>
+<pre><code class="language-sql">SELECT TO_CHAR(字段名/(3600*24)+TO_DATE('19700101 080000','YYYYMMDD HH24MISS'),'YYYY-MM-DD HH24:MI:SS') FROM DUAL
+--Unix时间戳转Date型，手动修改时区
+SELECT (sysdate-TO_DATE('19700101 080000','YYYYMMDD HH24MISS'))*3600*24 FROM DUAL
+--Date型转Unix时间戳，手动修改时区
+SELECT (sysdate-TO_DATE('19700101','YYYYMMDD'))*3600*24-TO_NUMBER(SUBSTR(TZ_OFFSET(sessiontimezone),1,3))*3600 FROM DUAL
+--Date型转Unix时间戳，自动修改时区
+</code></pre>
+<blockquote>
+<p>帆软函数DateToNumber实现相似功能，不过是返回的毫秒数。</p>
+</blockquote>
+<h3 id="19-"><strong>19. 系统数据表信息查询</strong></h3>
+<pre><code class="language-sql">--获取表字段：
+select *
+ from all_tab_columns where table_name='FR_CF_NP_EN_BASE_INFO'
+--获取表字段：
+select * 
+  from user_tab_columns 
+ where Table_Name='FR_CF_NP_EN_BASE_INFO' 
+ order by column_name
+--获取表注释：
+select * 
+  from user_tab_comments 
+ where Table_Name='FR_CF_NP_EN_BASE_INFO'
+ order by Table_Name
+--获取字段注释：
+select * 
+  from user_col_comments 
+ where Table_Name='FR_CF_NP_EN_BASE_INFO'
+ order by column_name
+--当前用户的表
+select */*table_name*/ from user_tables
+--所有用户的表 
+select */*table_name*/ from all_tables
+</code></pre>
+<pre><code class="language-sql">--索引查询
+SELECT TABLE_NAME,
+       INDEX_NAME,
+       (SELECT LISTAGG( to_char(column_Name), ',') WITHIN GROUP(ORDER BY column_position)  
+          FROM all_ind_columns c  
+         WHERE 1=1 
+           and i.INDEX_NAME=c.index_name
+       ) col
+  FROM ALL_INDEXES i 
+ WHERE TABLE_NAME = TRIM(UPPER('${tab}'))
+   AND TABLE_OWNER = '${Owner}'
+
+</code></pre>
+<h2 id="heading-3">五、帆软</h2>
+<h3 id="1--3">1. 帆软公式和单元格相关</h3>
+<ul>
+<li>
+<p>单元格隔行添加背景色，增强可阅读性：</p>
+<pre><code class="language-javascript">mod(row(), 2) = 1
+</code></pre>
+</li>
+<li>
+<p>帆软公式从查询中获取数据：</p>
+<pre><code class="language-javascript">查询.SELECT(目标字段, 条件字段1 = &quot;8FPHT07&quot; &amp;&amp; 条件字段2 = &quot;F800-00&quot;)
+</code></pre>
+<p>多个条件需要使用“&amp;&amp;”连接起来，如果返回结果是多个值，可以使用Count或Sum进行处理。</p>
+</li>
+<li>
+<p>在单元格中插入了html相关内容时，如设置字体样式等，需要在单元格属性→其他→显示内容中选择“用HTML显示内容”，html的写法如下：</p>
+<pre><code class="language-html">这是第一行&lt;br&gt;这是第二行                          &lt;!--这是换行的写法--&gt;
+&lt;font color=&quot;red&quot;&gt;这是红色文本&lt;/font&gt;            &lt;!--这是字体颜色的写法--&gt;
+&lt;p style=&quot;font-size:14px;&quot;&gt;这是14像素的文字&lt;/p&gt;  &lt;!--这是字体大小的写法--&gt;
+</code></pre>
+</li>
+<li>
+<p>查询中使用帆软公式实现下拉框不选时，默认查询所有。</p>
+<pre><code class="language-javascript">${=if(参数名=&quot;值&quot;,&quot;AND 字段名1= '&quot;+参数名+&quot;'&quot;,&quot;&quot;)}
+</code></pre>
+<blockquote>
+<p>该内容补充到Where条件子句中时，该行之前应当有其他子句，没有则补充上“1=1”，因为该行中用到了AND函数。</p>
+</blockquote>
+</li>
+<li>
+<p>单元格使用SQL函数，获取查询结果。</p>
+<pre><code class="language-sql">SQL(connectionName,sql,columnIndex,rowIndex)
+--返回的数据是从 connectionName 数据库中获取的 SQL 语句的表中的第 columnIndex 列第 rowIndex 行所对应的元素。
+=sql(&quot;FRDemo&quot;,&quot;SELECT * FROM STSCORE where CLASSNO = '&quot;+$$$+&quot;' &quot;,3,4)
+--传递的参数是获取当前单元格的值，即用 $$$ 作为参数时，字符串类型同样需要拼接单引号
+=sql(&quot;FRDemo&quot;,&quot;SELECT * FROM STSCORE where CLASSNO in ('&quot;+$class+&quot;') and COURSE  in ('&quot;+$COURSE+&quot;') &quot;,3,4)
+--参数或者单元格值有多个的写法
+</code></pre>
+<p>&ndash; connectionName，据连接名字，字符串形式，需要用引号如“FRDemo”；</p>
+<p>&ndash; sql，SQL语句，字符串形式，需要用双引号；</p>
+<p>&ndash; columnIndex，列序号，整型；</p>
+<p>&ndash; rowIndex，行序号，整型。（<strong>行序号可以省略，这样返回值为数据列</strong>）</p>
+</li>
+</ul>
+<h3 id="2--3">2. 参数面板设置</h3>
+<ul>
+<li>
+<p>隐藏参数面板小箭头。在参数面板的初始化事件中添加以下JavaScript脚本即可：</p>
+<pre><code class="language-javascript">//延迟执行
+setTimeout(function() {
+   //隐藏参数面板小箭头
+   $('.parameter-container-collapseimg-up').hide();  
+}, 10);  
+//删除参数面板小箭头
+//$('.parameter-container-collapseimg-up').remove();  
+</code></pre>
+</li>
+<li>
+<p>隐藏参数面板。决策平台引用报表、超链接引用报表、URL直连报表、单元格iframe等多种方式，在报表地址最后补充如下内容即可。</p>
+<pre><code class="language-javascript">&amp;__pi__=false
+</code></pre>
+</li>
+<li>
+<p>参数面板删除按钮提交时二次确认</p>
+<p>需要在参数面板绘制两个按钮，第一个是提示按钮，选择确认删除时，激活第二个按钮的操作，否则退出该过程。</p>
+<p>第一个按钮添加点击事件如下：</p>
+<pre><code class="language-javascript">FR.Msg.confirm(&quot;警告&quot;, &quot;确定要删除吗？&quot;, function(value) {
+	if (value) {
+		_g().parameterEl.getWidgetByName(&quot;button0&quot;).fireEvent(&quot;click&quot;);
+	}
+});
+</code></pre>
+<p>第二个按钮名称需与第一个按钮事件中一致，事件设置为删除提交，取消按钮可见性即可。</p>
+<blockquote>
+<p><strong>删除提交必须设置主键</strong></p>
+</blockquote>
+</li>
+<li>
+<p>参数面板提交按钮</p>
+<p>增加按钮并添加点击事件：</p>
+<pre><code class="language-javascript">_g().verifyAndWriteReport();
+//_g('${sessionID}').writeReport();  
+//location.reload();   //初始化参数栏后，重新加载页面
+contentPane.parameterCommit();  //参数栏不刷新，按所选查询条件刷新数据
+alert(&quot;提交成功！&quot;);
+FR.Msg.toast(&quot;提交成功！&quot;); 
+</code></pre>
+</li>
+<li>
+<p>参数面板导出按钮</p>
+<p>增加按钮并添加点击事件：</p>
+<pre><code class="language-javascript">var url = FR.servletURL + &quot;?op=export&amp;format=excel&amp;extype=simple&amp;sessionID=&quot;+_g().currentSessionID; //原样导出
+window.location =url;
+</code></pre>
+</li>
+</ul>
+<h3 id="3--1">3. 图表</h3>
+<ul>
+<li>
+<p>图表联动，点击一个图表时，调整其他图表查询条件，实现互动。</p>
+<p>第一个图表设置：单元格属性→特性→交互属性，超链接添加图表联动单元格为第二个图表左上角单元格地址，并添加参数，参数可以是分类名、系列名、公式等。</p>
+<p><img src="https://s21.ax1x.com/2024/03/21/pFf8Qlq.jpg" alt="图表1设置" /></p>
+<p>第二个图表设置：查询语句中，增加图表1的参数，可结合帆软IF函数实现未选中时默认全选。</p>
+</li>
+<li>
+<p>图表显示标签使用JavaScript实现自定义。</p>
+<p>主要使用了indexOf查找函数，substr字符串截取函数，toFixed四舍五入函数，示例如下：</p>
+<pre><code class="language-javascript">function() {
+	return this.category.substr(0,  this.category.indexOf('No.')) + '&lt;br&gt;' + this.seriesName + '：' + (this.value / 60).toFixed(1) + 'min';
+}
+</code></pre>
+</li>
+</ul>
+<h3 id="4-">4. 报表参数</h3>
+<ul>
+<li>
+<p>报表链接后增加参数“&amp;bypagesize=false”可以实现不分页预览报表。例如：</p>
+<pre><code class="language-javascript">/03.CF部/CF制造科/用户报表/98050035-杨柳/Movement/Coater流片履历.cpt&amp;__bypagesize__=false
+</code></pre>
+</li>
+<li>
+<p>报表预览情况下定时刷新</p>
+<p>在模板→模板Web属性→分页预览设置，增加事件设置，写入以下JS脚本：</p>
+<pre><code class="language-javascript">setInterval(function() {
+
+	$(&quot;.vancharts-series-&quot; + window.a).find(&quot;rect&quot;).css(&quot;stroke-width&quot;, &quot;0.5&quot;)
+	$(&quot;.vancharts-series-&quot; + window.a).find(&quot;rect&quot;).css(&quot;stroke&quot;, &quot;rgb(150,150,150)&quot;)
+}, 100)
+
+setInterval(&quot;self.location.reload();&quot;,1800000); //单位：毫秒；即每30min刷新一次页面
+</code></pre>
+<p>其中setInterval的第二个参数设置时长，单位为毫秒。</p>
+</li>
+<li>
+<p>天气JS</p>
+<pre><code class="language-html">&lt;iframe width=&quot;350&quot; align=&quot;left&quot; scrolling=&quot;no&quot; height=&quot;30&quot; frameborder=&quot;0&quot; allowtransparency=&quot;true&quot; src=&quot;https://i.tianqi.com?c=code&amp;id=40&amp;color=%2300B0F0&amp;icon=1&amp;site=12&quot;&gt;&lt;/iframe&gt;
+</code></pre>
+</li>
+<li>
+<p>鼠标点击/悬浮行和列变色，再次点击/悬浮时恢复</p>
+<p>菜单栏选择「模板&gt;模板 Web 属性&gt;分页预览设置」，选择「为该模板单独设置」，然后添加「加载结束事件」:</p>
+<pre><code class="language-javascript">_g().addEffect('highlightCross',{
+	color: 'red',
+	trigger: 'mousedown',//悬浮则为mouseover
+	single:false
+});
+</code></pre>
+</li>
+</ul>
+
+  </div>
+
+  
+  <footer class="post-footer">
+    <div class="post-taxonomy-group">
+      <span class="post-tags-label" data-i18n="nav.tags">Tags</span>
+      <div class="post-tags">
+        
+          <a class="taxon-chip taxon-chip--tag" href="/tag/fan-ruan/">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 11 3.83A2 2 0 0 0 9.59 3H4a1 1 0 0 0-1 1v5.59A2 2 0 0 0 3.83 11l9.58 9.59a2 2 0 0 0 2.83 0l4.35-4.35a2 2 0 0 0 0-2.83Z"/><path d="M7 7h.01"/></svg>
+            <span>帆软</span>
+          </a>
+        
+          <a class="taxon-chip taxon-chip--tag" href="/tag/sql/">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 11 3.83A2 2 0 0 0 9.59 3H4a1 1 0 0 0-1 1v5.59A2 2 0 0 0 3.83 11l9.58 9.59a2 2 0 0 0 2.83 0l4.35-4.35a2 2 0 0 0 0-2.83Z"/><path d="M7 7h.01"/></svg>
+            <span>SQL</span>
+          </a>
+        
+          <a class="taxon-chip taxon-chip--tag" href="/tag/bi-ji/">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 11 3.83A2 2 0 0 0 9.59 3H4a1 1 0 0 0-1 1v5.59A2 2 0 0 0 3.83 11l9.58 9.59a2 2 0 0 0 2.83 0l4.35-4.35a2 2 0 0 0 0-2.83Z"/><path d="M7 7h.01"/></svg>
+            <span>笔记</span>
+          </a>
+        
+      </div>
+    </div>
+  </footer>
+  
+
+  
+
+<nav class="post-nav" aria-label="Post navigation">
+  
+  <a class="post-nav-card post-nav-prev" href="/post/diary-20230903/" rel="prev">
+    <div class="post-nav-body">
+      <p class="post-nav-label">
+        <svg class="post-nav-arrow post-nav-arrow-prev" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
+        <span data-i18n="post.previous">上一篇</span>
+      </p>
+      <p class="post-nav-title">业务推进自上而下好还是自下而上好？</p>
+    </div>
+  </a>
+  
+
+  
+  <a class="post-nav-card post-nav-next" href="/post/OpenSourceSoftwareMirrorSite/" rel="next">
+    <div class="post-nav-body">
+      <p class="post-nav-label">
+        <span data-i18n="post.next">下一篇</span>
+        <svg class="post-nav-arrow post-nav-arrow-next" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
+      </p>
+      <p class="post-nav-title">开源软件镜像站</p>
+    </div>
+  </a>
+  
+</nav>
+
+
+
+  
+
+</article>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const content = document.getElementById('post-content');
+  const tocList = document.getElementById('toc-list');
+  if (!content || !tocList) return;
+  const headings = content.querySelectorAll('h2, h3');
+  
+  if (headings.length === 0) {
+    document.getElementById('toc-container').style.display = 'none';
+    return;
+  }
+
+  headings.forEach((heading, index) => {
+    const id = 'heading-' + index;
+    heading.setAttribute('id', id);
+    
+    const link = document.createElement('a');
+    link.href = '#' + id;
+    link.className = 'toc-link';
+    if (heading.tagName === 'H3') link.style.paddingLeft = '16px';
+    link.textContent = heading.textContent;
+    
+    tocList.appendChild(link);
+  });
+
+  // Simple scroll spy
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        document.querySelectorAll('.toc-link').forEach(l => l.classList.remove('active'));
+        const activeLink = document.querySelector(`.toc-link[href="#${entry.target.id}"]`);
+        if (activeLink) activeLink.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-100px 0px -66%' });
+
+  headings.forEach(h => observer.observe(h));
+});
+</script>
+
+        </main>
+        <footer class="site-footer">
+          <div class="footer-inner">
+  <div class="footer-left">
+    
+      © <time id="footer-year"></time>
+      <a href="/" class="footer-author">木易Young&#39;s Blog</a>.
+      <span data-i18n="footer.rights">All rights reserved.</span>
+    
+  </div>
+  
+  <div class="footer-right">
+    
+      
+        <span data-i18n="footer.poweredBy">Powered by</span>
+        <a href="https://www.gridea.pro/" target="_blank" rel="noopener">Gridea Pro</a>.
+      
+      <span data-i18n="footer.theme">Theme</span>
+      <a href="https://github.com/Sunhaha520/Chirpy-Gridea" target="_blank" rel="noopener">Chirpy-Gridea</a>
+    
+  </div>
+</div>
+
+        </footer>
+      </div>
+
+      <aside class="panel-rail" id="panel-rail">
+        
+<div class="toc-container" id="toc-container">
+  <h2 class="toc-title" data-i18n="toc.title">Table of Contents</h2>
+  <nav class="toc-list" id="toc-list"></nav>
+</div>
+
+      </aside>
+    </div>
+  </div>
+</div>
+
+<button class="back-to-top" id="back-to-top" type="button" aria-label="返回顶部" data-i18n-aria="ui.backToTop">↑</button>
+
+<!-- Search Modal -->
+<div class="search-modal" id="search-modal">
+  <div class="search-modal-content">
+    <div class="search-modal-header">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" id="search-input" placeholder="搜索站内内容..." aria-label="搜索">
+      <button class="search-modal-close" id="search-close" type="button">Esc</button>
+    </div>
+    <div class="search-modal-results" id="search-results">
+      <div class="search-no-results">输入关键词开始搜索...</div>
+    </div>
+    <div class="search-modal-footer">
+      <div class="search-hints">
+        <span><kbd>↵</kbd> 选择</span>
+        <span><kbd>↑↓</kbd> 切换</span>
+        <span><kbd>Esc</kbd> 关闭</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="search-source" hidden>
+  
+    
+    <article
+      class="search-source-item"
+      data-link="/post/LearnAboutPython/"
+      data-date="2026-10-03"
+    >
+      <h3 class="search-source-title">Python学习笔记</h3>
+      <p class="search-source-abstract">
+        
+          Python学习笔记
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/pic_location/"
+      data-date="2024-09-28"
+    >
+      <h3 class="search-source-title">如何根据一张图片找到拍摄地</h3>
+      <p class="search-source-abstract">
+        
+          通过图片信息推理拍摄地，提示往互联网发送信息时，关注个人隐私泄露风险。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/Pythagorean_triple/"
+      data-date="2024-09-23"
+    >
+      <h3 class="search-source-title">寻找勾股数</h3>
+      <p class="search-source-abstract">
+        
+          从直观的、最简单的勾股数开始推到通用公式，直到推到完全公式。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/github-2fa-totp/"
+      data-date="2024-03-23"
+    >
+      <h3 class="search-source-title">Github 2FA TOTP验证</h3>
+      <p class="search-source-abstract">
+        
+          使用AI工具编写代码，实现了双因素认证的TOTP验证码计算。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/ren-zhi-jue-xing/"
+      data-date="2024-03-20"
+    >
+      <h3 class="search-source-title">《认知觉醒》读书笔记</h3>
+      <p class="search-source-abstract">
+        
+          2020年出版的《认知觉醒》读后感。保持学习积极性，以兴趣为基础，坚持“活到老，学到老”，并做好相应的笔记。推及生活，则要吾日三省吾身，通过不断地反思来提升为人处世能力。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/episode_from_iimdb/"
+      data-date="2024-01-24"
+    >
+      <h3 class="search-source-title">追剧助手from IMDB</h3>
+      <p class="search-source-abstract">
+        
+          使用AI工具完成代码编写，实现从IMDB网站抓取信息。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/diary-20230903/"
+      data-date="2023-09-03"
+    >
+      <h3 class="search-source-title">业务推进自上而下好还是自下而上好？</h3>
+      <p class="search-source-abstract">
+        
+          工作中的点滴反思：面对消极懈怠的员工，某些业务的推进模式，自上而下总是优于自下而上。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/oracle-sql/"
+      data-date="2022-12-26"
+    >
+      <h3 class="search-source-title">Oracle SQL和帆软学习备忘录</h3>
+      <p class="search-source-abstract">
+        
+          记录学习SQL和帆软期间，一些重要知识点和语法。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/OpenSourceSoftwareMirrorSite/"
+      data-date="2022-10-17"
+    >
+      <h3 class="search-source-title">开源软件镜像站</h3>
+      <p class="search-source-abstract">
+        
+          开源的力量无疑是强大的，对于初学者非常友好，除了Github外，文章里的站点主要囊括了世界上比较知名的开源软件和系统。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/bilibili-iframe/"
+      data-date="2022-04-10"
+    >
+      <h3 class="search-source-title">html iframe播放B站视频</h3>
+      <p class="search-source-abstract">
+        
+          在博客中加入iframe，可以在网页上播放视频。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/sqllq/"
+      data-date="2022-03-24"
+    >
+      <h3 class="search-source-title">神奇浏览器停运</h3>
+      <p class="search-source-abstract">
+        
+          神奇浏览器原本由武汉大学的个人开发者开发，具有体积小巧、功能齐全而强大的优点，奈何其内置的广告拦截功能过于强大，动了国内视频网站巨头的利益奶酪，被迫宣布破产停运，版本号停在了0.9.8.4。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/fake-pe/"
+      data-date="2022-03-21"
+    >
+      <h3 class="search-source-title">冒牌微PE玄机暗藏，且看如何扒皮探底</h3>
+      <p class="search-source-abstract">
+        
+          PE软件作为装机必备软件，但良莠不齐，层出不穷的冒牌者充斥着互联网，扰人视线。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/markdown-demo/"
+      data-date="2021-07-12"
+    >
+      <h3 class="search-source-title">Markdown简明教程</h3>
+      <p class="search-source-abstract">
+        
+          本文原文是由Markdown生成
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/C1-Driver&#39;s-license/"
+      data-date="2021-07-12"
+    >
+      <h3 class="search-source-title">C1驾照笔记</h3>
+      <p class="search-source-abstract">
+        
+          学习C1驾照期间的重点内容整理。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/jiulinghou/"
+      data-date="2021-07-11"
+    >
+      <h3 class="search-source-title">《九零后》纪录片观后感</h3>
+      <p class="search-source-abstract">
+        
+          《九零后》一片讲述的是一帮耄耋之年的西南联大校友，以访谈形式追忆过往，从联大成立，到学生和老师不远万里齐聚昆明，再到大家的艰苦求学历程，最后新中国成立后，曾经的校友突破重重困阻，回到祖国，建设新中国。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/toolbox/"
+      data-date="2020-04-14"
+    >
+      <h3 class="search-source-title">Excel工具箱-ToolBox</h3>
+      <p class="search-source-abstract">
+        
+          ToolBox是业余学习VBA编写的Excel插件，整合了部分网友的代码，也新写了很多功能。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/qian-zi-wen/"
+      data-date="2019-12-21"
+    >
+      <h3 class="search-source-title">千字文-周兴嗣</h3>
+      <p class="search-source-abstract">
+        
+          千字文，由南北朝时期梁朝散骑侍郎、给事中周兴嗣编纂、一千个汉字组成的韵文（在隋唐之前，不押韵、不对仗的文字，被称为“笔”，而非“文”）。
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/software/"
+      data-date="2019-11-27"
+    >
+      <h3 class="search-source-title">软件下载导航</h3>
+      <p class="search-source-abstract">
+        
+          如果单击不能进行下载，请复制链接用迅雷等工具进行下载。
+
+
+Adobe软件
+Autodesk软件
+Corel软件
+[Micros&amp;hellip;
+        
+      </p>
+    </article>
+    
+    <article
+      class="search-source-item"
+      data-link="/post/about/"
+      data-date="2019-01-25"
+    >
+      <h3 class="search-source-title">关于</h3>
+      <p class="search-source-abstract">
+        
+          欢迎来到我的小站呀，很高兴遇见你！🤝
+
+🏠 关于本站
+本个人博客纯属兴趣建立，一方面是为了收集一些软件下载地址、好用的网站链接，另一方面也是为了分享一些软件相关的知识，方便自己，方便他人。
+👨‍...
+        
+      </p>
+    </article>
+    
+  
+</div>
+
+<script src="/scripts/i18n-boot.js"></script>
+<script src="/scripts/main.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/highlight.js@11.11.1/lib/highlight.min.js" defer></script>
+
+<!-- KaTeX math rendering removed to match cactus rendering behavior -->
+
+
+
+<script>console.log("\n%c ✦ Gridea Pro v1.3.0-beta.2 %c · Theme: Chirpy-Gridea v1.0.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+</html>
+
